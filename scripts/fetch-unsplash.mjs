@@ -42,8 +42,9 @@ const defaultMap = join(root, "scripts", "unsplash.json");
 
 const KEY = process.env.UNSPLASH_ACCESS_KEY;
 const UA = "GloryToGlory-site/1.0 (+https://glorytoglory.com)";
-/** Overridable so the download path can be exercised against a stand-in server. */
+/** Overridable so both network paths can be exercised against a stand-in server. */
 const BASE = process.env.UNSPLASH_DOWNLOAD_BASE ?? "https://unsplash.com";
+const API_BASE = process.env.UNSPLASH_API_BASE ?? "https://api.unsplash.com";
 
 /** Accepts a bare id or any unsplash.com/photos/... URL. */
 export function photoId(input) {
@@ -97,21 +98,35 @@ async function download(id, width) {
 }
 
 async function viaApi(id, width) {
-  const meta = await fetch(`https://api.unsplash.com/photos/${id}`, {
+  const meta = await fetch(`${API_BASE}/photos/${id}`, {
     headers: { Authorization: `Client-ID ${KEY}`, "Accept-Version": "v1", "User-Agent": UA },
   });
-  if (!meta.ok) throw new Error(`api.unsplash.com ${meta.status}`);
+  if (meta.status === 401) throw new Error("UNSPLASH_ACCESS_KEY rejected (HTTP 401) — check the key");
+  if (meta.status === 403) {
+    throw new Error(
+      `api rate limit reached (HTTP 403; ${meta.headers.get("x-ratelimit-remaining") ?? "?"} left) — a demo app allows 50 requests an hour`,
+    );
+  }
+  if (!meta.ok) throw new Error(`api ${meta.status}`);
   const data = await meta.json();
+  if (!data?.urls?.raw) throw new Error("api returned no image url");
+
   // Required by the API terms whenever a photo is downloaded.
   if (data.links?.download_location) {
     await fetch(data.links.download_location, {
       headers: { Authorization: `Client-ID ${KEY}`, "User-Agent": UA },
     }).catch(() => {});
   }
-  return {
-    buf: await bytes(`${data.urls.raw}&w=${width}&q=85&fm=jpg`),
-    credit: { name: data.user?.name ?? "Unknown" },
-  };
+  return { buf: await bytes(sized(data.urls.raw, width)), credit: { name: data.user?.name ?? null } };
+}
+
+/** Adds sizing parameters to an Unsplash CDN url, whatever query it already carries. */
+function sized(raw, width) {
+  const url = new URL(raw);
+  url.searchParams.set("w", String(width));
+  url.searchParams.set("q", "85");
+  url.searchParams.set("fm", "jpg");
+  return url.toString();
 }
 
 async function viaNapi(id, width) {
@@ -122,10 +137,7 @@ async function viaNapi(id, width) {
   const data = await res.json();
   const raw = data?.urls?.raw;
   if (!raw) throw new Error("napi returned no image url");
-  return {
-    buf: await bytes(`${raw}&w=${width}&q=85&fm=jpg`),
-    credit: { name: data.user?.name ?? null },
-  };
+  return { buf: await bytes(sized(raw, width)), credit: { name: data.user?.name ?? null } };
 }
 
 async function viaDownloadRedirect(id, width) {
@@ -172,6 +184,8 @@ async function main() {
   let fetched = 0;
   let skipped = 0;
   const failures = [];
+  /** Several slots share a photo (a region hero and its card). Fetch it once. */
+  const byId = new Map();
 
   for (const [file, entryRaw] of Object.entries(map)) {
     const entry = typeof entryRaw === "string" ? { id: entryRaw } : entryRaw;
@@ -197,7 +211,13 @@ async function main() {
     }
 
     try {
-      const { buf, credit } = await download(id, Math.max(target.width, 1600));
+      const need = Math.max(target.width, 1600);
+      let got = byId.get(id);
+      if (!got || got.width < need) {
+        got = { ...(await download(id, need)), width: need };
+        byId.set(id, got);
+      }
+      const { buf, credit } = got;
       await sharp(buf)
         .resize(target.width, target.height, { fit: "cover", position: "attention" })
         .jpeg({ quality: 82, mozjpeg: true })

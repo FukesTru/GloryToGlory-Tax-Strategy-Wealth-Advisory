@@ -152,31 +152,40 @@ any time:
 npm run images:status
 ```
 
-**Getting the photos in.** Unsplash serves photos to ordinary connections
-freely, but refuses anonymous requests from datacenter IP ranges, which is where
-build servers live. So there are two ways to get the photos, and the first is
-the one to use:
+**Getting the photos in.** Unsplash serves photos freely to ordinary
+connections, but refuses anonymous requests from datacenter IP ranges, which is
+where build servers live. So a deploy needs an API key, or the photos need to be
+in the repository already. Either works:
 
-1. **Run it once locally and commit the result.** On any normal internet
-   connection:
+1. **Set a key on the host** (no terminal needed). Create a free app at
+   <https://unsplash.com/developers>, copy its **Access Key**, then in Vercel go
+   to Settings → Environment Variables, add `UNSPLASH_ACCESS_KEY`, tick all three
+   environments, save, and redeploy. Each build then pulls the photos through the
+   official API.
+
+   A build costs 18 API requests (9 distinct photos, each with the
+   download-tracking call the API terms require). A demo app allows 50 an hour,
+   so roughly two redeploys an hour are fine; beyond that the build logs a rate
+   limit and keeps the artwork for that deploy.
+
+2. **Run it once locally and commit the result** — the sturdier option, because
+   it removes the build-time dependency entirely:
 
    ```bash
-   npm run images:photos
-   git add public/images src/content/image-alt-overrides.json && git commit -m "Add Unsplash photography"
+   UNSPLASH_ACCESS_KEY=your-key npm run images:photos   # the key is optional here
+   git add public/images src/content/image-alt-overrides.json
+   git commit -m "Add Unsplash photography"
    ```
 
-   The photos are then in the repository. Every later build, anywhere, uses them
-   with no network access at all. This is the sturdier arrangement and needs no
-   signup.
+   Every later build, anywhere, then uses the committed photos with no network
+   access at all.
 
-2. **Give the build server a key.** Create a free app at
-   <https://unsplash.com/developers> and set `UNSPLASH_ACCESS_KEY` in your host's
-   environment variables (in Vercel: Settings → Environment Variables). The
-   build then fetches the photos through the official API on every deploy.
+Never commit the key. `.env*` is gitignored, so `.env.local` is a safe place for
+it locally.
 
 Without either, the build still succeeds: each slot keeps its generated artwork
-and the build log prints a boxed warning naming the slots that fell back. The
-site never breaks over an image.
+and the log prints a boxed warning naming the slots that fell back. The site
+never breaks over an image.
 
 **Changing a photo.** Edit its `id` in `scripts/unsplash.json` — a bare id or any
 `unsplash.com/photos/...` URL works — then re-run `npm run images:photos`. To
