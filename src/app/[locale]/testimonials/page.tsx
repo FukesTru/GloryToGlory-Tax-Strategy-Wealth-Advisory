@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CtaSection } from "@/components/CtaSection";
 import { GoogleReviewsSlot } from "@/components/GoogleReviewsSlot";
 import { Hero } from "@/components/Hero";
+import { IMAGES } from "@/content/images";
 import { PlaceholderNote } from "@/components/Placeholder";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
@@ -30,6 +31,7 @@ export default async function TestimonialsPage({ params }: { params: LocaleParam
         title={c.h1}
         sub={c.heroSub}
         crumbs={[{ name: STATIC_PAGE_NAMES["/testimonials"][locale], path: "/testimonials" }]}
+      image={IMAGES.heroTestimonials}
       />
 
       <Section tone="cream">

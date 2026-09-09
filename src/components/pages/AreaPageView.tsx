@@ -2,6 +2,7 @@ import type { Locale } from "@/lib/i18n";
 import type { ServiceArea } from "@/content/types";
 import { UI } from "@/content/site";
 import { pageName } from "@/lib/content";
+import { areaImage } from "@/content/images";
 import { localBusinessSchema } from "@/lib/schema";
 import { CtaSection } from "../CtaSection";
 import { FaqAccordion } from "../FaqAccordion";
@@ -32,6 +33,7 @@ export function AreaPageView({ area, locale, otherAreas }: { area: ServiceArea; 
         sub={c.heroSub}
         eyebrow={area.region[locale]}
         crumbs={[{ name: area.region[locale], path: area.path }]}
+        image={areaImage(area.slug)}
       >
         <ul className="mt-7 flex flex-wrap gap-2" aria-label={copy.cities}>
           {area.citiesLocalized[locale].map((city) => (

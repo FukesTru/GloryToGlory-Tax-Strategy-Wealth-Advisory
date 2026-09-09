@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { CtaSection } from "@/components/CtaSection";
 import { Hero } from "@/components/Hero";
+import { IMAGES } from "@/content/images";
+import { Picture } from "@/components/Picture";
 import { LLink } from "@/components/LLink";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
@@ -28,18 +30,29 @@ export default async function ServicesHubPage({ params }: { params: LocaleParams
         title={c.h1}
         sub={c.heroSub}
         crumbs={[{ name: STATIC_PAGE_NAMES["/services"][locale], path: "/services" }]}
+      image={IMAGES.heroServices}
       />
 
       <Section tone="cream">
-        <Reveal className="mx-auto max-w-3xl">
-          <div className="prose-site">
-            {c.intro.map((p, i) => (
-              <p key={i} className={i === 0 ? "text-xl leading-relaxed text-navy-900" : ""}>
-                {p}
-              </p>
-            ))}
-          </div>
-        </Reveal>
+        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+          <Reveal>
+            <div className="prose-site">
+              {c.intro.map((p, i) => (
+                <p key={i} className={i === 0 ? "text-xl leading-relaxed text-navy-900" : ""}>
+                  {p}
+                </p>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={0.12} className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-navy-900 shadow-[var(--shadow-card)]">
+            <Picture
+              image={IMAGES.featureOnePlan}
+              locale={locale}
+              sizes="(min-width: 1024px) 42vw, 92vw"
+              className="object-cover"
+            />
+          </Reveal>
+        </div>
       </Section>
 
       <Section tone="white">

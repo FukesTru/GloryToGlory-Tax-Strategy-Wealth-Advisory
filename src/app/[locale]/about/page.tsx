@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { CtaSection } from "@/components/CtaSection";
 import { Hero } from "@/components/Hero";
+import { IMAGES } from "@/content/images";
 import { JsonLd } from "@/components/JsonLd";
 import { PlaceholderBadge, PlaceholderNote } from "@/components/Placeholder";
 import { Reveal } from "@/components/Reveal";
@@ -32,6 +33,7 @@ export default async function AboutPage({ params }: { params: LocaleParams }) {
         title={c.h1}
         sub={c.heroSub}
         crumbs={[{ name: STATIC_PAGE_NAMES["/about"][locale], path: "/about" }]}
+        image={IMAGES.heroAbout}
         aside={
           <Reveal delay={0.15} className="relative mx-auto w-full max-w-sm lg:max-w-md">
             <div className="absolute -inset-3 -z-10 rounded-[2rem] border border-gold-500/30" aria-hidden="true" />

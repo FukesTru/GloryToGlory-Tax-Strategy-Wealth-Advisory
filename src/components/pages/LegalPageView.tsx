@@ -1,6 +1,7 @@
 import type { Locale } from "@/lib/i18n";
 import type { LegalPageContent } from "@/content/types";
 import { STATIC_PAGE_NAMES } from "@/lib/content";
+import { IMAGES } from "@/content/images";
 import { Blocks } from "../RichText";
 import { Hero } from "../Hero";
 import { Section } from "../Section";
@@ -21,6 +22,7 @@ export function LegalPageView({ content, locale, path }: { content: LegalPageCon
         sub={content.heroSub}
         crumbs={[{ name: STATIC_PAGE_NAMES[path][locale], path }]}
         primary={{ label: copy.contact, href: "/contact" }}
+        image={IMAGES.heroLegal}
       />
       <Section tone="cream" narrow>
         <p className="text-sm text-ink-500">

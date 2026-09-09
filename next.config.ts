@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    // Only needed if you reference Unsplash URLs directly instead of
+    // downloading them with `npm run images:unsplash`.
+    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
   },
   async headers() {
     return [

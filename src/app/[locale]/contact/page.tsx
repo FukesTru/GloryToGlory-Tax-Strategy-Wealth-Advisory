@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { Hero } from "@/components/Hero";
+import { IMAGES } from "@/content/images";
 import { Icon } from "@/components/Icon";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
@@ -32,6 +33,7 @@ export default async function ContactPage({ params }: { params: LocaleParams }) 
         title={c.h1}
         sub={c.heroSub}
         crumbs={[{ name: STATIC_PAGE_NAMES["/contact"][locale], path: "/contact" }]}
+        image={IMAGES.heroContact}
         primary={{ label: UI[locale].hero.callGrace, href: SITE.phoneHref }}
       />
 

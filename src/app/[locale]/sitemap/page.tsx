@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Hero } from "@/components/Hero";
+import { IMAGES } from "@/content/images";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { sitemapPage } from "@/content/pages/meta";
@@ -53,6 +54,7 @@ export default async function SitemapPage({ params }: { params: LocaleParams }) 
         title={c.h1}
         sub={c.heroSub}
         crumbs={[{ name: STATIC_PAGE_NAMES["/sitemap"][locale], path: "/sitemap" }]}
+      image={IMAGES.heroLegal}
       />
       <Section tone="cream">
         <p className="text-sm text-ink-500">{c.languageNote}</p>

@@ -12,6 +12,7 @@ npm run dev                  # http://localhost:3000
 npm run build && npm start   # production
 npm run lint                 # ESLint
 npx tsc --noEmit             # type-check
+npm run artwork              # redraw every illustration in public/images/
 ```
 
 ## Environment variables
@@ -22,6 +23,7 @@ npx tsc --noEmit             # type-check
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | GA4 measurement ID. The tag renders in `<head>` on every page; `G-XXXXXXXXXX` is used until this is set. |
 | `CONTACT_WEBHOOK_URL` | Where `/api/contact` forwards form submissions (Formspree, Zapier, Make, a Resend/SendGrid function, a CRM…). When empty, submissions are only logged on the server. |
 | `NEXT_PUBLIC_GOOGLE_PLACE_ID` | Google Business Profile Place ID for the reviews widget slot on `/testimonials`. |
+| `UNSPLASH_ACCESS_KEY` | Only for `npm run images:unsplash`. Enables photographer credit and the API's download tracking. |
 
 ## How the site is organised
 
@@ -55,8 +57,15 @@ src/
     seo.ts               buildMetadata(): title, description, canonical, hreflang, OG, Twitter
     schema.ts            schema.org JSON-LD builders
     content.ts           content registry (PARENT_SERVICES, AREAS, POSTS, allPaths, pageName…)
+    image-manifest.json  generated: dimensions + blur placeholders for every image
+    images.ts            image registry with translated alt text
+scripts/
+  generate-artwork.mjs   draws every illustration into public/images/
+  fetch-unsplash.mjs     swaps in Unsplash photography by photo id
+  lib/                   drawing helpers (palette, skylines, abstract motifs)
 public/
   og-default.png         default Open Graph image (1200×630)
+  images/                27 generated illustrations (see "Imagery")
   images/grace-headshot.svg  PLACEHOLDER portrait — replace (see checklist)
 ```
 
@@ -89,6 +98,82 @@ Sitemap, HTML sitemap, footer, breadcrumbs and related-link cards update automat
 * `sitemap.xml` lists both language versions of all 25 URLs with `xhtml:link` alternates; `robots.txt` at root.
 * GA4 tag in `<head>` site-wide; images lazy-loaded with translated alt text; each page links to 2–3 related pages.
 
+## Imagery
+
+All 27 images are **generated artwork**, drawn from code in the brand palette by
+`scripts/generate-artwork.mjs`. They are deterministic, licence-free, weigh
+about 1.7 MB in total, and always match the design tokens. Regenerate them at
+any time:
+
+```bash
+npm run artwork
+```
+
+Two families:
+
+- **Skylines** (`area-*.jpg`, `card-*.jpg`, `hero-home.jpg`) — layered night
+  skylines with depth haze, window lights and landmark silhouettes. Each region
+  is distinguishable: a pyramid tower and bay reflection for the Bay Area, palms
+  and a warm dusk for Southern California, an observation tower for the remote
+  page.
+- **Abstract motifs** (`hero-*.jpg`, `service-*.jpg`, `post-*.jpg`) — editorial
+  compositions that each carry an idea: diverging paths for grant types, a
+  highlighted column for a withholding gap, a stacked area for compounding
+  contributions, a timeline that forks at a decision.
+
+Page heroes render the artwork behind a navy scrim, so the headline always wins
+on contrast. Article and region cards use the image at full strength.
+
+### Alt text
+
+Alt text for every image lives in `src/content/images.ts`, in both languages.
+Page-hero images are decorative (the H1 carries the meaning) so they render
+`alt=""`, which is what screen readers should skip. Content images — article
+headers, region cards, the services feature image — use their translated
+description. Everything except the hero of the current page is lazy-loaded; the
+hero is marked `priority` because it is the largest contentful paint.
+
+### Swapping in photography
+
+Drop a JPEG with the same filename into `public/images/` and it is used as-is.
+To pull from Unsplash instead:
+
+```bash
+# optional but recommended: enables photographer credit and download tracking
+export UNSPLASH_ACCESS_KEY=...
+
+npm run images:unsplash -- hero-home.jpg=<photo-id-or-url> area-bay-area.jpg=<photo-id-or-url>
+npm run artwork -- --keep-existing     # refresh sizes and blur placeholders
+```
+
+The script crops each photo to the exact size the layout expects, writes it over
+the matching file, and appends the photographer to `public/images/CREDITS.md`.
+Afterwards, update that image's alt text in `src/content/images.ts` so it
+describes the photo. You can also map several at once with
+`--file scripts/unsplash.example.json`.
+
+Suggested searches, keeping to the brief (no stock "law firm" imagery, no posed
+office people; skylines, workspaces and abstract tech-adjacent visuals):
+
+| Image slot | Used on | Suggested search |
+|---|---|---|
+| `hero-home.jpg` | Home hero | san francisco skyline dusk |
+| `hero-services.jpg` | Services hero | abstract architecture minimal |
+| `hero-about.jpg` | About hero | calm desk workspace morning |
+| `hero-contact.jpg` | Contact hero | video call desk setup |
+| `hero-blog.jpg` | Blog hero | notebook laptop minimal desk |
+| `hero-testimonials.jpg` | Testimonials hero | warm modern interior |
+| `hero-legal.jpg` | Disclaimer, Privacy, Sitemap | minimal architecture lines |
+| `service-*.jpg` | Each service hero | charts data abstract, planning desk |
+| `area-bay-area.jpg` + `card-bay-area.jpg` | Bay Area page, home strip | san francisco bay bridge skyline |
+| `area-southern-california.jpg` + `card-southern-california.jpg` | SoCal page, home strip | los angeles skyline palm trees |
+| `area-remote-advisory.jpg` + `card-remote-advisory.jpg` | Remote page, home strip | seattle skyline / austin skyline |
+| `post-*.jpg` | Article header and card | abstract finance, stock chart screen |
+| `feature-one-plan.jpg` | Services hub intro | financial planning desk documents |
+
+If you prefer to hot-link Unsplash URLs rather than download them,
+`images.unsplash.com` is already allowed in `next.config.ts`.
+
 ## Design system
 
 Tokens live in `src/app/globals.css` under `@theme` (navy `#0B1E3D`, off-white `#FAFAF7`, gold `#C9A253`, emerald `#2F6F5E`).
@@ -102,7 +187,7 @@ Everything below is clearly marked in the UI with a dashed gold **PLACEHOLDER** 
 1. **Disclaimer page** (`src/content/pages/disclaimer.ts`) — insert real RIA/IAR registration status, Form ADV Part 2 link, CRD number, states of registration and compliance-reviewed disclosures. **Do not publish as-is.**
 2. **Credentials** — confirm exact designations (CFP®, EA, CPA…) in `src/content/pages/about.ts` and the homepage trust strip (`src/content/pages/home.ts`). Set `foundingYear` in `src/content/site.ts` if a "years of experience" claim is wanted.
 3. **Testimonials** (`src/content/pages/testimonials.ts`) — replace every `[SAMPLE]` quote with a real, permissioned client quote (or remove it) after compliance review of the SEC Marketing Rule requirements; set `placeholder: false`.
-4. **Photos** — add Grace's headshot as `public/images/grace-headshot.jpg` (about 600×720) and update `SITE.owner.headshot` in `src/content/site.ts`. Hero backgrounds are abstract by design; add skyline/workspace imagery from the client's Drive folder if desired.
+4. **Photos** — add Grace's headshot as `public/images/grace-headshot.jpg` (about 600×720) and update `SITE.owner.headshot` in `src/content/site.ts`. Every other image is generated artwork that ships as-is; swap in photography whenever you like (see **Imagery** above) and update that image's alt text.
 5. **Traditional Chinese copy** — all `"zh-hant"` slots are working drafts. Have a professional translator review them (the structure is identical to the English, field by field).
 6. **Privacy policy** — legal review; insert Regulation S-P notice link if applicable.
 7. **GA4** — set `NEXT_PUBLIC_GA_MEASUREMENT_ID`.

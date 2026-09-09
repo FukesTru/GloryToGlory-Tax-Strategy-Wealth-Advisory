@@ -2,6 +2,7 @@ import type { Locale } from "@/lib/i18n";
 import type { Service } from "@/content/types";
 import { UI } from "@/content/site";
 import { getService, STATIC_PAGE_NAMES } from "@/lib/content";
+import { serviceImage } from "@/content/images";
 import { serviceSchema, stripLinks, type Crumb } from "@/lib/schema";
 import { CtaSection } from "../CtaSection";
 import { FaqAccordion } from "../FaqAccordion";
@@ -33,7 +34,14 @@ export function ServicePageView({ service, locale }: { service: Service; locale:
   return (
     <>
       <JsonLd data={serviceSchema(locale, service.name[locale], stripLinks(c.metaDescription), service.path)} />
-      <Hero locale={locale} title={c.h1} sub={c.heroSub} crumbs={serviceCrumbs(service, locale)} eyebrow={isSub ? getService(service.parent!)?.name[locale] : STATIC_PAGE_NAMES["/services"][locale]} />
+      <Hero
+        locale={locale}
+        title={c.h1}
+        sub={c.heroSub}
+        crumbs={serviceCrumbs(service, locale)}
+        eyebrow={isSub ? getService(service.parent!)?.name[locale] : STATIC_PAGE_NAMES["/services"][locale]}
+        image={serviceImage(service.slug)}
+      />
 
       {/* Intro + covers */}
       <Section tone="cream">

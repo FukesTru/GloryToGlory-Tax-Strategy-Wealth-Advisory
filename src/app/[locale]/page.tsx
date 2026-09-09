@@ -3,6 +3,7 @@ import { BlogCard } from "@/components/BlogCard";
 import { CitiesStrip } from "@/components/CitiesStrip";
 import { CtaSection } from "@/components/CtaSection";
 import { Hero } from "@/components/Hero";
+import { IMAGES } from "@/content/images";
 import { Icon } from "@/components/Icon";
 import { JsonLd } from "@/components/JsonLd";
 import { LLink } from "@/components/LLink";
@@ -44,6 +45,7 @@ export default async function HomePage({ params }: { params: LocaleParams }) {
         sub={c.hero.sub}
         primary={{ label: c.hero.primary, href: "/contact" }}
         secondary={{ label: c.hero.secondary, href: "/services" }}
+        image={IMAGES.heroHome}
       />
 
       <TrustStrip

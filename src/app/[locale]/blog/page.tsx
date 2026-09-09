@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BlogCard } from "@/components/BlogCard";
 import { CtaSection } from "@/components/CtaSection";
 import { Hero } from "@/components/Hero";
+import { IMAGES } from "@/content/images";
 import { Section } from "@/components/Section";
 import { blogIndexPage } from "@/content/pages/meta";
 import { POSTS, STATIC_PAGE_NAMES } from "@/lib/content";
@@ -26,6 +27,7 @@ export default async function BlogIndexPage({ params }: { params: LocaleParams }
         title={c.h1}
         sub={c.heroSub}
         crumbs={[{ name: STATIC_PAGE_NAMES["/blog"][locale], path: "/blog" }]}
+      image={IMAGES.heroBlog}
       />
       <Section tone="cream">
         {POSTS.length === 0 ? (

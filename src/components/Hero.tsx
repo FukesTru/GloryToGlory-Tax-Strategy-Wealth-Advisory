@@ -1,9 +1,11 @@
 import type { ReactNode } from "react";
 import type { Locale } from "@/lib/i18n";
 import { UI } from "@/content/site";
+import type { SiteImage } from "@/content/images";
 import type { Crumb } from "@/lib/schema";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { LLink } from "./LLink";
+import { Picture } from "./Picture";
 
 interface Props {
   locale: Locale;
@@ -19,18 +21,35 @@ interface Props {
   aside?: ReactNode;
   /** Larger typography for the homepage. */
   size?: "default" | "large";
+  /** Background artwork. Rendered decoratively behind a navy scrim. */
+  image?: SiteImage;
   children?: ReactNode;
 }
 
 /** Dark navy hero with a thin gold underline beneath the H1 — used on every page. */
-export function Hero({ locale, title, sub, eyebrow, crumbs, primary, secondary, aside, size = "default", children }: Props) {
+export function Hero({ locale, title, sub, eyebrow, crumbs, primary, secondary, aside, size = "default", image, children }: Props) {
   const t = UI[locale].hero;
   const cta = primary ?? { label: t.bookFree, href: "/contact" };
   const h1Size = size === "large" ? "text-4xl sm:text-5xl lg:text-[3.6rem]" : "text-3xl sm:text-4xl lg:text-[3rem]";
 
   return (
     <section className="relative isolate overflow-hidden bg-navy-900 pt-[4.5rem] text-cream-100">
-      {/* Abstract backdrop — no stock imagery required */}
+      {image && (
+        <>
+          <div aria-hidden="true" className="absolute inset-0 -z-30">
+            <Picture image={image} locale={locale} sizes="100vw" priority decorative className="object-cover" />
+          </div>
+          {/* Scrims: keep the headline legible while the artwork stays visible to the right. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-20 bg-gradient-to-r from-navy-900 via-navy-900/85 to-navy-900/15"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 -z-20 bg-gradient-to-t from-navy-900/95 via-navy-900/15 to-navy-900/55"
+          />
+        </>
+      )}
       <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-0 -z-10" />
       <div
         aria-hidden="true"

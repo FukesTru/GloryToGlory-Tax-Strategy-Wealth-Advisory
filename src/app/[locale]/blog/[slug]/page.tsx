@@ -10,6 +10,7 @@ import { Reveal } from "@/components/Reveal";
 import { Blocks } from "@/components/RichText";
 import { Section } from "@/components/Section";
 import { SITE, UI } from "@/content/site";
+import { postImage } from "@/content/images";
 import { getPost, POSTS, STATIC_PAGE_NAMES } from "@/lib/content";
 import { LOCALES } from "@/lib/i18n";
 import { resolveLocale } from "@/lib/params";
@@ -61,6 +62,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
           { name: post.title[locale], path },
         ]}
         primary={{ label: t.backToBlog, href: "/blog" }}
+        image={postImage(post.slug)}
       >
         <p className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-cream-100/70">
           <span>{SITE.owner.displayName}</span>
