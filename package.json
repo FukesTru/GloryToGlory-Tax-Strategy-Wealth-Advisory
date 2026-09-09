@@ -9,7 +9,9 @@
     "lint": "eslint",
     "artwork": "node scripts/generate-artwork.mjs",
     "images:unsplash": "node scripts/fetch-unsplash.mjs",
-    "prebuild": "node scripts/fetch-unsplash.mjs --soft && node scripts/generate-artwork.mjs --keep-existing"
+    "prebuild": "node scripts/fetch-unsplash.mjs --soft && node scripts/generate-artwork.mjs --keep-existing",
+    "images:photos": "node scripts/fetch-unsplash.mjs && node scripts/generate-artwork.mjs --keep-existing",
+    "images:status": "node scripts/fetch-unsplash.mjs --status"
   },
   "dependencies": {
     "framer-motion": "^12.43.0",

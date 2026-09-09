@@ -42,6 +42,8 @@ const defaultMap = join(root, "scripts", "unsplash.json");
 
 const KEY = process.env.UNSPLASH_ACCESS_KEY;
 const UA = "GloryToGlory-site/1.0 (+https://glorytoglory.com)";
+/** Overridable so the download path can be exercised against a stand-in server. */
+const BASE = process.env.UNSPLASH_DOWNLOAD_BASE ?? "https://unsplash.com";
 
 /** Accepts a bare id or any unsplash.com/photos/... URL. */
 export function photoId(input) {
@@ -77,39 +79,79 @@ async function parseArgs(argv) {
 
 /** Resolve a photo id to downloadable bytes. */
 async function download(id, width) {
-  if (KEY) {
-    const meta = await fetch(`https://api.unsplash.com/photos/${id}`, {
-      headers: { Authorization: `Client-ID ${KEY}`, "Accept-Version": "v1", "User-Agent": UA },
-    });
-    if (!meta.ok) throw new Error(`Unsplash API ${meta.status}`);
-    const data = await meta.json();
-    // Required by the API terms whenever a photo is downloaded.
-    if (data.links?.download_location) {
-      await fetch(data.links.download_location, {
-        headers: { Authorization: `Client-ID ${KEY}`, "User-Agent": UA },
-      }).catch(() => {});
-    }
-    const res = await fetch(`${data.urls.raw}&w=${width}&q=85&fm=jpg`, { headers: { "User-Agent": UA } });
-    if (!res.ok) throw new Error(`CDN ${res.status}`);
-    return {
-      buf: Buffer.from(await res.arrayBuffer()),
-      credit: { name: data.user?.name ?? "Unknown", page: data.links?.html },
-    };
-  }
+  if (KEY) return viaApi(id, width);
 
-  // No API key: the per-photo download endpoint redirects to the CDN and
-  // works with both modern short ids and legacy numeric ids.
-  const res = await fetch(`https://unsplash.com/photos/${id}/download?force=true&w=${width}`, {
+  // Keyless. Try the website's own JSON endpoint first: it yields a direct
+  // images.unsplash.com URL, and that CDN serves anyone, including build
+  // servers. Fall back to the per-photo download redirect, which works from an
+  // ordinary connection but is refused from datacenter IPs.
+  try {
+    return await viaNapi(id, width);
+  } catch (napiErr) {
+    try {
+      return await viaDownloadRedirect(id, width);
+    } catch (dlErr) {
+      throw new Error(`${napiErr.message}; then ${dlErr.message}`);
+    }
+  }
+}
+
+async function viaApi(id, width) {
+  const meta = await fetch(`https://api.unsplash.com/photos/${id}`, {
+    headers: { Authorization: `Client-ID ${KEY}`, "Accept-Version": "v1", "User-Agent": UA },
+  });
+  if (!meta.ok) throw new Error(`api.unsplash.com ${meta.status}`);
+  const data = await meta.json();
+  // Required by the API terms whenever a photo is downloaded.
+  if (data.links?.download_location) {
+    await fetch(data.links.download_location, {
+      headers: { Authorization: `Client-ID ${KEY}`, "User-Agent": UA },
+    }).catch(() => {});
+  }
+  return {
+    buf: await bytes(`${data.urls.raw}&w=${width}&q=85&fm=jpg`),
+    credit: { name: data.user?.name ?? "Unknown" },
+  };
+}
+
+async function viaNapi(id, width) {
+  const res = await fetch(`${BASE}/napi/photos/${id}`, {
+    headers: { "User-Agent": UA, Accept: "application/json" },
+  });
+  if (!res.ok) throw new Error(`napi ${res.status}`);
+  const data = await res.json();
+  const raw = data?.urls?.raw;
+  if (!raw) throw new Error("napi returned no image url");
+  return {
+    buf: await bytes(`${raw}&w=${width}&q=85&fm=jpg`),
+    credit: { name: data.user?.name ?? null },
+  };
+}
+
+async function viaDownloadRedirect(id, width) {
+  const res = await fetch(`${BASE}/photos/${id}/download?force=true&w=${width}`, {
     headers: { "User-Agent": UA },
     redirect: "follow",
   });
+  if (res.status === 403 || res.status === 401) {
+    throw new Error(`download endpoint refused (HTTP ${res.status}) — needs UNSPLASH_ACCESS_KEY on a build server`);
+  }
   if (!res.ok) throw new Error(`download endpoint ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
-  if (buf.length < 1024) throw new Error("response too small to be a photo");
+  if (buf.length < 1024) throw new Error("download response too small to be a photo");
   return { buf, credit: null };
 }
 
+async function bytes(url) {
+  const res = await fetch(url, { headers: { "User-Agent": UA } });
+  if (!res.ok) throw new Error(`image CDN ${res.status}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  if (buf.length < 1024) throw new Error("image response too small to be a photo");
+  return buf;
+}
+
 async function main() {
+  if (process.argv.includes("--status")) return status();
   const opts = await parseArgs(process.argv.slice(2));
   const mapPath = opts.file ?? defaultMap;
   const fromFile = await readJson(mapPath, {});
@@ -191,12 +233,20 @@ async function main() {
     return;
   }
 
+  const bar = "=".repeat(72);
+  console.warn(`\n${bar}`);
   console.warn(summary);
-  for (const f of failures) console.warn(`[unsplash]   ${f}`);
+  for (const f of failures) console.warn(`  ${f}`);
   if (opts.soft) {
-    console.warn("[unsplash] keeping the generated artwork for the images above; continuing.");
+    console.warn("");
+    console.warn("  These slots are showing GENERATED ARTWORK, not photographs.");
+    console.warn("  The build continues, but the site will not show the photos you configured.");
+    console.warn("  Fix: set UNSPLASH_ACCESS_KEY in your host's environment variables,");
+    console.warn("  or run `npm run images:photos` locally and commit public/images/.");
+    console.warn(`${bar}\n`);
     return;
   }
+  console.warn(`${bar}\n`);
   process.exitCode = 1;
 }
 

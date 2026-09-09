@@ -13,11 +13,12 @@ npm run build && npm start   # production
 npm run lint                 # ESLint
 npx tsc --noEmit             # type-check
 npm run artwork              # redraw every illustration in public/images/
-npm run images:unsplash      # pull the photos listed in scripts/unsplash.json
+npm run images:photos        # pull the photos listed in scripts/unsplash.json
+npm run images:status        # report which slots are photos vs artwork
 ```
 
-`npm run build` runs the Unsplash fetch first and falls back to the generated
-artwork if the network is unavailable, so builds work offline.
+`npm run build` tries the photo fetch first and falls back to the generated
+artwork if Unsplash is unreachable, so builds always work offline.
 
 ## Environment variables
 
@@ -106,8 +107,8 @@ Sitemap, HTML sitemap, footer, breadcrumbs and related-link cards update automat
 
 Images come from two sources. **Photographs** from Unsplash fill the twelve
 slots listed in `scripts/unsplash.json` (article cards, region cards and heroes,
-the home hero); they are fetched at build time, so a fresh clone with no network
-still builds. Everything else is **generated artwork**, drawn from code in the
+the home hero) once fetched — see below, this needs one command or one
+environment variable. Everything else is **generated artwork**, drawn from code in the
 brand palette by `scripts/generate-artwork.mjs` — deterministic, licence-free,
 about 1.7 MB for 27 images, and always matching the design tokens. Redraw it at
 any time:
@@ -142,52 +143,55 @@ hero is marked `priority` because it is the largest contentful paint.
 
 ### Photography from Unsplash
 
-`scripts/unsplash.json` maps image slots to specific Unsplash photos: the five
-article images, the three region images (hero and card) and the home hero. The
-photos are fetched automatically **before every build**, including on Vercel:
-
-```json
-"prebuild": "node scripts/fetch-unsplash.mjs --soft && node scripts/generate-artwork.mjs --keep-existing"
-```
-
-`--soft` means a build never fails over images. If Unsplash is unreachable, or
-a photo id is wrong, that slot keeps its generated artwork and the build
-continues with a warning.
-
-This relies on npm running `prebuild` before `build`, which is what Vercel does
-by default. If you override the build command in your host's settings, keep it
-as `npm run build` rather than `next build`, or the photos will not be fetched.
-
-To change a photo, edit its `id` in `scripts/unsplash.json` — a bare id or any
-`unsplash.com/photos/...` URL works — and rebuild. To add a slot, use any key
-from `image-manifest.json`. To fetch by hand:
+`scripts/unsplash.json` maps twelve image slots to specific Unsplash photos: the
+five article images, the three region images (used on both the area page hero
+and the home cities strip) and the home hero. Check what is actually in place at
+any time:
 
 ```bash
-npm run images:unsplash                              # the whole mapping file
-npm run images:unsplash -- post-rsu-vs-iso-vs-nso.jpg=<id>   # one slot
+npm run images:status
 ```
 
-Each photo is cropped to the exact size the layout expects, written over the
-matching file, and recorded in three places:
+**Getting the photos in.** Unsplash serves photos to ordinary connections
+freely, but refuses anonymous requests from datacenter IP ranges, which is where
+build servers live. So there are two ways to get the photos, and the first is
+the one to use:
+
+1. **Run it once locally and commit the result.** On any normal internet
+   connection:
+
+   ```bash
+   npm run images:photos
+   git add public/images src/content/image-alt-overrides.json && git commit -m "Add Unsplash photography"
+   ```
+
+   The photos are then in the repository. Every later build, anywhere, uses them
+   with no network access at all. This is the sturdier arrangement and needs no
+   signup.
+
+2. **Give the build server a key.** Create a free app at
+   <https://unsplash.com/developers> and set `UNSPLASH_ACCESS_KEY` in your host's
+   environment variables (in Vercel: Settings → Environment Variables). The
+   build then fetches the photos through the official API on every deploy.
+
+Without either, the build still succeeds: each slot keeps its generated artwork
+and the build log prints a boxed warning naming the slots that fell back. The
+site never breaks over an image.
+
+**Changing a photo.** Edit its `id` in `scripts/unsplash.json` — a bare id or any
+`unsplash.com/photos/...` URL works — then re-run `npm run images:photos`. To
+cover a slot that is still artwork, add an entry using any key from
+`image-manifest.json`. To use your own photograph instead, drop a JPEG with the
+slot's filename into `public/images/` and run `npm run artwork -- --keep-existing`.
+
+**What a fetch writes.** Each photo is cropped to the exact size the layout
+expects, written over the matching file, and recorded in three places:
 
 | File | Purpose |
 |---|---|
 | `public/images/.unsplash-lock.json` | Which photo each file came from. A slot already holding the right photo is skipped, so committed photos never re-download. |
-| `public/images/CREDITS.md` | Photographer credits. |
-| `src/content/image-alt-overrides.json` | The photo's description, in both languages, taken from `unsplash.json`. `images.ts` prefers it over the artwork alt text, so alt text always matches what is on screen. |
-
-**To stop depending on Unsplash at build time**, run the fetch once, then commit
-the downloaded JPEGs together with the lock file. Later builds see the lock file,
-skip the network entirely, and the photos ship from the repository.
-
-Set `UNSPLASH_ACCESS_KEY` (locally or as a Vercel environment variable) to use
-the official API instead of the public download endpoint. It resolves the
-photographer's name for the credits file and satisfies the API's
-download-tracking requirement. Without a key the script uses each photo's public
-download endpoint, which works but records no photographer name.
-
-The Unsplash Licence allows commercial use without attribution; crediting the
-photographer is still expected practice, which is what `CREDITS.md` is for.
+| `public/images/CREDITS.md` | Photographer credits. The Unsplash Licence allows commercial use without attribution, but crediting is expected practice. |
+| `src/content/image-alt-overrides.json` | The photo's description in both languages, from `unsplash.json`. `images.ts` prefers it over the artwork alt text, so alt text always matches what is on screen. |
 
 ### Slots still using generated artwork
 
