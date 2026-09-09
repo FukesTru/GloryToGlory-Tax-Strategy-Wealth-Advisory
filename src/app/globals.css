@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens — GloryToGlory
+   Navy / warm off-white / muted gold / deep emerald.
+   Adjust here once the logo exists; everything else reads these.
+------------------------------------------------------------------- */
+@theme {
+  --color-navy-950: #071429;
+  --color-navy-900: #0b1e3d;
+  --color-navy-800: #12294f;
+  --color-navy-700: #1b3763;
+  --color-navy-600: #274a7f;
+  --color-navy-100: #d9e2f0;
+
+  --color-cream-50: #fdfdfb;
+  --color-cream-100: #fafaf7;
+  --color-cream-200: #f1f0ea;
+  --color-cream-300: #e4e2d9;
+
+  --color-gold-300: #e6cf94;
+  --color-gold-400: #d8b96e;
+  --color-gold-500: #c9a253;
+  --color-gold-600: #a98439;
+  --color-gold-700: #7e6229;
+
+  --color-emerald-700: #2f6f5e;
+  --color-emerald-600: #3a8672;
+  --color-emerald-100: #dff0ea;
+  --color-emerald-50: #eef7f4;
+
+  --color-ink-900: #14181f;
+  --color-ink-700: #3b4250;
+  --color-ink-500: #6b7280;
+  --color-ink-300: #c9ccd3;
+
+  --font-heading: var(--font-fraunces), var(--font-noto-serif-tc), "Georgia", serif;
+  --font-body: var(--font-manrope), var(--font-noto-sans-tc), "Helvetica Neue", Arial, sans-serif;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --shadow-card: 0 1px 2px rgb(11 30 61 / 0.04), 0 12px 32px -12px rgb(11 30 61 / 0.18);
+  --shadow-card-dark: 0 1px 2px rgb(0 0 0 / 0.2), 0 16px 40px -16px rgb(0 0 0 / 0.6);
+}
+
+/* Traditional Chinese: prioritise Noto for CJK glyphs but keep Latin faces for digits/acronyms. */
+html[lang="zh-Hant"] {
+  --font-heading: var(--font-noto-serif-tc), var(--font-fraunces), "PingFang TC", "Microsoft JhengHei", serif;
+  --font-body: var(--font-noto-sans-tc), var(--font-manrope), "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+/* Base element styles live in @layer base so Tailwind utilities (which are
+   themselves layered) can still override them - an unlayered rule would win
+   over every utility class and, for example, pin the page background. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background: var(--color-cream-100);
+    color: var(--color-ink-900);
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-heading {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  html[lang="zh-Hant"] h1,
+  html[lang="zh-Hant"] h2,
+  html[lang="zh-Hant"] h3,
+  html[lang="zh-Hant"] h4,
+  html[lang="zh-Hant"] .font-heading {
+    letter-spacing: 0.01em;
+    font-weight: 600;
+  }
+
+  html[lang="zh-Hant"] p,
+  html[lang="zh-Hant"] li {
+    line-height: 1.85;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-gold-300);
+    color: var(--color-navy-900);
+  }
+}
+
+/* ---------- Utilities ---------- */
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 76rem;
+  padding-inline: 1.25rem;
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility gold-underline {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 4rem;
+    height: 2px;
+    background: var(--color-gold-500);
+  }
+}
+
+@utility gold-underline-center {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 4rem;
+    height: 2px;
+    background: var(--color-gold-500);
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Subtle abstract grid texture for dark heroes (no photos required). */
+@utility hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 70% 30%, black 20%, transparent 70%);
+}
+
+/* Prose for long-form pages (blog, legal). */
+@layer components {
+  .prose-site {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--color-ink-700);
+  }
+  .prose-site > * + * {
+    margin-top: 1.25em;
+  }
+  .prose-site h2 {
+    font-size: 1.75rem;
+    line-height: 1.25;
+    color: var(--color-navy-900);
+    margin-top: 2.25em;
+  }
+  .prose-site h3 {
+    font-size: 1.3rem;
+    line-height: 1.3;
+    color: var(--color-navy-900);
+    margin-top: 1.75em;
+  }
+  .prose-site ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .prose-site ul > li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-top: 0.6em;
+  }
+  .prose-site ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0.25rem;
+    top: 0.8em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: var(--color-emerald-700);
+  }
+  .prose-site a {
+    color: var(--color-emerald-700);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+    transition: color 0.2s var(--ease-soft);
+  }
+  .prose-site a:hover {
+    color: var(--color-navy-900);
+  }
+  .prose-site strong {
+    color: var(--color-navy-900);
+    font-weight: 600;
+  }
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 3px;
+}

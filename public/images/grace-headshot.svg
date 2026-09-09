@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 720" role="img" aria-label="Placeholder portrait — replace with Grace's headshot">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12294f"/>
+      <stop offset="1" stop-color="#0b1e3d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="720" rx="28" fill="url(#g)"/>
+  <circle cx="300" cy="270" r="110" fill="#1b3763" stroke="#C9A253" stroke-width="3"/>
+  <circle cx="300" cy="235" r="48" fill="#C9A253" opacity=".85"/>
+  <path d="M205 380c20-60 70-90 95-90s75 30 95 90" fill="#C9A253" opacity=".85"/>
+  <text x="300" y="470" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#FAFAF7">Yunghui "Grace" Chen</text>
+  <text x="300" y="512" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#C9A253" letter-spacing="4">PLACEHOLDER PORTRAIT</text>
+  <text x="300" y="545" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#FAFAF7" opacity=".7">Replace with /public/images/grace-headshot.jpg</text>
+</svg>
