@@ -10,10 +10,8 @@ import { LLink } from "@/components/LLink";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
 import { ServicesGrid } from "@/components/ServiceCard";
-import { TestimonialCard } from "@/components/TestimonialCard";
 import { TrustStrip } from "@/components/TrustStrip";
 import { homePage } from "@/content/pages/home";
-import { testimonials } from "@/content/pages/testimonials";
 import { SITE } from "@/content/site";
 import type { IconName } from "@/content/types";
 import { PARENT_SERVICES, POSTS } from "@/lib/content";
@@ -96,24 +94,6 @@ export default async function HomePage({ params }: { params: LocaleParams }) {
       </Section>
 
       <Section tone="white">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <Reveal>
-            <SectionHeading eyebrow={c.testimonials.eyebrow} title={c.testimonials.title} sub={c.testimonials.sub} />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <LLink href="/testimonials" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-navy-900">
-              {c.testimonials.cta} <span aria-hidden="true">→</span>
-            </LLink>
-          </Reveal>
-        </div>
-        <ul className="mt-12 grid gap-5 md:grid-cols-3">
-          {testimonials.slice(0, 3).map((t, i) => (
-            <TestimonialCard key={t.id} t={t} locale={locale} index={i} />
-          ))}
-        </ul>
-      </Section>
-
-      <Section tone="cream">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <Reveal>
             <SectionHeading eyebrow={c.blog.eyebrow} title={c.blog.title} sub={c.blog.sub} />

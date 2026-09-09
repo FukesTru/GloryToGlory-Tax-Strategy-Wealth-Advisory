@@ -57,11 +57,6 @@ export function Footer({ locale }: { locale: Locale }) {
               </LLink>
             </li>
             <li>
-              <LLink href="/testimonials" className={linkCls}>
-                {t.nav.testimonials}
-              </LLink>
-            </li>
-            <li>
               <LLink href="/blog" className={linkCls}>
                 {t.nav.blog}
               </LLink>

@@ -27,7 +27,6 @@ artwork if Unsplash is unreachable, so builds always work offline.
 | `NEXT_PUBLIC_SITE_URL` | Canonical origin used for `<link rel=canonical>`, hreflang, Open Graph and `sitemap.xml`. Defaults to `https://glorytoglory.com`. |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | GA4 measurement ID. The tag renders in `<head>` on every page; `G-XXXXXXXXXX` is used until this is set. |
 | `CONTACT_WEBHOOK_URL` | Where `/api/contact` forwards form submissions (Formspree, Zapier, Make, a Resend/SendGrid function, a CRM…). When empty, submissions are only logged on the server. |
-| `NEXT_PUBLIC_GOOGLE_PLACE_ID` | Google Business Profile Place ID for the reviews widget slot on `/testimonials`. |
 | `UNSPLASH_ACCESS_KEY` | Optional. Makes the build-time photo fetch use the official Unsplash API, which resolves photographer names for the credits file and satisfies the API's download-tracking requirement. |
 
 ## How the site is organised
@@ -40,7 +39,7 @@ src/
       page.tsx           homepage
       about/  services/  services/[slug]/  services/equity-compensation/[sub]/
       bay-area/  southern-california/  remote-advisory/
-      testimonials/  blog/  blog/[slug]/  contact/
+      blog/  blog/[slug]/  contact/
       disclaimer/  privacy-policy/  sitemap/  (HTML sitemap)
       not-found.tsx      localized 404 (reached via [...rest] catch-all)
     api/contact/route.ts contact form handler (honeypot + validation + optional webhook)
@@ -56,7 +55,7 @@ src/
     services/*.ts        8 service pages (6 parents + 2 equity sub-pages)
     areas/*.ts           3 service-area pages
     blog/*.ts            5 seed articles
-    pages/*.ts           home, about, services hub, contact, testimonials, legal, misc meta
+    pages/*.ts           home, about, services hub, contact, legal, misc meta
   lib/
     i18n.ts              locale helpers (localePath, splitLocale, …)
     seo.ts               buildMetadata(): title, description, canonical, hreflang, OG, Twitter
@@ -100,7 +99,7 @@ Sitemap, HTML sitemap, footer, breadcrumbs and related-link cards update automat
 * Canonical + hreflang + Open Graph + Twitter cards via `buildMetadata()`.
 * One `<h1>` per page, H2/H3 hierarchy, breadcrumbs (visual + `BreadcrumbList`) on all inner pages.
 * Structured data: `FinancialService` (home), `Person` (about), `LocalBusiness` (3 area pages), `Service` (service pages), `FAQPage` (every FAQ accordion), `Article` (blog posts), `BreadcrumbList`.
-* `sitemap.xml` lists both language versions of all 25 URLs with `xhtml:link` alternates; `robots.txt` at root.
+* `sitemap.xml` lists both language versions of all 24 URLs with `xhtml:link` alternates; `robots.txt` at root.
 * GA4 tag in `<head>` site-wide; images lazy-loaded with translated alt text; each page links to 2–3 related pages.
 
 ## Imagery
@@ -110,7 +109,7 @@ slots listed in `scripts/unsplash.json` (article cards, region cards and heroes,
 the home hero) once fetched — see below, this needs one command or one
 environment variable. Everything else is **generated artwork**, drawn from code in the
 brand palette by `scripts/generate-artwork.mjs` — deterministic, licence-free,
-about 1.7 MB for 27 images, and always matching the design tokens. Redraw it at
+about 1.6 MB for 26 images, and always matching the design tokens. Redraw it at
 any time:
 
 ```bash
@@ -215,7 +214,6 @@ to `scripts/unsplash.json`. Suggested searches:
 | `hero-about.jpg` | calm desk workspace morning |
 | `hero-contact.jpg` | video call desk setup |
 | `hero-blog.jpg` | notebook laptop minimal desk |
-| `hero-testimonials.jpg` | warm modern interior |
 | `hero-legal.jpg` | minimal architecture lines |
 | `service-*.jpg` | charts data abstract, planning desk |
 | `feature-one-plan.jpg` | financial planning desk documents |
@@ -232,15 +230,14 @@ Everything below is clearly marked in the UI with a dashed gold **PLACEHOLDER** 
 
 1. **Disclaimer page** (`src/content/pages/disclaimer.ts`) — insert real RIA/IAR registration status, Form ADV Part 2 link, CRD number, states of registration and compliance-reviewed disclosures. **Do not publish as-is.**
 2. **Credentials** — confirm exact designations (CFP®, EA, CPA…) in `src/content/pages/about.ts` and the homepage trust strip (`src/content/pages/home.ts`). Set `foundingYear` in `src/content/site.ts` if a "years of experience" claim is wanted.
-3. **Testimonials** (`src/content/pages/testimonials.ts`) — replace every `[SAMPLE]` quote with a real, permissioned client quote (or remove it) after compliance review of the SEC Marketing Rule requirements; set `placeholder: false`.
-4. **Photos** — add Grace's headshot as `public/images/grace-headshot.jpg` (about 600×720) and update `SITE.owner.headshot` in `src/content/site.ts`. Review the Unsplash photos on the article and region cards after the first deploy and swap any you dislike by editing one id in `scripts/unsplash.json` (see **Imagery** above).
-5. **Traditional Chinese copy** — all `"zh-hant"` slots are working drafts. Have a professional translator review them (the structure is identical to the English, field by field).
-6. **Privacy policy** — legal review; insert Regulation S-P notice link if applicable.
-7. **GA4** — set `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
-8. **Contact form** — set `CONTACT_WEBHOOK_URL` (or wire an email provider in `src/app/api/contact/route.ts`).
-9. **Google Business Profile** — once created, set `NEXT_PUBLIC_GOOGLE_PLACE_ID` and drop the widget embed into `src/components/GoogleReviewsSlot.tsx`.
-10. **Logo** — replace the placeholder mark in `Logo.tsx`, `icon.svg`, `apple-icon.png` and regenerate `public/og-default.png`.
-11. **Domain** — point `glorytoglory.com` at the deployment and set `NEXT_PUBLIC_SITE_URL`.
+3. **Photos** — add Grace's headshot as `public/images/grace-headshot.jpg` (about 600×720) and update `SITE.owner.headshot` in `src/content/site.ts`. Review the Unsplash photos on the article and region cards after the first deploy and swap any you dislike by editing one id in `scripts/unsplash.json` (see **Imagery** above).
+4. **Traditional Chinese copy** — all `"zh-hant"` slots are working drafts. Have a professional translator review them (the structure is identical to the English, field by field).
+5. **Privacy policy** — legal review; insert Regulation S-P notice link if applicable.
+6. **GA4** — set `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
+7. **Contact form** — set `CONTACT_WEBHOOK_URL` (or wire an email provider in `src/app/api/contact/route.ts`).
+8. **Client testimonials** — the site currently shows none, which is the safe default for an investment adviser. To add them later you need real, permissioned quotes, a compliance review against the SEC Marketing Rule, and a matching update to the Disclaimer page. A Google Business Profile reviews widget would go in the same place.
+9. **Logo** — replace the placeholder mark in `Logo.tsx`, `icon.svg`, `apple-icon.png` and regenerate `public/og-default.png`.
+10. **Domain** — point `glorytoglory.com` at the deployment and set `NEXT_PUBLIC_SITE_URL`.
 
 ## Deployment
 

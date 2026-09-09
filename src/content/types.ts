@@ -125,15 +125,3 @@ export interface LegalPageContent {
   notice?: string;
   sections: { heading: string; blocks: Block[] }[];
 }
-
-export interface Testimonial {
-  /** Stable id for React keys. */
-  id: string;
-  quote: L<string>;
-  name: L<string>;
-  role: L<string>;
-  /** Service path this testimonial relates to, for a small tag. */
-  service?: string;
-  /** true until the client supplies a real, permissioned quote. */
-  placeholder: boolean;
-}

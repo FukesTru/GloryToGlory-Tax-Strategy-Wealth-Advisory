@@ -60,7 +60,7 @@ export default async function SitemapPage({ params }: { params: LocaleParams }) 
         <p className="text-sm text-ink-500">{c.languageNote}</p>
         <div className="mt-10 grid gap-14 lg:grid-cols-2">
           <div className="space-y-14">
-            <Group locale={locale} title={c.sections.core} paths={["/", "/about", "/services", "/testimonials", "/blog", "/contact"]} />
+            <Group locale={locale} title={c.sections.core} paths={["/", "/about", "/services", "/blog", "/contact"]} />
             <Group locale={locale} title={c.sections.areas} paths={AREAS.map((a) => a.path)} />
             <Group locale={locale} title={c.sections.legal} paths={["/disclaimer", "/privacy-policy", "/sitemap"]} />
           </div>

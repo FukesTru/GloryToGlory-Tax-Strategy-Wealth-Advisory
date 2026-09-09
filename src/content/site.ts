@@ -56,7 +56,6 @@ export const UI: L<{
     about: string;
     services: string;
     areas: string;
-    testimonials: string;
     blog: string;
     contact: string;
     menu: string;
@@ -132,7 +131,6 @@ export const UI: L<{
       about: "About Grace",
       services: "Services",
       areas: "Where We Serve",
-      testimonials: "Testimonials",
       blog: "Insights",
       contact: "Contact",
       menu: "Open menu",
@@ -218,7 +216,6 @@ export const UI: L<{
       about: "認識 Grace",
       services: "服務項目",
       areas: "服務地區",
-      testimonials: "客戶見證",
       blog: "理財觀點",
       contact: "聯絡我們",
       menu: "開啟選單",
@@ -304,7 +301,6 @@ export const NAV_LINKS: { key: keyof typeof UI.en.nav; path: string }[] = [
   { key: "about", path: "/about" },
   { key: "services", path: "/services" },
   { key: "areas", path: "/bay-area" },
-  { key: "testimonials", path: "/testimonials" },
   { key: "blog", path: "/blog" },
   { key: "contact", path: "/contact" },
 ];

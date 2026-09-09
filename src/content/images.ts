@@ -62,13 +62,6 @@ const DEFS = {
       "zh-hant": "地平線上穩定上升的線條插畫",
     },
   },
-  heroTestimonials: {
-    file: "hero-testimonials.jpg",
-    alt: {
-      en: "Illustration of orbits circling a central point",
-      "zh-hant": "圍繞中心點運行的軌道插畫",
-    },
-  },
   heroLegal: {
     file: "hero-legal.jpg",
     alt: {

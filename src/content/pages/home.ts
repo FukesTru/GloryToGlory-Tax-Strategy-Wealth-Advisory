@@ -13,7 +13,6 @@ export interface HomeContent {
     groups: { title: string; body: string }[];
   };
   cities: { title: string; sub: string };
-  testimonials: { eyebrow: string; title: string; sub: string; cta: string };
   blog: { eyebrow: string; title: string; sub: string; cta: string };
 }
 
@@ -67,12 +66,6 @@ export const homePage: L<HomeContent> = {
     cities: {
       title: "Serving tech hubs, virtually and in person",
       sub: "We meet clients by video across the country. If you are near the Bay Area or Southern California, in-person meetings are available by appointment.",
-    },
-    testimonials: {
-      eyebrow: "Client stories",
-      title: "What clients say",
-      sub: "Sample testimonials are shown below until real, permissioned client quotes are added.",
-      cta: "Read more testimonials",
     },
     blog: {
       eyebrow: "Insights",
@@ -130,12 +123,6 @@ export const homePage: L<HomeContent> = {
     cities: {
       title: "服務各大科技重鎮，線上與面談皆可",
       sub: "我們透過視訊服務全美客戶。若您位於灣區或南加州，也可預約面談。",
-    },
-    testimonials: {
-      eyebrow: "客戶故事",
-      title: "客戶怎麼說",
-      sub: "以下為範例見證，待取得客戶授權的真實回饋後將予以更新。",
-      cta: "閱讀更多客戶見證",
     },
     blog: {
       eyebrow: "理財觀點",

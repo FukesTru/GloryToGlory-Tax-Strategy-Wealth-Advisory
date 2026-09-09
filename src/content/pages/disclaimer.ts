@@ -86,7 +86,7 @@ export const disclaimerPage: L<LegalPageContent> = {
         blocks: [
           {
             type: "p",
-            text: "[PLACEHOLDER — Any testimonials or endorsements displayed on this site must comply with the SEC Marketing Rule (Rule 206(4)-1 under the Investment Advisers Act of 1940) or the equivalent state rule, including required disclosures about whether the person giving the statement is a client, whether any compensation was provided and any material conflicts of interest. Confirm with compliance counsel before publishing real client statements.] Until that review is complete, every quotation on the Testimonials page is clearly labelled as a sample placeholder and does not represent a statement by an actual client. Testimonials reflect one person's experience and are not a guarantee of future performance or of any client's success.",
+            text: "This website does not display client testimonials or endorsements. [PLACEHOLDER — If any are added later they must comply with the SEC Marketing Rule (Rule 206(4)-1 under the Investment Advisers Act of 1940) or the equivalent state rule, including required disclosures about whether the person giving the statement is a client, whether any compensation was provided and any material conflicts of interest. Confirm with compliance counsel before publishing client statements.] A testimonial reflects one person's experience and is never a guarantee of future performance or of any client's success.",
           },
         ],
       },
@@ -181,7 +181,7 @@ export const disclaimerPage: L<LegalPageContent> = {
         blocks: [
           {
             type: "p",
-            text: "【預留內容——本網站顯示的任何客戶見證或推薦，必須符合 SEC 行銷規則（1940 年《投資顧問法》第 206(4)-1 條）或同等的州規定，包括必須揭露發言者是否為客戶、是否收受任何報酬，以及任何重大利益衝突。發布真實客戶陳述前，請先與法遵律師確認。】在完成審閱之前，客戶見證頁面上的所有引言均明確標示為範例，並不代表實際客戶的陳述。客戶見證反映個人的經驗，不保證未來的績效或任何客戶的成果。",
+            text: "本網站未刊登任何客戶見證或推薦。【預留內容——日後若要加入，必須符合 SEC 行銷規則（1940 年《投資顧問法》第 206(4)-1 條）或同等的州規定，包括必須揭露發言者是否為客戶、是否收受任何報酬，以及任何重大利益衝突。發布客戶陳述前，請先與法遵律師確認。】客戶見證僅反映個人經驗，絕不保證未來績效或任何客戶的成果。",
           },
         ],
       },

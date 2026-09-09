@@ -28,35 +28,6 @@ export const blogIndexPage: L<SimplePage & { empty: string }> = {
   },
 };
 
-export const testimonialsPage: L<
-  SimplePage & { intro: string; placeholderNotice: string; reviewsTitle: string; reviewsSub: string }
-> = {
-  en: {
-    metaTitle: "GloryToGlory Client Reviews",
-    metaDescription:
-      "Client reviews and testimonials for GloryToGlory Tax Strategy & Wealth Advisory. Bilingual tax and equity compensation planning for tech professionals.",
-    eyebrow: "Testimonials",
-    h1: "GloryToGlory Client Reviews",
-    heroSub: "Stories from tech professionals and families who wanted their equity, taxes and future planned together.",
-    intro: "Every testimonial on this page will be a real, permissioned quote from a client, published in line with advertising rules for investment advisers.",
-    placeholderNotice:
-      "The cards below are sample placeholders. Before launch, replace each with a real client quote (with written permission) or remove it. Do not publish sample testimonials.",
-    reviewsTitle: "Google reviews",
-    reviewsSub: "Once the Google Business Profile is live, verified reviews will appear here.",
-  },
-  "zh-hant": {
-    metaTitle: "GloryToGlory 客戶評價",
-    metaDescription: "GloryToGlory 稅務策略與財富顧問的客戶評價與見證。為科技業專業人士提供雙語稅務與股權獎酬規劃。",
-    eyebrow: "客戶見證",
-    h1: "GloryToGlory 客戶評價",
-    heroSub: "來自科技業專業人士與家庭的故事，他們希望把股權、稅務與未來一併規劃。",
-    intro: "本頁的每一則見證，都將是客戶授權的真實回饋，並依投資顧問的廣告規範刊登。",
-    placeholderNotice: "以下卡片為範例預留內容。上線前請以取得書面授權的真實客戶回饋取代，或予以移除。請勿刊登範例見證。",
-    reviewsTitle: "Google 評論",
-    reviewsSub: "Google 商家檔案上線後，經驗證的評論將顯示於此。",
-  },
-};
-
 export const sitemapPage: L<
   SimplePage & {
     sections: { core: string; services: string; areas: string; blog: string; legal: string };
