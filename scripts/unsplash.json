@@ -1,0 +1,104 @@
+{
+  "$comment": "Image slot -> Unsplash photo. Swap any id for another and the next build picks it up. Ids were curated from unsplash.com search; all are Unsplash-licence photos (no Unsplash+). `alt` is used verbatim as the image's alt text once the photo is in place.",
+
+  "hero-home.jpg": {
+    "id": "4afxwL0Jcwk",
+    "credit": "Graham Klingler",
+    "alt": {
+      "en": "The San Francisco skyline at night with office lights on",
+      "zh-hant": "夜晚燈火通明的舊金山天際線"
+    }
+  },
+
+  "area-bay-area.jpg": {
+    "id": "BlW1vyv8jR0",
+    "credit": "Unsplash contributor",
+    "alt": {
+      "en": "The San Francisco skyline at dusk with the bay in the background",
+      "zh-hant": "黃昏時分的舊金山天際線，背景為海灣"
+    }
+  },
+  "card-bay-area.jpg": {
+    "id": "BlW1vyv8jR0",
+    "credit": "Unsplash contributor",
+    "alt": {
+      "en": "The San Francisco skyline at dusk with the bay in the background",
+      "zh-hant": "黃昏時分的舊金山天際線，背景為海灣"
+    }
+  },
+
+  "area-southern-california.jpg": {
+    "id": "7iWySmm8qX8",
+    "credit": "Unsplash contributor",
+    "alt": {
+      "en": "The downtown Los Angeles skyline against an open sky",
+      "zh-hant": "洛杉磯市中心天際線與開闊天空"
+    }
+  },
+  "card-southern-california.jpg": {
+    "id": "7iWySmm8qX8",
+    "credit": "Unsplash contributor",
+    "alt": {
+      "en": "The downtown Los Angeles skyline against an open sky",
+      "zh-hant": "洛杉磯市中心天際線與開闊天空"
+    }
+  },
+
+  "area-remote-advisory.jpg": {
+    "id": "pHkzKbQyX2k",
+    "credit": "Greg Bulla",
+    "alt": {
+      "en": "The Seattle skyline at night with the Space Needle lit up",
+      "zh-hant": "夜間的西雅圖天際線，太空針塔亮起燈光"
+    }
+  },
+  "card-remote-advisory.jpg": {
+    "id": "pHkzKbQyX2k",
+    "credit": "Greg Bulla",
+    "alt": {
+      "en": "The Seattle skyline at night with the Space Needle lit up",
+      "zh-hant": "夜間的西雅圖天際線，太空針塔亮起燈光"
+    }
+  },
+
+  "post-rsu-vs-iso-vs-nso.jpg": {
+    "id": "tFecc1boKYc",
+    "credit": "Unsplash contributor",
+    "alt": {
+      "en": "Stock market charts open on a tablet and a monitor",
+      "zh-hant": "平板電腦與螢幕上開啟的股市走勢圖"
+    }
+  },
+  "post-avoid-surprise-tax-bill-when-rsus-vest.jpg": {
+    "id": "X2soeHdvkLY",
+    "credit": "Kelly Sikkema",
+    "alt": {
+      "en": "A calculator resting on tax forms on a dark surface",
+      "zh-hant": "深色桌面上放著計算機與報稅表格"
+    }
+  },
+  "post-financial-planning-h1b-green-card-holders.jpg": {
+    "id": "eUjufrdx_bM",
+    "credit": "Agus Dietrich",
+    "alt": {
+      "en": "A hand holding a passport",
+      "zh-hant": "手持護照的畫面"
+    }
+  },
+  "post-529-plans-explained-taiwanese-american-families.jpg": {
+    "id": "ne1RzOHLtas",
+    "credit": "Unsplash contributor",
+    "alt": {
+      "en": "A large university library with several levels of shelves",
+      "zh-hant": "樓層層疊的大型大學圖書館"
+    }
+  },
+  "post-should-you-exercise-isos-early.jpg": {
+    "id": "QL412-8eQhI",
+    "credit": "Nathan Bailly",
+    "alt": {
+      "en": "Chess pieces on a board against a dark background",
+      "zh-hant": "深色背景下棋盤上的西洋棋棋子"
+    }
+  }
+}

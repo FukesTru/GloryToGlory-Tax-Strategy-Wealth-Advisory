@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "artwork": "node scripts/generate-artwork.mjs",
-    "images:unsplash": "node scripts/fetch-unsplash.mjs"
+    "images:unsplash": "node scripts/fetch-unsplash.mjs",
+    "prebuild": "node scripts/fetch-unsplash.mjs --soft && node scripts/generate-artwork.mjs --keep-existing"
   },
   "dependencies": {
     "framer-motion": "^12.43.0",

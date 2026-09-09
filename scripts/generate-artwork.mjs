@@ -3,6 +3,9 @@
  * Generates every illustration used by the site into public/images/, plus
  * src/content/image-manifest.json (dimensions and blur placeholders).
  *
+ * Which files are photographs rather than artwork is recorded separately, in
+ * public/images/.unsplash-lock.json, by scripts/fetch-unsplash.mjs.
+ *
  *   npm run artwork
  *
  * The artwork is drawn from code in the brand palette, so it is deterministic,
@@ -170,12 +173,7 @@ async function main() {
 
     if (keepExisting && (await exists(dest))) {
       const meta = await sharp(dest).metadata();
-      manifest[img.file] = {
-        width: meta.width,
-        height: meta.height,
-        blurDataURL: await blur(dest),
-        generated: false,
-      };
+      manifest[img.file] = { width: meta.width, height: meta.height, blurDataURL: await blur(dest) };
       console.log(`kept    ${img.file} (${meta.width}x${meta.height})`);
       continue;
     }
@@ -185,12 +183,7 @@ async function main() {
       .jpeg({ quality: 82, mozjpeg: true, chromaSubsampling: "4:4:4" })
       .toFile(dest);
 
-    manifest[img.file] = {
-      width: img.width,
-      height: img.height,
-      blurDataURL: await blur(dest),
-      generated: true,
-    };
+    manifest[img.file] = { width: img.width, height: img.height, blurDataURL: await blur(dest) };
     console.log(`drew    ${img.file} (${img.width}x${img.height})`);
   }
 

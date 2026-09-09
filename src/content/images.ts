@@ -1,4 +1,5 @@
 import manifest from "./image-manifest.json";
+import altOverrides from "./image-alt-overrides.json";
 import type { L } from "./types";
 
 /**
@@ -14,6 +15,10 @@ import type { L } from "./types";
  * decorative images, which screen readers should skip). Content images —
  * article headers, region cards, the feature image — use the translated
  * text below.
+ *
+ * When a slot has been swapped for an Unsplash photo, the fetch script writes
+ * the photo's description into image-alt-overrides.json and it wins over the
+ * text below, so the alt text always describes what is actually shown.
  */
 
 interface ImageDef {
@@ -219,6 +224,8 @@ export interface SiteImage {
   alt: L<string>;
 }
 
+const OVERRIDES = altOverrides as Partial<Record<string, L<string>>>;
+
 function build(def: ImageDef): SiteImage {
   const meta = manifest[def.file];
   return {
@@ -226,7 +233,7 @@ function build(def: ImageDef): SiteImage {
     width: meta.width,
     height: meta.height,
     blurDataURL: meta.blurDataURL,
-    alt: def.alt,
+    alt: OVERRIDES[def.file] ?? def.alt,
   };
 }
 

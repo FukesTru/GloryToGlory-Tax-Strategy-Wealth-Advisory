@@ -13,7 +13,11 @@ npm run build && npm start   # production
 npm run lint                 # ESLint
 npx tsc --noEmit             # type-check
 npm run artwork              # redraw every illustration in public/images/
+npm run images:unsplash      # pull the photos listed in scripts/unsplash.json
 ```
+
+`npm run build` runs the Unsplash fetch first and falls back to the generated
+artwork if the network is unavailable, so builds work offline.
 
 ## Environment variables
 
@@ -23,7 +27,7 @@ npm run artwork              # redraw every illustration in public/images/
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | GA4 measurement ID. The tag renders in `<head>` on every page; `G-XXXXXXXXXX` is used until this is set. |
 | `CONTACT_WEBHOOK_URL` | Where `/api/contact` forwards form submissions (Formspree, Zapier, Make, a Resend/SendGrid function, a CRM…). When empty, submissions are only logged on the server. |
 | `NEXT_PUBLIC_GOOGLE_PLACE_ID` | Google Business Profile Place ID for the reviews widget slot on `/testimonials`. |
-| `UNSPLASH_ACCESS_KEY` | Only for `npm run images:unsplash`. Enables photographer credit and the API's download tracking. |
+| `UNSPLASH_ACCESS_KEY` | Optional. Makes the build-time photo fetch use the official Unsplash API, which resolves photographer names for the credits file and satisfies the API's download-tracking requirement. |
 
 ## How the site is organised
 
@@ -100,9 +104,12 @@ Sitemap, HTML sitemap, footer, breadcrumbs and related-link cards update automat
 
 ## Imagery
 
-All 27 images are **generated artwork**, drawn from code in the brand palette by
-`scripts/generate-artwork.mjs`. They are deterministic, licence-free, weigh
-about 1.7 MB in total, and always match the design tokens. Regenerate them at
+Images come from two sources. **Photographs** from Unsplash fill the twelve
+slots listed in `scripts/unsplash.json` (article cards, region cards and heroes,
+the home hero); they are fetched at build time, so a fresh clone with no network
+still builds. Everything else is **generated artwork**, drawn from code in the
+brand palette by `scripts/generate-artwork.mjs` — deterministic, licence-free,
+about 1.7 MB for 27 images, and always matching the design tokens. Redraw it at
 any time:
 
 ```bash
@@ -133,46 +140,72 @@ headers, region cards, the services feature image — use their translated
 description. Everything except the hero of the current page is lazy-loaded; the
 hero is marked `priority` because it is the largest contentful paint.
 
-### Swapping in photography
+### Photography from Unsplash
 
-Drop a JPEG with the same filename into `public/images/` and it is used as-is.
-To pull from Unsplash instead:
+`scripts/unsplash.json` maps image slots to specific Unsplash photos: the five
+article images, the three region images (hero and card) and the home hero. The
+photos are fetched automatically **before every build**, including on Vercel:
 
-```bash
-# optional but recommended: enables photographer credit and download tracking
-export UNSPLASH_ACCESS_KEY=...
-
-npm run images:unsplash -- hero-home.jpg=<photo-id-or-url> area-bay-area.jpg=<photo-id-or-url>
-npm run artwork -- --keep-existing     # refresh sizes and blur placeholders
+```json
+"prebuild": "node scripts/fetch-unsplash.mjs --soft && node scripts/generate-artwork.mjs --keep-existing"
 ```
 
-The script crops each photo to the exact size the layout expects, writes it over
-the matching file, and appends the photographer to `public/images/CREDITS.md`.
-Afterwards, update that image's alt text in `src/content/images.ts` so it
-describes the photo. You can also map several at once with
-`--file scripts/unsplash.example.json`.
+`--soft` means a build never fails over images. If Unsplash is unreachable, or
+a photo id is wrong, that slot keeps its generated artwork and the build
+continues with a warning.
 
-Suggested searches, keeping to the brief (no stock "law firm" imagery, no posed
-office people; skylines, workspaces and abstract tech-adjacent visuals):
+This relies on npm running `prebuild` before `build`, which is what Vercel does
+by default. If you override the build command in your host's settings, keep it
+as `npm run build` rather than `next build`, or the photos will not be fetched.
 
-| Image slot | Used on | Suggested search |
-|---|---|---|
-| `hero-home.jpg` | Home hero | san francisco skyline dusk |
-| `hero-services.jpg` | Services hero | abstract architecture minimal |
-| `hero-about.jpg` | About hero | calm desk workspace morning |
-| `hero-contact.jpg` | Contact hero | video call desk setup |
-| `hero-blog.jpg` | Blog hero | notebook laptop minimal desk |
-| `hero-testimonials.jpg` | Testimonials hero | warm modern interior |
-| `hero-legal.jpg` | Disclaimer, Privacy, Sitemap | minimal architecture lines |
-| `service-*.jpg` | Each service hero | charts data abstract, planning desk |
-| `area-bay-area.jpg` + `card-bay-area.jpg` | Bay Area page, home strip | san francisco bay bridge skyline |
-| `area-southern-california.jpg` + `card-southern-california.jpg` | SoCal page, home strip | los angeles skyline palm trees |
-| `area-remote-advisory.jpg` + `card-remote-advisory.jpg` | Remote page, home strip | seattle skyline / austin skyline |
-| `post-*.jpg` | Article header and card | abstract finance, stock chart screen |
-| `feature-one-plan.jpg` | Services hub intro | financial planning desk documents |
+To change a photo, edit its `id` in `scripts/unsplash.json` — a bare id or any
+`unsplash.com/photos/...` URL works — and rebuild. To add a slot, use any key
+from `image-manifest.json`. To fetch by hand:
 
-If you prefer to hot-link Unsplash URLs rather than download them,
-`images.unsplash.com` is already allowed in `next.config.ts`.
+```bash
+npm run images:unsplash                              # the whole mapping file
+npm run images:unsplash -- post-rsu-vs-iso-vs-nso.jpg=<id>   # one slot
+```
+
+Each photo is cropped to the exact size the layout expects, written over the
+matching file, and recorded in three places:
+
+| File | Purpose |
+|---|---|
+| `public/images/.unsplash-lock.json` | Which photo each file came from. A slot already holding the right photo is skipped, so committed photos never re-download. |
+| `public/images/CREDITS.md` | Photographer credits. |
+| `src/content/image-alt-overrides.json` | The photo's description, in both languages, taken from `unsplash.json`. `images.ts` prefers it over the artwork alt text, so alt text always matches what is on screen. |
+
+**To stop depending on Unsplash at build time**, run the fetch once, then commit
+the downloaded JPEGs together with the lock file. Later builds see the lock file,
+skip the network entirely, and the photos ship from the repository.
+
+Set `UNSPLASH_ACCESS_KEY` (locally or as a Vercel environment variable) to use
+the official API instead of the public download endpoint. It resolves the
+photographer's name for the credits file and satisfies the API's
+download-tracking requirement. Without a key the script uses each photo's public
+download endpoint, which works but records no photographer name.
+
+The Unsplash Licence allows commercial use without attribution; crediting the
+photographer is still expected practice, which is what `CREDITS.md` is for.
+
+### Slots still using generated artwork
+
+Page heroes other than the home page, the eight service heroes and the services
+feature image are still illustrations. They sit behind a heavy navy scrim where
+the artwork reads as texture. Swap any of them the same way by adding an entry
+to `scripts/unsplash.json`. Suggested searches:
+
+| Image slot | Suggested search |
+|---|---|
+| `hero-services.jpg` | abstract architecture minimal |
+| `hero-about.jpg` | calm desk workspace morning |
+| `hero-contact.jpg` | video call desk setup |
+| `hero-blog.jpg` | notebook laptop minimal desk |
+| `hero-testimonials.jpg` | warm modern interior |
+| `hero-legal.jpg` | minimal architecture lines |
+| `service-*.jpg` | charts data abstract, planning desk |
+| `feature-one-plan.jpg` | financial planning desk documents |
 
 ## Design system
 
@@ -187,7 +220,7 @@ Everything below is clearly marked in the UI with a dashed gold **PLACEHOLDER** 
 1. **Disclaimer page** (`src/content/pages/disclaimer.ts`) — insert real RIA/IAR registration status, Form ADV Part 2 link, CRD number, states of registration and compliance-reviewed disclosures. **Do not publish as-is.**
 2. **Credentials** — confirm exact designations (CFP®, EA, CPA…) in `src/content/pages/about.ts` and the homepage trust strip (`src/content/pages/home.ts`). Set `foundingYear` in `src/content/site.ts` if a "years of experience" claim is wanted.
 3. **Testimonials** (`src/content/pages/testimonials.ts`) — replace every `[SAMPLE]` quote with a real, permissioned client quote (or remove it) after compliance review of the SEC Marketing Rule requirements; set `placeholder: false`.
-4. **Photos** — add Grace's headshot as `public/images/grace-headshot.jpg` (about 600×720) and update `SITE.owner.headshot` in `src/content/site.ts`. Every other image is generated artwork that ships as-is; swap in photography whenever you like (see **Imagery** above) and update that image's alt text.
+4. **Photos** — add Grace's headshot as `public/images/grace-headshot.jpg` (about 600×720) and update `SITE.owner.headshot` in `src/content/site.ts`. Review the Unsplash photos on the article and region cards after the first deploy and swap any you dislike by editing one id in `scripts/unsplash.json` (see **Imagery** above).
 5. **Traditional Chinese copy** — all `"zh-hant"` slots are working drafts. Have a professional translator review them (the structure is identical to the English, field by field).
 6. **Privacy policy** — legal review; insert Regulation S-P notice link if applicable.
 7. **GA4** — set `NEXT_PUBLIC_GA_MEASUREMENT_ID`.

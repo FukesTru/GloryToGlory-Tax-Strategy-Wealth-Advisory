@@ -1,7 +1,0 @@
-{
-  "_comment": "Map an image slot to an Unsplash photo id or URL, then run: npm run images:unsplash -- --file scripts/unsplash.example.json. Suggested searches are in the README.",
-  "hero-home.jpg": "REPLACE_WITH_PHOTO_ID",
-  "area-bay-area.jpg": "REPLACE_WITH_PHOTO_ID",
-  "area-southern-california.jpg": "REPLACE_WITH_PHOTO_ID",
-  "area-remote-advisory.jpg": "REPLACE_WITH_PHOTO_ID"
-}
