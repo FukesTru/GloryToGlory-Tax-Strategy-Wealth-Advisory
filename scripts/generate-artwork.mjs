@@ -52,6 +52,7 @@ const IMAGES = [
   { file: "hero-about.jpg", ...HERO, svg: (w, h) => motifs.orbit(w, h, 233, C.gold, { hero: true }) },
   { file: "hero-contact.jpg", ...HERO, svg: (w, h) => motifs.arcs(w, h, 517, C.emerald600, { hero: true }) },
   { file: "hero-blog.jpg", ...HERO, svg: (w, h) => motifs.horizonLine(w, h, 661, C.gold, { hero: true }) },
+  { file: "hero-pricing.jpg", ...HERO, svg: (w, h) => motifs.layers(w, h, 1417, C.gold, { hero: true }) },
   { file: "hero-legal.jpg", ...HERO, svg: (w, h) => motifs.horizonLine(w, h, 1201, C.emerald600, { hero: true }) },
 
   // --- Service heroes ---

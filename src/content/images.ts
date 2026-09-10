@@ -62,6 +62,13 @@ const DEFS = {
       "zh-hant": "地平線上穩定上升的線條插畫",
     },
   },
+  heroPricing: {
+    file: "hero-pricing.jpg",
+    alt: {
+      en: "Illustration of stacked bands growing over time",
+      "zh-hant": "隨時間逐層堆疊成長的區塊插畫",
+    },
+  },
   heroLegal: {
     file: "hero-legal.jpg",
     alt: {

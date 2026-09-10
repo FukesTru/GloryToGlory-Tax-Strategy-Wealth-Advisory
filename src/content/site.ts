@@ -74,6 +74,7 @@ export const UI: L<{
     home: string;
     about: string;
     services: string;
+    pricing: string;
     areas: string;
     blog: string;
     contact: string;
@@ -150,6 +151,7 @@ export const UI: L<{
       home: "Home",
       about: "About Grace",
       services: "Services",
+      pricing: "Pricing",
       areas: "Where We Serve",
       blog: "Insights",
       contact: "Contact",
@@ -194,7 +196,7 @@ export const UI: L<{
     },
     footer: {
       tagline: "Bilingual tax strategy and wealth advisory for tech professionals and their families.",
-    brandLine: "Wealth Built by Design, Not by Chance",
+      brandLine: "Wealth Built by Design, Not by Chance",
       quickLinks: "Explore",
       services: "Services",
       areas: "Where we serve",
@@ -236,6 +238,7 @@ export const UI: L<{
       home: "首頁",
       about: "認識 Grace",
       services: "服務項目",
+      pricing: "服務方案",
       areas: "服務地區",
       blog: "理財觀點",
       contact: "聯絡我們",
@@ -280,7 +283,7 @@ export const UI: L<{
     },
     footer: {
       tagline: "為科技業專業人士與家庭提供雙語稅務策略與財富顧問服務。",
-    brandLine: "專業為舵 · 信任為帆 · 財富為舟 · 承載未來",
+      brandLine: "專業為舵 · 信任為帆 · 財富為舟 · 承載未來",
       quickLinks: "網站導覽",
       services: "服務項目",
       areas: "服務地區",
@@ -322,6 +325,7 @@ export const UI: L<{
 export const NAV_LINKS: { key: keyof typeof UI.en.nav; path: string }[] = [
   { key: "about", path: "/about" },
   { key: "services", path: "/services" },
+  { key: "pricing", path: "/pricing" },
   { key: "areas", path: "/bay-area" },
   { key: "blog", path: "/blog" },
   { key: "contact", path: "/contact" },
