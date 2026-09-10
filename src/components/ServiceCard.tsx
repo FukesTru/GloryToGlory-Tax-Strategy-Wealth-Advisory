@@ -45,7 +45,7 @@ export function ServiceCard({ service, locale, index = 0, tone = "light" }: { se
 
 export function ServicesGrid({ services, locale, tone = "light" }: { services: Service[]; locale: Locale; tone?: "light" | "dark" }) {
   return (
-    <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {services.map((s, i) => (
         <ServiceCard key={s.path} service={s} locale={locale} index={i} tone={tone} />
       ))}

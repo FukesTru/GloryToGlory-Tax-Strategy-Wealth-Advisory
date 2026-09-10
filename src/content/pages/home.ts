@@ -36,7 +36,7 @@ export const homePage: L<HomeContent> = {
     ],
     services: {
       eyebrow: "What we do",
-      title: "Six services. One coordinated plan.",
+      title: "Eight services. One coordinated plan.",
       sub: "Every piece of your financial life affects the others. We plan them together so a decision about your stock never creates a surprise on your tax return or a gap in your retirement.",
       allLink: "See all services",
     },
@@ -93,7 +93,7 @@ export const homePage: L<HomeContent> = {
     ],
     services: {
       eyebrow: "服務範疇",
-      title: "六項服務，一套協調一致的計畫。",
+      title: "八項服務，一套協調一致的計畫。",
       sub: "財務生活的每一環節都會相互影響。我們將它們一起規劃，讓您關於股票的決定不會在報稅時帶來意外，也不會在退休準備上留下缺口。",
       allLink: "查看所有服務",
     },

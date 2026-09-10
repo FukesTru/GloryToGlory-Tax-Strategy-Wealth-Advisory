@@ -143,6 +143,20 @@ const SERVICE_DEFS: Record<string, ImageDef> = {
       "zh-hant": "以不同面板分別呈現投資組合各部位的插畫",
     },
   },
+  "cross-border-tax-filings": {
+    file: "service-cross-border-tax-filings.jpg",
+    alt: {
+      en: "Illustration of arcs spanning between two distant points",
+      "zh-hant": "在兩個相隔遙遠的點之間跨越的弧線插畫",
+    },
+  },
+  "estate-trust-planning": {
+    file: "service-estate-trust-planning.jpg",
+    alt: {
+      en: "Illustration of concentric rings enclosing a single centre",
+      "zh-hant": "同心圓環繞單一中心的插畫",
+    },
+  },
 };
 
 /** Service-area images, keyed by area slug. */

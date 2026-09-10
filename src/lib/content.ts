@@ -13,6 +13,8 @@ import { stockOptionsIsoNso } from "@/content/services/stock-options-iso-nso";
 import { retirementPlanning } from "@/content/services/retirement-planning";
 import { educationFundPlanning } from "@/content/services/education-fund-planning";
 import { assetAllocation } from "@/content/services/asset-allocation";
+import { crossBorderTaxFilings } from "@/content/services/cross-border-tax-filings";
+import { estateTrustPlanning } from "@/content/services/estate-trust-planning";
 
 import { bayArea } from "@/content/areas/bay-area";
 import { southernCalifornia } from "@/content/areas/southern-california";
@@ -24,14 +26,16 @@ import { financialPlanningH1bGreenCard } from "@/content/blog/financial-planning
 import { plans529TaiwaneseAmerican } from "@/content/blog/529-plans-explained-taiwanese-american-families";
 import { exerciseIsosEarly } from "@/content/blog/should-you-exercise-isos-early";
 
-/** The six parent services, in display order. */
+/** The eight parent services, in display order. */
 export const PARENT_SERVICES: Service[] = [
   financialPlanning,
   taxStrategyPlanning,
+  crossBorderTaxFilings,
   equityCompensation,
   retirementPlanning,
   educationFundPlanning,
   assetAllocation,
+  estateTrustPlanning,
 ];
 
 export const SUB_SERVICES: Service[] = [rsuRsaPlanning, stockOptionsIsoNso];

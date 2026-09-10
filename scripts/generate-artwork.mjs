@@ -64,6 +64,8 @@ const IMAGES = [
   { file: "service-retirement-planning.jpg", ...HERO, svg: (w, h) => motifs.horizonLine(w, h, 3606, C.gold, { hero: true }) },
   { file: "service-education-fund-planning.jpg", ...HERO, svg: (w, h) => motifs.layers(w, h, 3707, C.emerald600, { hero: true }) },
   { file: "service-asset-allocation.jpg", ...HERO, svg: (w, h) => motifs.panels(w, h, 3808, C.emerald600, { hero: true }) },
+  { file: "service-cross-border-tax-filings.jpg", ...HERO, svg: (w, h) => motifs.arcs(w, h, 3909, C.gold, { hero: true }) },
+  { file: "service-estate-trust-planning.jpg", ...HERO, svg: (w, h) => motifs.orbit(w, h, 4010, C.emerald600, { hero: true }) },
 
   // --- Service areas: distinct skylines, also used on the home cities strip ---
   {

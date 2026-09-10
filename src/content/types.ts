@@ -16,6 +16,7 @@ export interface ProcessStep {
 export type IconName =
   | "compass"
   | "shield"
+  | "document"
   | "chart"
   | "layers"
   | "sunrise"
