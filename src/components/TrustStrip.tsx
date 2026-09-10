@@ -1,5 +1,6 @@
 import type { Locale } from "@/lib/i18n";
 import { SITE } from "@/content/site";
+import { LLink } from "./LLink";
 import { PlaceholderBadge } from "./Placeholder";
 import { Reveal } from "./Reveal";
 
@@ -7,10 +8,16 @@ interface Item {
   label: string;
   value: string;
   placeholder?: boolean;
+  /** External URL, opened in a new tab. */
   href?: string;
+  /** Internal path; the locale prefix is added automatically. */
+  path?: string;
 }
 
-/** Credentials / experience strip under the homepage hero. */
+const linkClass =
+  "mt-2 inline-block font-heading text-xl text-navy-900 underline decoration-gold-500 decoration-1 underline-offset-4 hover:text-emerald-700";
+
+/** Short strip of facts under the homepage hero. */
 export function TrustStrip({ locale, items }: { locale: Locale; items: Item[] }) {
   return (
     <div className="border-y border-cream-300 bg-cream-50">
@@ -23,14 +30,13 @@ export function TrustStrip({ locale, items }: { locale: Locale; items: Item[] })
                 {item.placeholder && <PlaceholderBadge locale={locale} />}
               </p>
               {item.href ? (
-                <a
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="mt-2 inline-block font-heading text-xl text-navy-900 underline decoration-gold-500 decoration-1 underline-offset-4 hover:text-emerald-700"
-                >
+                <a href={item.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
                   {item.value}
                 </a>
+              ) : item.path ? (
+                <LLink href={item.path} className={linkClass}>
+                  {item.value}
+                </LLink>
               ) : (
                 <p className="mt-2 font-heading text-xl text-navy-900">{item.value}</p>
               )}

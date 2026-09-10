@@ -53,6 +53,7 @@ export default async function HomePage({ params }: { params: LocaleParams }) {
           value: t.value,
           placeholder: t.placeholder,
           href: t.linkedin ? SITE.owner.linkedin : undefined,
+          path: t.path,
         }))}
       />
 
