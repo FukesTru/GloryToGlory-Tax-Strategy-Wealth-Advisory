@@ -19,8 +19,8 @@ export const estateTrustPlanning: Service = {
     "zh-hant": "財富傳承與信託規劃",
   },
   cardBlurb: {
-    en: "Trust funding, beneficiary designations and the tax thinking around them, working alongside the attorney who drafts your documents.",
-    "zh-hant": "信託資產的置入、受益人指定，以及背後的稅務考量；與為您起草文件的律師併肩合作。",
+    en: "Protect your legacy and provide for future generations, alongside the attorney who drafts your documents.",
+    "zh-hant": "守護資產、延續家族價值；與為您起草文件的律師併肩合作。",
   },
   related: [
     "/services/financial-planning",

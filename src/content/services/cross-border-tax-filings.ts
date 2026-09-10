@@ -18,8 +18,8 @@ export const crossBorderTaxFilings: Service = {
     "zh-hant": "跨境稅務與海外資產申報",
   },
   cardBlurb: {
-    en: "FBAR, FATCA and foreign asset reporting for families who still hold an account, a policy or a property back in Taiwan.",
-    "zh-hant": "FBAR、FATCA 與海外資產申報：為在台灣仍留有帳戶、保單或房產的家庭而設。",
+    en: "FBAR, FATCA and other international compliance, for families who still hold an account, a policy or a property back in Taiwan.",
+    "zh-hant": "專精 FBAR、FATCA 等跨境申報規定，為在台灣仍留有帳戶、保單或房產的家庭而設。",
   },
   related: [
     "/services/tax-strategy-planning",
