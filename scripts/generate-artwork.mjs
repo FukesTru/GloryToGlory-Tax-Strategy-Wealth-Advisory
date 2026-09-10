@@ -176,6 +176,15 @@ async function detectHeadshot(manifest) {
     const meta = await sharp(file).metadata();
     manifest[name] = { width: meta.width, height: meta.height, blurDataURL: await blur(file) };
     console.log(`found   ${name} (${meta.width}x${meta.height}) — used as the real headshot`);
+    // The frame is 4:5 and renders up to 448px wide, so a crisp result on a
+    // high-density screen wants roughly 900px of width after cropping.
+    const widthAfterCrop = Math.min(meta.width, meta.height * 0.8);
+    if (widthAfterCrop < 720) {
+      console.warn(
+        `warn    the headshot is ${meta.width}x${meta.height}; after the 4:5 crop only ${Math.round(widthAfterCrop)}px of width remains.`,
+      );
+      console.warn("warn    it will look soft on high-density screens — a larger original is worth asking for.");
+    }
     return;
   }
   console.log("note    no real headshot in public/images; the placeholder portrait stays in use");
