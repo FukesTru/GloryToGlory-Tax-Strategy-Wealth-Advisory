@@ -50,7 +50,7 @@ export function Nav() {
     >
       <div className="container-x flex h-[4.5rem] items-center justify-between gap-4 lg:gap-6">
         <LLink href="/" aria-label={UI[locale].nav.home} className="shrink-0">
-          <Logo tone="light" />
+          <Logo tone="light" priority />
         </LLink>
 
         <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">

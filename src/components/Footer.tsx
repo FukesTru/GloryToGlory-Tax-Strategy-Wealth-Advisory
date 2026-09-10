@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n";
-import { SITE, UI } from "@/content/site";
+import { BRAND, SITE, UI } from "@/content/site";
 import { AREAS, PARENT_SERVICES } from "@/lib/content";
 import { LLink } from "./LLink";
 import { Logo } from "./Logo";
@@ -17,7 +17,13 @@ export function Footer({ locale }: { locale: Locale }) {
           <LLink href="/" aria-label={t.nav.home}>
             <Logo tone="light" />
           </LLink>
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream-100/70">{t.footer.tagline}</p>
+          <p className="mt-5 font-heading text-base text-gold-400">{t.footer.brandLine}</p>
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-cream-100/70">{t.footer.tagline}</p>
+          <p className="mt-4 flex flex-wrap gap-x-3 gap-y-1 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-cream-100/50">
+            {BRAND.values[locale].map((v) => (
+              <span key={v}>{v}</span>
+            ))}
+          </p>
           <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-emerald-600/50 bg-emerald-700/20 px-3 py-1 text-xs font-medium text-emerald-100">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
             {t.footer.virtualNote}

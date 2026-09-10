@@ -17,13 +17,13 @@ export interface AboutContent {
 
 export const aboutPage: L<AboutContent> = {
   en: {
-    metaTitle: "Yunghui Chen, Financial Advisor",
+    metaTitle: "Grace Chen, Financial Advisor",
     metaDescription:
-      "Meet Yunghui \"Grace\" Chen, bilingual financial advisor and founder of GloryToGlory. Tax strategy and equity compensation planning for tech professionals.",
+      "Meet Grace Chen, bilingual financial advisor and founder of GloryToGlory. Tax strategy and equity compensation planning for tech professionals.",
     eyebrow: "About Grace",
-    h1: "Meet Yunghui \"Grace\" Chen",
+    h1: "Meet Grace Chen",
     heroSub: "An independent advisor who speaks your language, literally and financially, and who has spent her career helping tech families turn equity into security.",
-    photoAlt: "Yunghui \"Grace\" Chen, financial advisor and founder of GloryToGlory Tax Strategy & Wealth Advisory",
+    photoAlt: "Grace Chen, financial advisor and founder of GloryToGlory Tax Strategy & Wealth Advisory",
     bio: {
       title: "From spreadsheets at the kitchen table to a practice built for tech families",
       paragraphs: [
@@ -78,16 +78,16 @@ export const aboutPage: L<AboutContent> = {
       { label: "Meets clients", value: "By video nationwide; in person by appointment" },
     ],
     schemaDescription:
-      "Yunghui \"Grace\" Chen is a bilingual (English / Traditional Chinese) financial advisor and founder of GloryToGlory Tax Strategy & Wealth Advisory, focused on tax strategy and equity compensation planning for tech professionals.",
+      "Grace Chen is a bilingual (English / Traditional Chinese) financial advisor and founder of GloryToGlory Tax Strategy & Wealth Advisory, focused on tax strategy and equity compensation planning for tech professionals.",
   },
   "zh-hant": {
-    metaTitle: "財務顧問陳詠慧 Grace Chen",
+    metaTitle: "財務顧問 Grace Chen",
     metaDescription:
-      "認識 GloryToGlory 創辦人、雙語財務顧問陳詠慧（Grace Chen）。專為科技業專業人士提供稅務策略與股權獎酬規劃。",
+      "認識 GloryToGlory 創辦人、雙語財務顧問 Grace Chen。專為科技業專業人士提供稅務策略與股權獎酬規劃。",
     eyebrow: "認識 Grace",
-    h1: "認識陳詠慧 Grace Chen",
+    h1: "認識 Grace Chen",
     heroSub: "一位真正懂您語言的獨立顧問——不只是中文與英文，更是財務的語言。她的職涯致力於協助科技業家庭把股權變成安穩的未來。",
-    photoAlt: "GloryToGlory 稅務策略與財富顧問創辦人、財務顧問陳詠慧 Grace Chen",
+    photoAlt: "GloryToGlory 稅務策略與財富顧問創辦人、財務顧問 Grace Chen",
     bio: {
       title: "從餐桌上的試算表，到專為科技業家庭打造的顧問事業",
       paragraphs: [
@@ -142,6 +142,6 @@ export const aboutPage: L<AboutContent> = {
       { label: "會談方式", value: "全美視訊會議；可預約面談" },
     ],
     schemaDescription:
-      "陳詠慧（Grace Chen）是雙語（英文／繁體中文）財務顧問，GloryToGlory 稅務策略與財富顧問創辦人，專注於科技業專業人士的稅務策略與股權獎酬規劃。",
+      "Grace Chen 是雙語（英文／繁體中文）財務顧問，GloryToGlory 稅務策略與財富顧問創辦人，專注於科技業專業人士的稅務策略與股權獎酬規劃。",
   },
 };

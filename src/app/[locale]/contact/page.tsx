@@ -40,6 +40,19 @@ export default async function ContactPage({ params }: { params: LocaleParams }) 
       <Section tone="cream">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
           <Reveal>
+            <div className="mb-6 rounded-2xl border border-gold-500/50 bg-navy-900 p-7 text-cream-100 sm:p-9">
+              <h2 className="text-2xl text-cream-50">{c.bookNow.title}</h2>
+              <p className="mt-3 text-[0.95rem] leading-relaxed text-cream-100/80">{c.bookNow.body}</p>
+              <a
+                href={SITE.calendly}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-navy-900 transition-colors hover:bg-gold-400"
+              >
+                {c.bookNow.cta}
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
             <div className="rounded-2xl border border-cream-300 bg-cream-50 p-7 shadow-[var(--shadow-card)] sm:p-9">
               <h2 className="text-2xl text-navy-900">{c.formTitle}</h2>
               <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-700">{c.formIntro}</p>

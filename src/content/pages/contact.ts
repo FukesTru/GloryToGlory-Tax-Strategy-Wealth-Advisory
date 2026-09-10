@@ -6,6 +6,7 @@ export interface ContactContent {
   eyebrow: string;
   h1: string;
   heroSub: string;
+  bookNow: { title: string; body: string; cta: string };
   formTitle: string;
   formIntro: string;
   details: {
@@ -29,8 +30,13 @@ export const contactPage: L<ContactContent> = {
       "Book a free consultation with GloryToGlory Tax Strategy & Wealth Advisory. Bilingual virtual meetings for tech professionals nationwide. Call (949) 742-1604.",
     eyebrow: "Contact",
     h1: "Book a Free Consultation",
-    heroSub: "Tell us a little about your situation and we will schedule a 30-minute video call, in English or Mandarin, at a time that works for you.",
-    formTitle: "Request your consultation",
+    heroSub: "Book a complimentary 15-minute strategy session straight from the calendar, or send a note first. Either way we speak in English or Mandarin.",
+    bookNow: {
+      title: "Book straight into the calendar",
+      body: "A complimentary 15-minute strategy session, by video. Pick any open slot.",
+      cta: "See available times",
+    },
+    formTitle: "Or send a note first",
     formIntro: "There is no obligation and no sales pitch. If we are not the right fit, we will tell you and point you in a better direction.",
     details: {
       title: "Other ways to reach Grace",
@@ -59,8 +65,13 @@ export const contactPage: L<ContactContent> = {
       "預約 GloryToGlory 稅務策略與財富顧問的免費諮詢。為全美科技業專業人士提供雙語視訊會議。電話 (949) 742-1604。",
     eyebrow: "聯絡我們",
     h1: "預約免費諮詢",
-    heroSub: "簡單告訴我們您的情況，我們會安排一次 30 分鐘的視訊通話，中文或英文皆可，時間由您決定。",
-    formTitle: "申請諮詢",
+    heroSub: "您可以直接在行事曆上預約 15 分鐘的免費策略諮詢，或先留言給我們。中文或英文皆可。",
+    bookNow: {
+      title: "直接在行事曆上預約",
+      body: "15 分鐘的免費策略諮詢，以視訊進行。選擇任何一個空檔即可。",
+      cta: "查看可預約時段",
+    },
+    formTitle: "或先留言給我們",
     formIntro: "沒有任何義務，也沒有推銷。如果我們不是最適合您的顧問，我們會坦白告訴您，並為您指出更好的方向。",
     details: {
       title: "其他聯繫 Grace 的方式",

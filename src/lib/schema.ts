@@ -23,12 +23,12 @@ function postalAddress() {
   };
 }
 
-function personRef(locale: Locale): JsonLd {
+function personRef(): JsonLd {
   return {
     "@type": "Person",
     "@id": `${absoluteUrl("/about")}#person`,
-    name: SITE.owner.legalName,
-    alternateName: locale === "en" ? "Grace Chen" : NAME_ZH.owner,
+    name: SITE.owner.displayName,
+    alternateName: SITE.owner.legalName,
     jobTitle: SITE.owner.jobTitle,
     sameAs: [SITE.owner.linkedin],
   };
@@ -42,13 +42,13 @@ export function financialServiceSchema(locale: Locale, services: { name: string;
     "@id": `${absoluteUrl("/")}#organization`,
     name: orgName(locale),
     url: absoluteUrl(localePath(locale, "/")),
-    logo: absoluteUrl("/icon.svg"),
+    logo: absoluteUrl("/images/logo-on-light.png"),
     image: absoluteUrl(SITE.ogImage),
     telephone: SITE.phoneE164,
     email: SITE.email,
     address: postalAddress(),
-    founder: personRef(locale),
-    employee: personRef(locale),
+    founder: personRef(),
+    employee: personRef(),
     sameAs: [SITE.owner.linkedin],
     knowsLanguage: ["en", "zh-Hant"],
     areaServed: [
@@ -72,7 +72,7 @@ export function financialServiceSchema(locale: Locale, services: { name: string;
 export function personSchema(locale: Locale, description: string): JsonLd {
   return {
     "@context": "https://schema.org",
-    ...personRef(locale),
+    ...personRef(),
     url: absoluteUrl(localePath(locale, "/about")),
     image: absoluteUrl(headshotImage().image.src),
     description,
@@ -160,12 +160,12 @@ export function articleSchema(locale: Locale, post: BlogPost): JsonLd {
     inLanguage: LOCALE_TAG[locale],
     mainEntityOfPage: absoluteUrl(localePath(locale, path)),
     image: absoluteUrl(SITE.ogImage),
-    author: personRef(locale),
+    author: personRef(),
     publisher: {
       "@type": "Organization",
       "@id": `${absoluteUrl("/")}#organization`,
       name: SITE.name,
-      logo: { "@type": "ImageObject", url: absoluteUrl("/icon.svg") },
+      logo: { "@type": "ImageObject", url: absoluteUrl("/images/logo-on-light.png") },
     },
     articleSection: post.category[locale],
   };

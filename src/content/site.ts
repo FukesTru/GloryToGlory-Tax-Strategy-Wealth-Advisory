@@ -11,7 +11,8 @@ export const SITE = {
   url: "https://glorytoglory.com",
   owner: {
     legalName: "Yunghui Chen",
-    displayName: 'Yunghui "Grace" Chen',
+    /** The name she goes by publicly, and the one used across the site. */
+    displayName: "Grace Chen",
     firstName: "Grace",
     jobTitle: "Financial Advisor",
     linkedin: "https://www.linkedin.com/in/gracefinancial",
@@ -20,6 +21,8 @@ export const SITE = {
   phoneHref: "tel:+19497421604",
   phoneE164: "+1-949-742-1604",
   email: "gracela989@gmail.com",
+  /** Her live booking link: a complimentary 15-minute strategy session. */
+  calendly: "https://calendly.com/gracela989/15min",
   /** Mailing address only — never present it as a walk-in office. */
   mailing: {
     poBox: "PO Box 60970",
@@ -42,8 +45,26 @@ export const CITIES = {
 } as const;
 
 export const NAME_ZH = {
-  site: "GloryToGlory 稅務策略與財富顧問",
-  owner: "陳詠慧 Grace Chen",
+  /** The firm's registered Chinese brand name, from Grace's brand sheet. */
+  site: "華臻財富方舟",
+  /**
+   * TODO(client): confirm the Chinese characters for Grace's personal name.
+   * Romanised until then rather than guess at characters.
+   */
+  owner: "Grace Chen",
+} as const;
+
+/** Brand lines taken verbatim from the firm's own materials. */
+export const BRAND = {
+  values: { en: ["Faith", "Integrity", "Excellence"], "zh-hant": ["信念", "誠信", "卓越"] },
+  tagline: {
+    en: "Wealth Built by Design, Not by Chance",
+    "zh-hant": "專業為舵 · 信任為帆 · 財富為舟 · 承載未來",
+  },
+  promise: {
+    en: "Strategic tax solutions. Confident financial future.",
+    "zh-hant": "以專業守護財富，以策略創造價值。",
+  },
 } as const;
 
 /** Site-wide UI strings. */
@@ -92,6 +113,7 @@ export const UI: L<{
   };
   footer: {
     tagline: string;
+    brandLine: string;
     quickLinks: string;
     services: string;
     areas: string;
@@ -164,7 +186,7 @@ export const UI: L<{
     },
     cta: {
       title: "Ready to turn your equity into a plan?",
-      body: "Start with a free 30-minute consultation. We will look at your grants, your tax picture and your goals, and tell you plainly what we would do next.",
+      body: "Start with a complimentary 15-minute strategy session. We will look at your grants, your tax picture and your goals, and tell you plainly what we would do next.",
       button: "Book a Free Consultation",
       secondary: "Or call (949) 742-1604",
       blogTitle: "Facing this situation?",
@@ -172,6 +194,7 @@ export const UI: L<{
     },
     footer: {
       tagline: "Bilingual tax strategy and wealth advisory for tech professionals and their families.",
+    brandLine: "Wealth Built by Design, Not by Chance",
       quickLinks: "Explore",
       services: "Services",
       areas: "Where we serve",
@@ -249,7 +272,7 @@ export const UI: L<{
     },
     cta: {
       title: "準備好把股權獎酬變成完整的財務計畫了嗎？",
-      body: "從一次 30 分鐘的免費諮詢開始。我們會一起檢視您的股票授予、稅務狀況與人生目標，並坦白告訴您下一步該怎麼做。",
+      body: "從一次 15 分鐘的免費策略諮詢開始。我們會一起檢視您的股票授予、稅務狀況與人生目標，並坦白告訴您下一步該怎麼做。",
       button: "預約免費諮詢",
       secondary: "或致電 (949) 742-1604",
       blogTitle: "您也遇到類似的情況嗎？",
@@ -257,6 +280,7 @@ export const UI: L<{
     },
     footer: {
       tagline: "為科技業專業人士與家庭提供雙語稅務策略與財富顧問服務。",
+    brandLine: "專業為舵 · 信任為帆 · 財富為舟 · 承載未來",
       quickLinks: "網站導覽",
       services: "服務項目",
       areas: "服務地區",

@@ -256,8 +256,8 @@ const AREA_CARD_IMAGES: Record<string, SiteImage> = Object.fromEntries(
  * placeholder illustration until then, so the About page never 404s an image.
  */
 const HEADSHOT_ALT: L<string> = {
-  en: 'Yunghui "Grace" Chen, financial advisor and founder of GloryToGlory Tax Strategy & Wealth Advisory',
-  "zh-hant": "GloryToGlory 稅務策略與財富顧問創辦人、財務顧問陳詠慧 Grace Chen",
+  en: 'Grace Chen, financial advisor and founder of GloryToGlory Tax Strategy & Wealth Advisory',
+  "zh-hant": "GloryToGlory 稅務策略與財富顧問創辦人、財務顧問 Grace Chen",
 };
 
 const HEADSHOT_PLACEHOLDER: SiteImage = {
