@@ -70,7 +70,7 @@ scripts/
 public/
   og-default.png         default Open Graph image (1200×630)
   images/                27 generated illustrations (see "Imagery")
-  images/grace-headshot.svg  PLACEHOLDER portrait — replace (see checklist)
+  images/grace-headshot.svg  placeholder portrait, used until a real photo is added
 ```
 
 ### Editing copy
@@ -130,6 +130,16 @@ Two families:
 
 Page heroes render the artwork behind a navy scrim, so the headline always wins
 on contrast. Article and region cards use the image at full strength.
+
+### Grace's portrait
+
+Drop the photo into `public/images/` as `grace-headshot.jpg` (or `.png` /
+`.webp`) and run `npm run artwork -- --keep-existing`. The build measures it,
+generates a blur placeholder, and the About page plus the `Person` structured
+data pick it up with no code change; the placeholder badge disappears on its
+own. The frame is 4:5, cropped from the centre, so a square or portrait photo
+sits best. Until a photo is present the placeholder illustration is used, so the
+page never links a missing image.
 
 ### Alt text
 
@@ -230,7 +240,7 @@ Everything below is clearly marked in the UI with a dashed gold **PLACEHOLDER** 
 
 1. **Disclaimer page** (`src/content/pages/disclaimer.ts`) — insert real RIA/IAR registration status, Form ADV Part 2 link, CRD number, states of registration and compliance-reviewed disclosures. **Do not publish as-is.**
 2. **Credentials** — confirm exact designations (CFP®, EA, CPA…) in `src/content/pages/about.ts` and the homepage trust strip (`src/content/pages/home.ts`). Set `foundingYear` in `src/content/site.ts` if a "years of experience" claim is wanted.
-3. **Photos** — add Grace's headshot as `public/images/grace-headshot.jpg` (about 600×720) and update `SITE.owner.headshot` in `src/content/site.ts`. Review the Unsplash photos on the article and region cards after the first deploy and swap any you dislike by editing one id in `scripts/unsplash.json` (see **Imagery** above).
+3. **Grace's headshot** — save the photo as `public/images/grace-headshot.jpg` (`.png` and `.webp` also work) and run `npm run artwork -- --keep-existing`. No code change is needed: the About page and the `Person` structured data switch to it automatically and the "photo placeholder" badge disappears. It is displayed in a 4:5 portrait frame, cropped from the centre, so a square or portrait photo works best. Also review the Unsplash photos on the article and region cards after the first deploy and swap any you dislike by editing one id in `scripts/unsplash.json` (see **Imagery** above).
 4. **Traditional Chinese copy** — all `"zh-hant"` slots are working drafts. Have a professional translator review them (the structure is identical to the English, field by field).
 5. **Privacy policy** — legal review; insert Regulation S-P notice link if applicable.
 6. **GA4** — set `NEXT_PUBLIC_GA_MEASUREMENT_ID`.

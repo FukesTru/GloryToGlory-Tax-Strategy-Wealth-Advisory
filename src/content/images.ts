@@ -250,6 +250,37 @@ const AREA_CARD_IMAGES: Record<string, SiteImage> = Object.fromEntries(
   Object.entries(AREA_CARD_DEFS).map(([k, v]) => [k, build(v)]),
 );
 
+/**
+ * Grace's portrait. Returns the real photograph once one is present in
+ * public/images (see detectHeadshot in scripts/generate-artwork.mjs), and the
+ * placeholder illustration until then, so the About page never 404s an image.
+ */
+const HEADSHOT_ALT: L<string> = {
+  en: 'Yunghui "Grace" Chen, financial advisor and founder of GloryToGlory Tax Strategy & Wealth Advisory',
+  "zh-hant": "GloryToGlory 稅務策略與財富顧問創辦人、財務顧問陳詠慧 Grace Chen",
+};
+
+const HEADSHOT_PLACEHOLDER: SiteImage = {
+  src: "/images/grace-headshot.svg",
+  width: 600,
+  height: 720,
+  blurDataURL: "",
+  alt: HEADSHOT_ALT,
+};
+
+export function headshotImage(): { image: SiteImage; isPlaceholder: boolean } {
+  for (const file of ["grace-headshot.jpg", "grace-headshot.jpeg", "grace-headshot.png", "grace-headshot.webp"] as const) {
+    const meta = (manifest as Record<string, { width: number; height: number; blurDataURL: string } | undefined>)[file];
+    if (meta) {
+      return {
+        image: { src: `/images/${file}`, width: meta.width, height: meta.height, blurDataURL: meta.blurDataURL, alt: HEADSHOT_ALT },
+        isPlaceholder: false,
+      };
+    }
+  }
+  return { image: HEADSHOT_PLACEHOLDER, isPlaceholder: true };
+}
+
 export const serviceImage = (slug: string): SiteImage | undefined => SERVICE_IMAGES[slug];
 export const areaCardImage = (slug: string): SiteImage | undefined => AREA_CARD_IMAGES[slug];
 export const areaImage = (slug: string): SiteImage | undefined => AREA_IMAGES[slug];

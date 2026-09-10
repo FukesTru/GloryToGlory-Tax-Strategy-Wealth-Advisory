@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { headshotImage } from "@/content/images";
 import { CtaSection } from "@/components/CtaSection";
 import { Hero } from "@/components/Hero";
 import { IMAGES } from "@/content/images";
@@ -23,6 +24,7 @@ export async function generateMetadata({ params }: { params: LocaleParams }): Pr
 export default async function AboutPage({ params }: { params: LocaleParams }) {
   const locale = await resolveLocale(params);
   const c = aboutPage[locale];
+  const { image: portrait, isPlaceholder } = headshotImage();
 
   return (
     <>
@@ -37,17 +39,23 @@ export default async function AboutPage({ params }: { params: LocaleParams }) {
         aside={
           <Reveal delay={0.15} className="relative mx-auto w-full max-w-sm lg:max-w-md">
             <div className="absolute -inset-3 -z-10 rounded-[2rem] border border-gold-500/30" aria-hidden="true" />
-            <Image
-              src={SITE.owner.headshot}
-              alt={c.photoAlt}
-              width={600}
-              height={720}
-              loading="lazy"
-              className="w-full rounded-[1.5rem] object-cover shadow-[var(--shadow-card-dark)]"
-            />
-            <div className="absolute bottom-4 left-4">
-              <PlaceholderBadge locale={locale} label={locale === "en" ? "Photo placeholder" : "照片待補"} />
+            {/* Fixed portrait frame, so the design holds whatever crop the photo arrives in. */}
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] bg-navy-800 shadow-[var(--shadow-card-dark)]">
+              <Image
+                src={portrait.src}
+                alt={c.photoAlt}
+                fill
+                sizes="(min-width: 1024px) 28rem, (min-width: 640px) 24rem, 80vw"
+                priority
+                className="object-cover object-[50%_25%]"
+                {...(portrait.blurDataURL ? { placeholder: "blur" as const, blurDataURL: portrait.blurDataURL } : {})}
+              />
             </div>
+            {isPlaceholder && (
+              <div className="absolute bottom-4 left-4">
+                <PlaceholderBadge locale={locale} label={locale === "en" ? "Photo placeholder" : "照片待補"} />
+              </div>
+            )}
           </Reveal>
         }
       />

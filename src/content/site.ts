@@ -15,8 +15,6 @@ export const SITE = {
     firstName: "Grace",
     jobTitle: "Financial Advisor",
     linkedin: "https://www.linkedin.com/in/gracefinancial",
-    /** TODO(client): replace with the real headshot from the Drive folder (see README). */
-    headshot: "/images/grace-headshot.svg",
   },
   phone: "(949) 742-1604",
   phoneHref: "tel:+19497421604",

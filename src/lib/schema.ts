@@ -1,4 +1,5 @@
 import { CITIES, NAME_ZH, SITE } from "@/content/site";
+import { headshotImage } from "@/content/images";
 import type { FAQ, ServiceArea, BlogPost } from "@/content/types";
 import { LOCALE_TAG, localePath, type Locale } from "./i18n";
 import { absoluteUrl } from "./seo";
@@ -73,7 +74,7 @@ export function personSchema(locale: Locale, description: string): JsonLd {
     "@context": "https://schema.org",
     ...personRef(locale),
     url: absoluteUrl(localePath(locale, "/about")),
-    image: absoluteUrl(SITE.owner.headshot),
+    image: absoluteUrl(headshotImage().image.src),
     description,
     email: SITE.email,
     telephone: SITE.phoneE164,

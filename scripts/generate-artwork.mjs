@@ -163,6 +163,24 @@ async function exists(p) {
   }
 }
 
+/**
+ * A real headshot dropped into public/images (jpg/jpeg/png/webp) is picked up
+ * automatically: it is measured, given a blur placeholder and recorded in the
+ * manifest, so the About page and the Person schema switch from the placeholder
+ * portrait to the photograph with no code change.
+ */
+async function detectHeadshot(manifest) {
+  for (const name of ["grace-headshot.jpg", "grace-headshot.jpeg", "grace-headshot.png", "grace-headshot.webp"]) {
+    const file = join(outDir, name);
+    if (!(await exists(file))) continue;
+    const meta = await sharp(file).metadata();
+    manifest[name] = { width: meta.width, height: meta.height, blurDataURL: await blur(file) };
+    console.log(`found   ${name} (${meta.width}x${meta.height}) — used as the real headshot`);
+    return;
+  }
+  console.log("note    no real headshot in public/images; the placeholder portrait stays in use");
+}
+
 async function main() {
   await mkdir(outDir, { recursive: true });
   const manifest = {};
@@ -185,6 +203,8 @@ async function main() {
     manifest[img.file] = { width: img.width, height: img.height, blurDataURL: await blur(dest) };
     console.log(`drew    ${img.file} (${img.width}x${img.height})`);
   }
+
+  await detectHeadshot(manifest);
 
   const sorted = Object.fromEntries(Object.keys(manifest).sort().map((k) => [k, manifest[k]]));
   await writeFile(manifestPath, `${JSON.stringify(sorted, null, 2)}\n`, "utf8");
