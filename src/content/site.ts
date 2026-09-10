@@ -32,7 +32,6 @@ export const SITE = {
     country: "US",
   },
   /** TODO(client): confirm founding year for the "years of experience" trust strip. */
-  foundingYear: 2016,
   /** TODO(client): set the real GA4 measurement ID via NEXT_PUBLIC_GA_MEASUREMENT_ID. */
   gaMeasurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-XXXXXXXXXX",
   ogImage: "/og-default.png",
