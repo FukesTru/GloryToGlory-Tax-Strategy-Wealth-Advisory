@@ -127,20 +127,6 @@ export const UI: L<{
     sitemap: string;
     disclosureShort: string;
   };
-  form: {
-    name: string;
-    email: string;
-    phone: string;
-    service: string;
-    servicePlaceholder: string;
-    message: string;
-    submit: string;
-    sending: string;
-    success: string;
-    error: string;
-    consent: string;
-    optional: string;
-  };
   toggle: { label: string; switchTo: string };
   notFound: { title: string; body: string; button: string };
 }> = {
@@ -209,20 +195,6 @@ export const UI: L<{
       sitemap: "Sitemap",
       disclosureShort:
         "Content on this site is for general educational purposes and is not individualized tax, legal or investment advice. Registration status and full disclosures are provided on the Disclaimer page.",
-    },
-    form: {
-      name: "Full name",
-      email: "Email",
-      phone: "Phone",
-      service: "What can we help with?",
-      servicePlaceholder: "Select a service",
-      message: "Tell us a little about your situation",
-      submit: "Request my free consultation",
-      sending: "Sending…",
-      success: "Thank you — your request is in. Grace will reply within one business day.",
-      error: "Something went wrong. Please email gracela989@gmail.com or call (949) 742-1604.",
-      consent: "By submitting, you agree to be contacted about your request. We never sell your information.",
-      optional: "optional",
     },
     toggle: { label: "Language", switchTo: "切換至繁體中文" },
     notFound: {
@@ -296,20 +268,6 @@ export const UI: L<{
       sitemap: "網站地圖",
       disclosureShort:
         "本網站內容僅供一般教育目的，並非針對個人的稅務、法律或投資建議。註冊狀態與完整揭露請見免責聲明頁面。",
-    },
-    form: {
-      name: "姓名",
-      email: "電子郵件",
-      phone: "電話",
-      service: "您想了解哪項服務？",
-      servicePlaceholder: "請選擇服務",
-      message: "請簡單描述您的情況",
-      submit: "申請免費諮詢",
-      sending: "傳送中…",
-      success: "感謝您，我們已收到您的申請。Grace 將在一個工作天內回覆。",
-      error: "傳送失敗，請直接寄信至 gracela989@gmail.com 或致電 (949) 742-1604。",
-      consent: "送出即表示您同意我們就此申請與您聯繫。我們絕不出售您的個人資料。",
-      optional: "選填",
     },
     toggle: { label: "語言", switchTo: "Switch to English" },
     notFound: {

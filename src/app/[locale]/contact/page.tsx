@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ContactForm } from "@/components/ContactForm";
+import { LeadForm } from "@/components/LeadForm";
 import { Hero } from "@/components/Hero";
 import { IMAGES } from "@/content/images";
 import { Icon } from "@/components/Icon";
@@ -7,7 +7,7 @@ import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
 import { contactPage } from "@/content/pages/contact";
 import { SITE, UI } from "@/content/site";
-import { PARENT_SERVICES, STATIC_PAGE_NAMES } from "@/lib/content";
+import { STATIC_PAGE_NAMES } from "@/lib/content";
 import { resolveLocale, type LocaleParams } from "@/lib/params";
 import { buildMetadata } from "@/lib/seo";
 
@@ -20,10 +20,6 @@ export async function generateMetadata({ params }: { params: LocaleParams }): Pr
 export default async function ContactPage({ params }: { params: LocaleParams }) {
   const locale = await resolveLocale(params);
   const c = contactPage[locale];
-  const options = [
-    ...PARENT_SERVICES.map((s) => ({ value: s.slug, label: s.name[locale] })),
-    { value: "not-sure", label: locale === "en" ? "Not sure yet" : "還不確定" },
-  ];
 
   return (
     <>
@@ -57,7 +53,7 @@ export default async function ContactPage({ params }: { params: LocaleParams }) 
               <h2 className="text-2xl text-navy-900">{c.formTitle}</h2>
               <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-700">{c.formIntro}</p>
               <div className="relative mt-8">
-                <ContactForm services={options} />
+                <LeadForm />
               </div>
             </div>
           </Reveal>
