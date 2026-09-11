@@ -6,13 +6,19 @@ import { splitLocale } from "@/lib/i18n";
 import { LLink } from "./LLink";
 import { useLocale } from "./LocaleProvider";
 
-/** Mobile-only floating "Book a Consultation" button (hidden on the contact page itself). */
+/**
+ * Mobile-only floating "Book a Consultation" button (hidden on the contact page itself).
+ *
+ * pr-24 keeps the bar clear of the LeadConnector chat bubble, which is fixed
+ * bottom-right and would otherwise sit on top of it. Move the clearance to the
+ * left if that bubble is ever repositioned in LeadConnector.
+ */
 export function FloatingCta() {
   const locale = useLocale();
   const { path } = splitLocale(usePathname());
   if (path === "/contact") return null;
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center p-4 pb-[max(1rem,env(safe-area-inset-bottom))] md:hidden [body[data-menu-open]_&]:hidden">
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center p-4 pr-24 pb-[max(1rem,env(safe-area-inset-bottom))] md:hidden [body[data-menu-open]_&]:hidden">
       <LLink
         href="/contact"
         className="pointer-events-auto inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-full bg-gold-500 px-5 py-3.5 text-sm font-semibold text-navy-900 shadow-[0_10px_30px_-10px_rgba(11,30,61,0.5)]"

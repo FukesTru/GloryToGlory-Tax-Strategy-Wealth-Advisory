@@ -3,6 +3,7 @@ import { Fraunces, Manrope, Noto_Sans_TC, Noto_Serif_TC } from "next/font/google
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { Analytics } from "@/components/Analytics";
+import { ChatWidget } from "@/components/ChatWidget";
 import { FloatingCta } from "@/components/FloatingCta";
 import { Footer } from "@/components/Footer";
 import { LocaleProvider } from "@/components/LocaleProvider";
@@ -92,6 +93,7 @@ export default async function RootLayout({
           <main id="main">{children}</main>
           <Footer locale={locale} />
           <FloatingCta />
+          <ChatWidget />
         </LocaleProvider>
       </body>
     </html>
