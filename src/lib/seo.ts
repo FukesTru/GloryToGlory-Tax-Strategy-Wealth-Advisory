@@ -37,7 +37,11 @@ export function buildMetadata({
   publishedTime,
   noIndex,
 }: BuildMetadataArgs): Metadata {
-  const fullTitle = `${title} | ${SITE.name}`;
+  // shortName, not name: the full "GloryToGlory Tax Strategy & Wealth Advisory"
+  // is 45 characters of suffix, which pushed every page past the ~60 characters
+  // search results show and truncated the part that actually describes the page.
+  // og:site_name below still carries the full legal name.
+  const fullTitle = `${title} | ${SITE.shortName}`;
   const canonical = absoluteUrl(localePath(locale, path));
 
   return {

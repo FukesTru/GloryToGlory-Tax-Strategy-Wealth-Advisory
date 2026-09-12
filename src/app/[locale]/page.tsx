@@ -6,6 +6,7 @@ import { Hero } from "@/components/Hero";
 import { IMAGES } from "@/content/images";
 import { Icon } from "@/components/Icon";
 import { JsonLd } from "@/components/JsonLd";
+import { LanguageBanner } from "@/components/LanguageBanner";
 import { LLink } from "@/components/LLink";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
@@ -45,6 +46,8 @@ export default async function HomePage({ params }: { params: LocaleParams }) {
         secondary={{ label: c.hero.secondary, href: "/services" }}
         image={IMAGES.heroHome}
       />
+
+      <LanguageBanner />
 
       <TrustStrip
         locale={locale}

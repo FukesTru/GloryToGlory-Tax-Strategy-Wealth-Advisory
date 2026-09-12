@@ -19,7 +19,7 @@ export const remoteAdvisory: ServiceArea = {
   },
   content: {
     en: {
-      metaTitle: "Virtual Tax & Wealth Advisor for Tech Employees Nationwide",
+      metaTitle: "Virtual Tax & Wealth Advisor, US Nationwide",
       metaDescription:
         "Virtual tax strategy and wealth advisory for tech employees in Austin, Seattle and across the US. Bilingual RSU, stock option and relocation planning by video.",
       h1: "Virtual Tax & Wealth Advisory for Tech Employees Nationwide",

@@ -20,7 +20,7 @@ export const southernCalifornia: ServiceArea = {
   },
   content: {
     en: {
-      metaTitle: "Southern California Tax & Wealth Advisor for Tech Employees",
+      metaTitle: "Tax & Wealth Advisor in Southern California",
       metaDescription:
         "Bilingual tax and wealth advisory for tech employees in Los Angeles, Irvine and San Diego. RSU, stock option and retirement planning by video or in person.",
       h1: "Tax & Wealth Advisory for Tech Employees in Southern California",

@@ -57,21 +57,22 @@ export function Footer({ locale }: { locale: Locale }) {
         <div>
           <p className={headCls}>{t.footer.quickLinks}</p>
           <ul className="space-y-2.5">
-            <li>
-              <LLink href="/about" className={linkCls}>
-                {t.nav.about}
-              </LLink>
-            </li>
-            <li>
-              <LLink href="/blog" className={linkCls}>
-                {t.nav.blog}
-              </LLink>
-            </li>
-            <li>
-              <LLink href="/contact" className={linkCls}>
-                {t.nav.contact}
-              </LLink>
-            </li>
+            {(
+              [
+                ["/", t.nav.home],
+                ["/about", t.nav.about],
+                ["/services", t.nav.services],
+                ["/pricing", t.nav.pricing],
+                ["/blog", t.nav.blog],
+                ["/contact", t.nav.contact],
+              ] as const
+            ).map(([href, label]) => (
+              <li key={href}>
+                <LLink href={href} className={linkCls}>
+                  {label}
+                </LLink>
+              </li>
+            ))}
           </ul>
           <p className={`${headCls} mt-8`}>{t.footer.areas}</p>
           <ul className="space-y-2.5">

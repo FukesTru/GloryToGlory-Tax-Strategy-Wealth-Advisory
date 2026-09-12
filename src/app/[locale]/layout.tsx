@@ -8,6 +8,7 @@ import { FloatingCta } from "@/components/FloatingCta";
 import { Footer } from "@/components/Footer";
 import { LocaleProvider } from "@/components/LocaleProvider";
 import { Nav } from "@/components/Nav";
+import { AREAS, PARENT_SERVICES } from "@/lib/content";
 import { SITE, UI } from "@/content/site";
 import { LOCALES, LOCALE_TAG, isLocale } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/seo";
@@ -70,6 +71,13 @@ export default async function RootLayout({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
+  // Built here, not in Nav: Nav is a client component, so importing the content
+  // registry there would ship every service and area page to the browser.
+  const menus = {
+    services: PARENT_SERVICES.map((s) => ({ path: s.path, label: s.name[locale] })),
+    areas: AREAS.map((a) => ({ path: a.path, label: a.region[locale] })),
+  };
+
   return (
     <html
       lang={LOCALE_TAG[locale]}
@@ -89,7 +97,7 @@ export default async function RootLayout({
           >
             {UI[locale].skipToContent}
           </a>
-          <Nav />
+          <Nav menus={menus} />
           <main id="main">{children}</main>
           <Footer locale={locale} />
           <FloatingCta />

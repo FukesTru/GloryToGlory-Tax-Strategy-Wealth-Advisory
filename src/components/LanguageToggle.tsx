@@ -1,18 +1,9 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
-import { LOCALES, LOCALE_COOKIE, LOCALE_LABEL, LOCALE_NAME, localePath, splitLocale, type Locale } from "@/lib/i18n";
+import { LOCALES, LOCALE_LABEL, LOCALE_NAME, type Locale } from "@/lib/i18n";
 import { UI } from "@/content/site";
 import { useLocale } from "./LocaleProvider";
-
-function rememberLocale(next: Locale) {
-  try {
-    document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=31536000; samesite=lax`;
-    window.localStorage.setItem(LOCALE_COOKIE, next);
-  } catch {
-    /* storage unavailable — navigation still works */
-  }
-}
+import { useLocaleSwitch } from "./useLocaleSwitch";
 
 /**
  * EN / 繁中 toggle. Persists the choice (cookie for the server proxy,
@@ -21,14 +12,10 @@ function rememberLocale(next: Locale) {
  */
 export function LanguageToggle({ tone = "light" }: { tone?: "light" | "dark" }) {
   const locale = useLocale();
-  const pathname = usePathname();
-  const router = useRouter();
-  const { path } = splitLocale(pathname);
+  const switchTo = useLocaleSwitch();
 
   function choose(next: Locale) {
-    if (next === locale) return;
-    rememberLocale(next);
-    router.push(localePath(next, path));
+    if (next !== locale) switchTo(next);
   }
 
   const base = tone === "light" ? "border-cream-100/25 text-cream-100" : "border-navy-900/20 text-navy-900";

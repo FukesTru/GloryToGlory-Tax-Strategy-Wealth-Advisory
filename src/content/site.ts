@@ -128,6 +128,7 @@ export const UI: L<{
     disclosureShort: string;
   };
   toggle: { label: string; switchTo: string };
+  langPromo: { title: string; body: string; cta: string; hint: string };
   notFound: { title: string; body: string; button: string };
 }> = {
   en: {
@@ -197,6 +198,12 @@ export const UI: L<{
         "Content on this site is for general educational purposes and is not individualized tax, legal or investment advice. Registration status and full disclosures are provided on the Disclaimer page.",
     },
     toggle: { label: "Language", switchTo: "切換至繁體中文" },
+    langPromo: {
+      title: "本網站提供完整繁體中文版本",
+      body: "所有服務說明、收費方案與文章皆有中文版本。您可以隨時點選頁面上方的「繁中」切換語言。",
+      cta: "切換至繁體中文",
+      hint: "This site is fully available in Traditional Chinese.",
+    },
     notFound: {
       title: "Page not found",
       body: "The page you are looking for has moved or never existed. Let us get you back on track.",
@@ -270,6 +277,12 @@ export const UI: L<{
         "本網站內容僅供一般教育目的，並非針對個人的稅務、法律或投資建議。註冊狀態與完整揭露請見免責聲明頁面。",
     },
     toggle: { label: "語言", switchTo: "Switch to English" },
+    langPromo: {
+      title: "This site is also available in English",
+      body: "Every service page, the pricing tiers and all articles are written in English too. Use the EN button at the top of any page to switch at any time.",
+      cta: "Switch to English",
+      hint: "本網站亦提供完整英文版本。",
+    },
     notFound: {
       title: "找不到頁面",
       body: "您要找的頁面可能已移動或不存在。讓我們帶您回到正軌。",
@@ -279,11 +292,26 @@ export const UI: L<{
 };
 
 /** Top-level nav structure (paths are English; localized at render time). */
-export const NAV_LINKS: { key: keyof typeof UI.en.nav; path: string }[] = [
+export interface NavLink {
+  key: keyof typeof UI.en.nav;
+  path: string;
+  /** Renders a dropdown of this menu's entries, built in the layout. */
+  menu?: "services" | "areas";
+  /** Paths that light this item up, when the children do not sit under `path`. */
+  match?: string[];
+}
+
+export const NAV_LINKS: NavLink[] = [
+  { key: "home", path: "/" },
   { key: "about", path: "/about" },
-  { key: "services", path: "/services" },
+  { key: "services", path: "/services", menu: "services" },
   { key: "pricing", path: "/pricing" },
-  { key: "areas", path: "/bay-area" },
+  {
+    key: "areas",
+    path: "/bay-area",
+    menu: "areas",
+    match: ["/bay-area", "/southern-california", "/remote-advisory"],
+  },
   { key: "blog", path: "/blog" },
   { key: "contact", path: "/contact" },
 ];

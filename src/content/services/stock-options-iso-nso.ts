@@ -25,7 +25,7 @@ export const stockOptionsIsoNso: Service = {
   ],
   content: {
     en: {
-      metaTitle: "ISO & NSO Stock Option Tax Planning for Tech Employees",
+      metaTitle: "ISO & NSO Stock Option Tax Planning",
       metaDescription:
         "ISO and NSO stock option planning: AMT modeling, holding periods, early exercise and 83(b), exercise funding and post-termination windows. Bilingual advisor.",
       h1: "ISO & NSO Stock Option Planning",
