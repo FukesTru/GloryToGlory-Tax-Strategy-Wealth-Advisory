@@ -20,7 +20,7 @@ export const privacyPolicyPage: L<LegalPageContent> = {
         blocks: [
           {
             type: "p",
-            text: "We collect information in three ways. When you use the contact form or book a consultation, you provide your name, email address, phone number (optional), the service you are interested in and a short description of your situation. During consultations and engagements, you may share financial documents such as pay stubs, equity grant agreements, vesting schedules, brokerage and retirement account statements, tax returns and details about your family and goals. Our website also collects limited technical data automatically through Google Analytics 4 (measurement ID G-XXXXXXXXXX, a placeholder until launch), such as pages viewed, approximate location, device type and referring site.",
+            text: "We collect information in three ways. When you use the contact form or book a consultation, you provide your name, email address, phone number (optional), the service you are interested in and a short description of your situation. During consultations and engagements, you may share financial documents such as pay stubs, equity grant agreements, vesting schedules, brokerage and retirement account statements, tax returns and details about your family and goals. Our website also collects limited technical data automatically through Google Analytics 4, such as pages viewed, approximate location, device type and referring site.",
           },
         ],
       },
@@ -85,7 +85,7 @@ export const privacyPolicyPage: L<LegalPageContent> = {
         blocks: [
           {
             type: "p",
-            text: "Our website uses Google Analytics 4 to understand how visitors find and use the site. Google Analytics sets cookies and collects information such as pages viewed, time on site, approximate location and the device and browser used. This data is aggregated and does not identify you by name. You can prevent analytics collection by installing the Google Analytics opt-out browser add-on, by blocking cookies in your browser or by using any consent controls we display. We do not use advertising cookies and we do not sell browsing data. [PLACEHOLDER — describe the cookie consent banner or any additional tools once implemented.]",
+            text: "Our website uses Google Analytics 4 to understand how visitors find and use the site. Google Analytics sets cookies and collects information such as pages viewed, time on site, approximate location and the device and browser used. This data is aggregated and does not identify you by name. You can prevent analytics collection by installing the Google Analytics opt-out browser add-on, by blocking cookies in your browser or by using any consent controls we display. We do not use advertising cookies and we do not sell browsing data.",
           },
         ],
       },
@@ -131,7 +131,7 @@ export const privacyPolicyPage: L<LegalPageContent> = {
         blocks: [
           {
             type: "p",
-            text: "我們透過三種方式蒐集資料。當您使用聯絡表單或預約諮詢時，您會提供姓名、電子郵件、電話（選填）、有興趣的服務項目，以及對自身情況的簡短描述。在諮詢與委任期間，您可能會分享財務文件，例如薪資單、股權授予協議、歸屬時程、券商與退休帳戶對帳單、報稅資料，以及有關家庭與目標的細節。本網站也會透過 Google Analytics 4（評估 ID G-XXXXXXXXXX，上線前為預留值）自動蒐集有限的技術資料，例如瀏覽的頁面、大致位置、裝置類型與來源網站。",
+            text: "我們透過三種方式蒐集資料。當您使用聯絡表單或預約諮詢時，您會提供姓名、電子郵件、電話（選填）、有興趣的服務項目，以及對自身情況的簡短描述。在諮詢與委任期間，您可能會分享財務文件，例如薪資單、股權授予協議、歸屬時程、券商與退休帳戶對帳單、報稅資料，以及有關家庭與目標的細節。本網站也會透過 Google Analytics 4自動蒐集有限的技術資料，例如瀏覽的頁面、大致位置、裝置類型與來源網站。",
           },
         ],
       },
@@ -196,7 +196,7 @@ export const privacyPolicyPage: L<LegalPageContent> = {
         blocks: [
           {
             type: "p",
-            text: "本網站使用 Google Analytics 4 了解訪客如何找到並使用本網站。Google Analytics 會設定 Cookie 並蒐集資訊，例如瀏覽的頁面、停留時間、大致位置，以及所使用的裝置與瀏覽器。這些資料為彙總資料，不會以姓名識別您的身分。您可以安裝 Google Analytics 停用瀏覽器外掛程式、在瀏覽器中封鎖 Cookie，或使用我們顯示的任何同意控制項，來阻止分析資料的蒐集。我們不使用廣告 Cookie，也不出售瀏覽資料。【預留內容——Cookie 同意橫幅或其他工具實作完成後，請於此說明。】",
+            text: "本網站使用 Google Analytics 4 了解訪客如何找到並使用本網站。Google Analytics 會設定 Cookie 並蒐集資訊，例如瀏覽的頁面、停留時間、大致位置，以及所使用的裝置與瀏覽器。這些資料為彙總資料，不會以姓名識別您的身分。您可以安裝 Google Analytics 停用瀏覽器外掛程式、在瀏覽器中封鎖 Cookie，或使用我們顯示的任何同意控制項，來阻止分析資料的蒐集。我們不使用廣告 Cookie，也不出售瀏覽資料。",
           },
         ],
       },

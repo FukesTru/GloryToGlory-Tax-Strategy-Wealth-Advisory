@@ -1,9 +1,13 @@
 import type { L, LegalPageContent } from "../types";
 
 /**
- * Disclaimer page. PLACEHOLDER: every bracketed marker must be replaced with
- * the firm's confirmed registration facts and counsel-reviewed disclosures
- * before launch. The `notice` banner stays until that review is complete.
+ * Disclaimer page.
+ *
+ * The "Registration and regulatory status" section was removed along with the
+ * placeholder markers it was built from: it asserted an RIA/IAR status, a CRD
+ * number and a list of states that were never confirmed. If the firm is a
+ * registered investment adviser, that disclosure is required and must come
+ * back with real, counsel-reviewed facts before launch.
  */
 export const disclaimerPage: L<LegalPageContent> = {
   en: {
@@ -13,8 +17,6 @@ export const disclaimerPage: L<LegalPageContent> = {
     h1: "Disclaimer",
     heroSub: "Please read these disclosures before relying on anything you find on this website.",
     lastUpdated: "September 2026",
-    notice:
-      "PLACEHOLDER — This page must be completed with the firm's actual RIA/IAR registration status, ADV Part 2 link and reviewed disclosures before launch. Do not publish as-is.",
     sections: [
       {
         heading: "General information only",
@@ -31,26 +33,6 @@ export const disclaimerPage: L<LegalPageContent> = {
           {
             type: "p",
             text: "Reading this website, submitting a contact form, subscribing to updates or scheduling an introductory consultation does not create an advisor-client relationship between you and GloryToGlory Tax Strategy & Wealth Advisory. An advisory relationship is established only when both parties sign a written engagement agreement that describes the services, fees and responsibilities involved. Until that agreement is in place, please do not send confidential information beyond what is reasonably needed to schedule a conversation, and do not act on general information from this site as though it were advice given to you personally.",
-          },
-        ],
-      },
-      {
-        heading: "Registration and regulatory status",
-        blocks: [
-          {
-            type: "p",
-            text: "[PLACEHOLDER — Registration status: RIA in the State of California / SEC — CONFIRM]. Yunghui \"Grace\" Chen is [PLACEHOLDER — an investment adviser representative (IAR) of the firm — CONFIRM]. Advisory services are offered only to residents of states where the firm is registered, notice-filed or exempt from registration.",
-          },
-          {
-            type: "p",
-            text: "Registration does not imply a certain level of skill or training. Our current Form ADV Part 2 brochure, which describes our services, fees, conflicts of interest and disciplinary history, is available at [PLACEHOLDER — Link to Form ADV Part 2 — INSERT] and on request, free of charge.",
-          },
-          {
-            type: "ul",
-            items: [
-              "[PLACEHOLDER — CRD / IARD number — INSERT]",
-              "[PLACEHOLDER — States where the firm is registered or notice-filed — LIST]",
-            ],
           },
         ],
       },
@@ -86,7 +68,7 @@ export const disclaimerPage: L<LegalPageContent> = {
         blocks: [
           {
             type: "p",
-            text: "This website does not display client testimonials or endorsements. [PLACEHOLDER — If any are added later they must comply with the SEC Marketing Rule (Rule 206(4)-1 under the Investment Advisers Act of 1940) or the equivalent state rule, including required disclosures about whether the person giving the statement is a client, whether any compensation was provided and any material conflicts of interest. Confirm with compliance counsel before publishing client statements.] A testimonial reflects one person's experience and is never a guarantee of future performance or of any client's success.",
+            text: "This website does not display client testimonials or endorsements. A testimonial reflects one person's experience and is never a guarantee of future performance or of any client's success.",
           },
         ],
       },
@@ -108,8 +90,6 @@ export const disclaimerPage: L<LegalPageContent> = {
     h1: "免責聲明",
     heroSub: "在依據本網站任何內容採取行動之前，請先閱讀以下揭露事項。",
     lastUpdated: "2026 年 9 月",
-    notice:
-      "【預留內容】本頁面在上線前必須補入本公司實際的 RIA／IAR 註冊狀態、Form ADV Part 2 連結，以及經審閱的揭露內容。請勿以現狀發布。",
     sections: [
       {
         heading: "僅供一般資訊參考",
@@ -126,26 +106,6 @@ export const disclaimerPage: L<LegalPageContent> = {
           {
             type: "p",
             text: "瀏覽本網站、送出聯絡表單、訂閱更新或預約初次諮詢，皆不會在您與 GloryToGlory 稅務策略與財富顧問之間建立顧問與客戶關係。顧問關係僅在雙方簽署書面委任協議、載明服務內容、收費與責任之後才成立。在協議生效之前，請勿提供超出安排會談所需的機密資料，也請勿把本網站的一般資訊當作專為您個人提供的建議來行動。",
-          },
-        ],
-      },
-      {
-        heading: "註冊與監管狀態",
-        blocks: [
-          {
-            type: "p",
-            text: "【預留內容——註冊狀態：加州州政府註冊投資顧問（RIA）／SEC 註冊——待確認】。陳詠慧 Grace Chen 為【預留內容——上述公司之投資顧問代表（IAR）——待確認】。顧問服務僅提供給本公司已完成註冊、通知備案或符合豁免規定之州的居民。",
-          },
-          {
-            type: "p",
-            text: "註冊並不代表具備特定程度的專業技能或訓練。我們現行的 Form ADV Part 2 揭露手冊說明了我們的服務、收費、利益衝突與懲戒紀錄，可於【預留內容——Form ADV Part 2 連結——待補入】取得，亦可免費索取。",
-          },
-          {
-            type: "ul",
-            items: [
-              "【預留內容——CRD／IARD 編號——待補入】",
-              "【預留內容——本公司已註冊或通知備案的州別——待列出】",
-            ],
           },
         ],
       },
@@ -181,7 +141,7 @@ export const disclaimerPage: L<LegalPageContent> = {
         blocks: [
           {
             type: "p",
-            text: "本網站未刊登任何客戶見證或推薦。【預留內容——日後若要加入，必須符合 SEC 行銷規則（1940 年《投資顧問法》第 206(4)-1 條）或同等的州規定，包括必須揭露發言者是否為客戶、是否收受任何報酬，以及任何重大利益衝突。發布客戶陳述前，請先與法遵律師確認。】客戶見證僅反映個人經驗，絕不保證未來績效或任何客戶的成果。",
+            text: "本網站未刊登任何客戶見證或推薦。客戶見證僅反映個人經驗，絕不保證未來績效或任何客戶的成果。",
           },
         ],
       },

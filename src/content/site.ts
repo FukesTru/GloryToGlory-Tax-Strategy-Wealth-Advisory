@@ -99,7 +99,6 @@ export const UI: L<{
     postedIn: string;
     virtualBadge: string;
     placeholder: string;
-    placeholderNote: string;
     languageDraftNote: string;
   };
   cta: {
@@ -168,7 +167,6 @@ export const UI: L<{
       postedIn: "Posted in",
       virtualBadge: "Virtual consultations nationwide",
       placeholder: "Placeholder",
-      placeholderNote: "Placeholder content — to be confirmed by the client before launch.",
       languageDraftNote: "Traditional Chinese copy is a working draft pending professional translation review.",
     },
     cta: {
@@ -247,7 +245,6 @@ export const UI: L<{
       postedIn: "分類",
       virtualBadge: "全美線上諮詢",
       placeholder: "待補充",
-      placeholderNote: "此為預留內容，上線前須由客戶確認。",
       languageDraftNote: "繁體中文內容為初稿，待專業翻譯校閱後定稿。",
     },
     cta: {
