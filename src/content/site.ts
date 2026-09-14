@@ -15,7 +15,6 @@ export const SITE = {
     displayName: "Grace Chen",
     firstName: "Grace",
     jobTitle: "Financial Advisor",
-    linkedin: "https://www.linkedin.com/in/gracefinancial",
   },
   phone: "(949) 742-1604",
   phoneHref: "tel:+19497421604",

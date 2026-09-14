@@ -13,9 +13,8 @@ import { Section, SectionHeading } from "@/components/Section";
 import { ServicesGrid } from "@/components/ServiceCard";
 import { TrustStrip } from "@/components/TrustStrip";
 import { homePage } from "@/content/pages/home";
-import { SITE } from "@/content/site";
 import type { IconName } from "@/content/types";
-import { PARENT_SERVICES, POSTS } from "@/lib/content";
+import { HAS_POSTS, PARENT_SERVICES, POSTS } from "@/lib/content";
 import { resolveLocale, type LocaleParams } from "@/lib/params";
 import { financialServiceSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
@@ -55,7 +54,6 @@ export default async function HomePage({ params }: { params: LocaleParams }) {
           label: t.label,
           value: t.value,
           placeholder: t.placeholder,
-          href: t.linkedin ? SITE.owner.linkedin : undefined,
           path: t.path,
         }))}
       />
@@ -97,23 +95,25 @@ export default async function HomePage({ params }: { params: LocaleParams }) {
         <CitiesStrip locale={locale} title={c.cities.title} sub={c.cities.sub} />
       </Section>
 
-      <Section tone="white">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <Reveal>
-            <SectionHeading eyebrow={c.blog.eyebrow} title={c.blog.title} sub={c.blog.sub} />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <LLink href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-navy-900">
-              {c.blog.cta} <span aria-hidden="true">→</span>
-            </LLink>
-          </Reveal>
-        </div>
-        <ul className="mt-12 grid gap-5 md:grid-cols-3">
-          {POSTS.slice(0, 3).map((p, i) => (
-            <BlogCard key={p.slug} post={p} locale={locale} index={i} />
-          ))}
-        </ul>
-      </Section>
+      {HAS_POSTS && (
+        <Section tone="white">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <Reveal>
+              <SectionHeading eyebrow={c.blog.eyebrow} title={c.blog.title} sub={c.blog.sub} />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <LLink href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-navy-900">
+                {c.blog.cta} <span aria-hidden="true">→</span>
+              </LLink>
+            </Reveal>
+          </div>
+          <ul className="mt-12 grid gap-5 md:grid-cols-3">
+            {POSTS.slice(0, 3).map((p, i) => (
+              <BlogCard key={p.slug} post={p} locale={locale} index={i} />
+            ))}
+          </ul>
+        </Section>
+      )}
 
       <CtaSection locale={locale} />
     </>

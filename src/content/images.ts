@@ -192,43 +192,14 @@ const AREA_CARD_DEFS: Record<string, ImageDef> = {
 };
 
 /** Article header images, keyed by post slug. */
-const POST_DEFS: Record<string, ImageDef> = {
-  "rsu-vs-iso-vs-nso": {
-    file: "post-rsu-vs-iso-vs-nso.jpg",
-    alt: {
-      en: "Illustration of three paths branching from one grant, each ending at a different point",
-      "zh-hant": "自同一筆授予分出三條路徑、各自通往不同終點的插畫",
-    },
-  },
-  "avoid-surprise-tax-bill-when-rsus-vest": {
-    file: "post-avoid-surprise-tax-bill-when-rsus-vest.jpg",
-    alt: {
-      en: "Illustration of columns of income with one column showing the gap left by flat withholding",
-      "zh-hant": "收入柱狀圖插畫，其中一根呈現固定稅率預扣所留下的缺口",
-    },
-  },
-  "financial-planning-h1b-green-card-holders": {
-    file: "post-financial-planning-h1b-green-card-holders.jpg",
-    alt: {
-      en: "Illustration of arcs linking points across a long horizon",
-      "zh-hant": "跨越遼闊地平線連結各點的弧線插畫",
-    },
-  },
-  "529-plans-explained-taiwanese-american-families": {
-    file: "post-529-plans-explained-taiwanese-american-families.jpg",
-    alt: {
-      en: "Illustration of savings bands stacking up over the years before college",
-      "zh-hant": "在子女就讀大學前逐年堆疊的儲蓄區塊插畫",
-    },
-  },
-  "should-you-exercise-isos-early": {
-    file: "post-should-you-exercise-isos-early.jpg",
-    alt: {
-      en: "Illustration of a timeline where one decision splits into two outcomes",
-      "zh-hant": "時間軸插畫，一個決定分出兩種結果",
-    },
-  },
-};
+/**
+ * Blog post card images, keyed by post slug.
+ *
+ * Empty while src/content/blog/ is empty — see POSTS in src/lib/content.ts.
+ * Add an entry here (and artwork in scripts/generate-artwork.mjs) when a post
+ * comes back; BlogCard renders without an image if one is missing.
+ */
+const POST_DEFS: Record<string, ImageDef> = {};
 
 export interface SiteImage {
   src: string;

@@ -2,7 +2,8 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { NAV_LINKS, UI } from "@/content/site";
+import type { NavLink } from "@/content/site";
+import { UI } from "@/content/site";
 import { splitLocale } from "@/lib/i18n";
 import { LLink } from "./LLink";
 import { LanguageToggle } from "./LanguageToggle";
@@ -200,7 +201,7 @@ function MobileSection({
 }
 
 /** Sticky nav: transparent over the dark hero, solid navy once you scroll. */
-export function Nav({ menus }: { menus: NavMenus }) {
+export function Nav({ links, menus }: { links: NavLink[]; menus: NavMenus }) {
   const locale = useLocale();
   const t = UI[locale].nav;
   const pathname = usePathname();
@@ -225,7 +226,7 @@ export function Nav({ menus }: { menus: NavMenus }) {
     };
   }, [open]);
 
-  const isActive = (l: (typeof NAV_LINKS)[number]) =>
+  const isActive = (l: NavLink) =>
     l.match ? l.match.includes(path) : path === l.path || path.startsWith(`${l.path}/`);
 
   const hubFor = (menu: "services" | "areas") =>
@@ -245,7 +246,7 @@ export function Nav({ menus }: { menus: NavMenus }) {
         </LLink>
 
         <nav aria-label="Primary" className="hidden items-center gap-0.5 lg:flex">
-          {NAV_LINKS.map((l) =>
+          {links.map((l) =>
             l.menu ? (
               <Dropdown
                 key={l.key}
@@ -304,7 +305,7 @@ export function Nav({ menus }: { menus: NavMenus }) {
       {/* Mobile drawer */}
       <div id="mobile-nav" hidden={!open} className="max-h-[calc(100vh-4.5rem)] overflow-y-auto border-t border-cream-100/10 bg-navy-900 lg:hidden">
         <nav aria-label="Mobile" className="container-x flex flex-col py-4">
-          {NAV_LINKS.map((l) =>
+          {links.map((l) =>
             l.menu ? (
               <MobileSection
                 key={l.key}

@@ -9,7 +9,6 @@ export interface AboutContent {
   photoAlt: string;
   bio: { title: string; paragraphs: string[] };
   philosophy: { title: string; items: { title: string; body: string }[] };
-  credentials: { title: string; intro: string; items: string[]; note: string };
   bilingual: { title: string; paragraphs: string[] };
   quickFacts: { label: string; value: string }[];
   schemaDescription: string;
@@ -52,17 +51,6 @@ export const aboutPage: L<AboutContent> = {
           body: "We work alongside your CPA, attorney and employer stock plan administrator so the whole team pulls in the same direction.",
         },
       ],
-    },
-    credentials: {
-      title: "Credentials & licensing",
-      intro: "The exact designations, licenses and registration status will be listed here once confirmed by Grace. Nothing below should be treated as a credential claim until it is finalized.",
-      items: [
-        "[PLACEHOLDER] Professional designation(s), e.g. CFP®, EA, CPA, to be confirmed",
-        "[PLACEHOLDER] Investment adviser registration (RIA / IAR) and state(s) of registration",
-        "[PLACEHOLDER] Education and prior firm experience",
-        "[PLACEHOLDER] Professional memberships and continuing education",
-      ],
-      note: "Client to confirm exact designations before publishing. Until then this section is clearly marked as a placeholder.",
     },
     bilingual: {
       title: "A note on language and culture",
@@ -116,17 +104,6 @@ export const aboutPage: L<AboutContent> = {
           body: "我們與您的會計師、律師以及公司股票計畫管理單位並肩合作，讓整個團隊朝同一個方向前進。",
         },
       ],
-    },
-    credentials: {
-      title: "專業資格與執照",
-      intro: "確切的專業認證、執照與註冊狀態，將在 Grace 確認後列於此處。在定稿之前，以下內容均不應視為任何資格聲明。",
-      items: [
-        "【待確認】專業認證，例如 CFP®、EA、CPA",
-        "【待確認】投資顧問註冊（RIA / IAR）與註冊州別",
-        "【待確認】學歷與過往任職經歷",
-        "【待確認】專業組織會籍與持續進修",
-      ],
-      note: "上線前須由客戶確認確切的專業認證。在此之前，本區塊明確標示為預留內容。",
     },
     bilingual: {
       title: "關於語言與文化",

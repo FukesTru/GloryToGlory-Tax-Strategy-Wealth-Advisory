@@ -5,7 +5,7 @@ import { IMAGES } from "@/content/images";
 import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { sitemapPage } from "@/content/pages/meta";
-import { ALL_SERVICES, AREAS, pageName, POSTS, STATIC_PAGE_NAMES } from "@/lib/content";
+import { ALL_SERVICES, AREAS, HAS_POSTS, pageName, POSTS, STATIC_PAGE_NAMES } from "@/lib/content";
 import { localePath, type Locale } from "@/lib/i18n";
 import { resolveLocale, type LocaleParams } from "@/lib/params";
 import { buildMetadata } from "@/lib/seo";
@@ -60,13 +60,13 @@ export default async function SitemapPage({ params }: { params: LocaleParams }) 
         <p className="text-sm text-ink-500">{c.languageNote}</p>
         <div className="mt-10 grid gap-14 lg:grid-cols-2">
           <div className="space-y-14">
-            <Group locale={locale} title={c.sections.core} paths={["/", "/about", "/services", "/pricing", "/blog", "/contact"]} />
+            <Group locale={locale} title={c.sections.core} paths={["/", "/about", "/services", "/pricing", ...(HAS_POSTS ? ["/blog"] : []), "/contact"]} />
             <Group locale={locale} title={c.sections.areas} paths={AREAS.map((a) => a.path)} />
             <Group locale={locale} title={c.sections.legal} paths={["/disclaimer", "/privacy-policy", "/sitemap"]} />
           </div>
           <div className="space-y-14">
             <Group locale={locale} title={c.sections.services} paths={ALL_SERVICES.map((s) => s.path)} />
-            <Group locale={locale} title={c.sections.blog} paths={POSTS.map((p) => `/blog/${p.slug}`)} />
+            {HAS_POSTS && <Group locale={locale} title={c.sections.blog} paths={POSTS.map((p) => `/blog/${p.slug}`)} />}
           </div>
         </div>
       </Section>

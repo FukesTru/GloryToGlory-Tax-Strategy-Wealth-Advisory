@@ -4,7 +4,7 @@ export interface HomeContent {
   metaTitle: string;
   metaDescription: string;
   hero: { eyebrow: string; h1: string; sub: string; primary: string; secondary: string };
-  trust: { label: string; value: string; placeholder?: boolean; linkedin?: boolean; path?: string }[];
+  trust: { label: string; value: string; placeholder?: boolean; path?: string }[];
   services: { eyebrow: string; title: string; sub: string; allLink: string };
   whoWeServe: {
     eyebrow: string;
@@ -32,7 +32,7 @@ export const homePage: L<HomeContent> = {
       { label: "Focus", value: "Equity compensation & tax strategy", path: "/services" },
       { label: "Meetings", value: "By video, nationwide", path: "/remote-advisory" },
       { label: "Languages", value: "English · 繁體中文" },
-      { label: "Connect", value: "LinkedIn profile", linkedin: true },
+      { label: "Fees", value: "Fixed-fee tiers", path: "/pricing" },
     ],
     services: {
       eyebrow: "What we do",
@@ -89,7 +89,7 @@ export const homePage: L<HomeContent> = {
       { label: "專長領域", value: "股權獎酬與稅務策略", path: "/services" },
       { label: "會談方式", value: "全美視訊會談", path: "/remote-advisory" },
       { label: "服務語言", value: "English · 繁體中文" },
-      { label: "聯繫", value: "LinkedIn 個人檔案", linkedin: true },
+      { label: "收費方式", value: "固定費用方案", path: "/pricing" },
     ],
     services: {
       eyebrow: "服務範疇",

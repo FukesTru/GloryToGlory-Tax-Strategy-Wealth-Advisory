@@ -5,11 +5,10 @@ import { CtaSection } from "@/components/CtaSection";
 import { Hero } from "@/components/Hero";
 import { IMAGES } from "@/content/images";
 import { JsonLd } from "@/components/JsonLd";
-import { PlaceholderBadge, PlaceholderNote } from "@/components/Placeholder";
+import { PlaceholderBadge } from "@/components/Placeholder";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
 import { aboutPage } from "@/content/pages/about";
-import { SITE } from "@/content/site";
 import { STATIC_PAGE_NAMES } from "@/lib/content";
 import { resolveLocale, type LocaleParams } from "@/lib/params";
 import { personSchema } from "@/lib/schema";
@@ -79,14 +78,6 @@ export default async function AboutPage({ params }: { params: LocaleParams }) {
                 </div>
               ))}
               <div className="border-t border-cream-300 pt-4">
-                <a
-                  href={SITE.owner.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-semibold text-emerald-700 underline decoration-gold-500 underline-offset-4 hover:text-navy-900"
-                >
-                  LinkedIn →
-                </a>
               </div>
             </dl>
           </Reveal>
@@ -106,26 +97,6 @@ export default async function AboutPage({ params }: { params: LocaleParams }) {
             </Reveal>
           ))}
         </ul>
-      </Section>
-
-      <Section tone="cream">
-        <Reveal className="mx-auto max-w-3xl">
-          <div className="flex flex-wrap items-center gap-3">
-            <h2 className="gold-underline text-3xl text-navy-900">{c.credentials.title}</h2>
-            <PlaceholderBadge locale={locale} />
-          </div>
-          <p className="mt-8 text-lg leading-relaxed text-ink-700">{c.credentials.intro}</p>
-          <ul className="mt-6 space-y-3">
-            {c.credentials.items.map((item, i) => (
-              <li key={i} className="rounded-lg border border-dashed border-gold-600/40 bg-cream-50 px-4 py-3 text-sm text-ink-700">
-                {item}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-6">
-            <PlaceholderNote locale={locale} text={c.credentials.note} />
-          </div>
-        </Reveal>
       </Section>
 
       <Section tone="emerald">

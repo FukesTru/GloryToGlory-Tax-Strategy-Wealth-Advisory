@@ -8,8 +8,8 @@ import { FloatingCta } from "@/components/FloatingCta";
 import { Footer } from "@/components/Footer";
 import { LocaleProvider } from "@/components/LocaleProvider";
 import { Nav } from "@/components/Nav";
-import { AREAS, PARENT_SERVICES } from "@/lib/content";
-import { SITE, UI } from "@/content/site";
+import { AREAS, HAS_POSTS, PARENT_SERVICES } from "@/lib/content";
+import { NAV_LINKS, SITE, UI } from "@/content/site";
 import { LOCALES, LOCALE_TAG, isLocale } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/seo";
 import "../globals.css";
@@ -42,7 +42,7 @@ const notoSansTC = Noto_Sans_TC({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE.name,
-  authors: [{ name: SITE.owner.legalName, url: SITE.owner.linkedin }],
+  authors: [{ name: SITE.owner.legalName }],
   creator: SITE.owner.legalName,
   formatDetection: { telephone: true, email: true },
 };
@@ -73,6 +73,9 @@ export default async function RootLayout({
 
   // Built here, not in Nav: Nav is a client component, so importing the content
   // registry there would ship every service and area page to the browser.
+  // Insights is dropped from the header while there are no posts, rather than
+  // pointing at an empty page.
+  const links = NAV_LINKS.filter((l) => l.key !== "blog" || HAS_POSTS);
   const menus = {
     services: PARENT_SERVICES.map((s) => ({ path: s.path, label: s.name[locale] })),
     areas: AREAS.map((a) => ({ path: a.path, label: a.region[locale] })),
@@ -97,7 +100,7 @@ export default async function RootLayout({
           >
             {UI[locale].skipToContent}
           </a>
-          <Nav menus={menus} />
+          <Nav links={links} menus={menus} />
           <main id="main">{children}</main>
           <Footer locale={locale} />
           <FloatingCta />

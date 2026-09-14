@@ -30,7 +30,6 @@ function personRef(): JsonLd {
     name: SITE.owner.displayName,
     alternateName: SITE.owner.legalName,
     jobTitle: SITE.owner.jobTitle,
-    sameAs: [SITE.owner.linkedin],
   };
 }
 
@@ -49,7 +48,6 @@ export function financialServiceSchema(locale: Locale, services: { name: string;
     address: postalAddress(),
     founder: personRef(),
     employee: personRef(),
-    sameAs: [SITE.owner.linkedin],
     knowsLanguage: ["en", "zh-Hant"],
     areaServed: [
       ...ALL_CITIES.map((city) => ({ "@type": "City", name: city })),

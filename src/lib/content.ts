@@ -20,11 +20,6 @@ import { bayArea } from "@/content/areas/bay-area";
 import { southernCalifornia } from "@/content/areas/southern-california";
 import { remoteAdvisory } from "@/content/areas/remote-advisory";
 
-import { rsuVsIsoVsNso } from "@/content/blog/rsu-vs-iso-vs-nso";
-import { avoidSurpriseTaxBillRsu } from "@/content/blog/avoid-surprise-tax-bill-when-rsus-vest";
-import { financialPlanningH1bGreenCard } from "@/content/blog/financial-planning-h1b-green-card-holders";
-import { plans529TaiwaneseAmerican } from "@/content/blog/529-plans-explained-taiwanese-american-families";
-import { exerciseIsosEarly } from "@/content/blog/should-you-exercise-isos-early";
 
 /** The eight parent services, in display order. */
 export const PARENT_SERVICES: Service[] = [
@@ -44,13 +39,19 @@ export const ALL_SERVICES: Service[] = [...PARENT_SERVICES, ...SUB_SERVICES];
 
 export const AREAS: ServiceArea[] = [bayArea, southernCalifornia, remoteAdvisory];
 
-export const POSTS: BlogPost[] = [
-  rsuVsIsoVsNso,
-  avoidSurpriseTaxBillRsu,
-  financialPlanningH1bGreenCard,
-  plans529TaiwaneseAmerican,
-  exerciseIsosEarly,
-].sort((a, b) => (a.date < b.date ? 1 : -1));
+/**
+ * Blog posts, newest first.
+ *
+ * Empty on purpose. The five articles that used to live here were drafted by
+ * an assistant, not written by Grace, so they were removed rather than
+ * published under her name and credentials. Drop a post file back into
+ * src/content/blog/ and add it here, and the Insights nav item, the home-page
+ * section, the sitemaps and the card grid all come back on their own.
+ */
+export const POSTS: BlogPost[] = [];
+
+/** Whether the blog is shown at all — see POSTS. */
+export const HAS_POSTS = POSTS.length > 0;
 
 export function getService(path: string): Service | undefined {
   return ALL_SERVICES.find((s) => s.path === path);
@@ -112,8 +113,7 @@ export function allPaths(): string[] {
     ...ALL_SERVICES.map((s) => s.path),
     "/pricing",
     ...AREAS.map((a) => a.path),
-    "/blog",
-    ...POSTS.map((p) => `/blog/${p.slug}`),
+    ...(HAS_POSTS ? ["/blog", ...POSTS.map((p) => `/blog/${p.slug}`)] : []),
     "/contact",
     "/disclaimer",
     "/privacy-policy",

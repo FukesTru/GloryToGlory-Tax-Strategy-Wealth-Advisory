@@ -29,7 +29,6 @@ const keepExisting = process.argv.includes("--keep-existing");
 
 const HERO = { width: 2400, height: 1100 };
 const AREA_CARD = { width: 1200, height: 675 };
-const CARD = { width: 1600, height: 900 };
 const FEATURE = { width: 1400, height: 1050 };
 
 /** name -> SVG factory. Sizes chosen for how each image is displayed. */
@@ -147,11 +146,6 @@ const IMAGES = [
   },
 
   // --- Blog article headers ---
-  { file: "post-rsu-vs-iso-vs-nso.jpg", ...CARD, svg: (w, h) => motifs.paths(w, h, 5101, C.gold) },
-  { file: "post-avoid-surprise-tax-bill-when-rsus-vest.jpg", ...CARD, svg: (w, h) => motifs.steps(w, h, 5202, C.gold) },
-  { file: "post-financial-planning-h1b-green-card-holders.jpg", ...CARD, svg: (w, h) => motifs.arcs(w, h, 5303, C.emerald600) },
-  { file: "post-529-plans-explained-taiwanese-american-families.jpg", ...CARD, svg: (w, h) => motifs.layers(w, h, 5404, C.emerald600) },
-  { file: "post-should-you-exercise-isos-early.jpg", ...CARD, svg: (w, h) => motifs.timeline(w, h, 5505, C.gold) },
 
   // --- Section feature (services hub intro) ---
   { file: "feature-one-plan.jpg", ...FEATURE, svg: (w, h) => motifs.orbit(w, h, 6101, C.gold) },

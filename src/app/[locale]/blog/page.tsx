@@ -5,14 +5,22 @@ import { Hero } from "@/components/Hero";
 import { IMAGES } from "@/content/images";
 import { Section } from "@/components/Section";
 import { blogIndexPage } from "@/content/pages/meta";
-import { POSTS, STATIC_PAGE_NAMES } from "@/lib/content";
+import { HAS_POSTS, POSTS, STATIC_PAGE_NAMES } from "@/lib/content";
 import { resolveLocale, type LocaleParams } from "@/lib/params";
 import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: LocaleParams }): Promise<Metadata> {
   const locale = await resolveLocale(params);
   const c = blogIndexPage[locale];
-  return buildMetadata({ locale, path: "/blog", title: c.metaTitle, description: c.metaDescription });
+  // Unlinked and out of the sitemap while there are no posts, so keep it out
+  // of the index too rather than leaving an empty page to be crawled.
+  return buildMetadata({
+    locale,
+    path: "/blog",
+    title: c.metaTitle,
+    description: c.metaDescription,
+    noIndex: !HAS_POSTS,
+  });
 }
 
 export default async function BlogIndexPage({ params }: { params: LocaleParams }) {
