@@ -18,7 +18,7 @@ export const aboutPage: L<AboutContent> = {
   en: {
     metaTitle: "Grace Chen, Financial Advisor",
     metaDescription:
-      "Meet Grace Chen, bilingual financial advisor and founder of GloryToGlory. Tax strategy and equity compensation planning for tech professionals.",
+      "Meet Grace Chen, bilingual financial advisor and founder of GloryToGlory. Tax strategy, equity compensation and retirement planning for families.",
     eyebrow: "About Grace",
     h1: "Meet Grace Chen",
     heroSub: "The difference between overpaying taxes and keeping more of what you earn is your tax strategy.",
@@ -70,7 +70,7 @@ export const aboutPage: L<AboutContent> = {
   "zh-hant": {
     metaTitle: "財務顧問 Grace Chen",
     metaDescription:
-      "認識 GloryToGlory 創辦人、雙語財務顧問 Grace Chen。專為科技業專業人士提供稅務策略與股權獎酬規劃。",
+      "認識 GloryToGlory 創辦人、雙語財務顧問 Grace Chen。為專業人士與家庭提供稅務策略與股權獎酬規劃。",
     eyebrow: "認識 Grace",
     h1: "認識 Grace Chen",
     heroSub: "多繳稅與把錢留在自己口袋之間的差別，就在於您的稅務策略。",

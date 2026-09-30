@@ -10,19 +10,19 @@ interface SimplePage {
 
 export const blogIndexPage: L<SimplePage & { empty: string }> = {
   en: {
-    metaTitle: "Tax & Equity Compensation Tips for Tech Employees",
+    metaTitle: "Tax & Equity Compensation Insights",
     metaDescription:
-      "Plain-English articles on RSUs, stock options, tax planning, 529 plans and financial planning for tech employees and Taiwanese-American families in the US.",
+      "Plain-English articles on RSUs, stock options, tax planning, 529 plans and financial planning for professionals and Taiwanese-American families in the US.",
     eyebrow: "Insights",
-    h1: "Tax & Equity Compensation Tips for Tech Employees",
+    h1: "Tax & Equity Compensation Insights",
     heroSub: "Short, practical reads on the decisions that come with a vesting schedule. Available in English and Traditional Chinese.",
     empty: "New articles are on the way.",
   },
   "zh-hant": {
-    metaTitle: "科技業員工的稅務與股權獎酬指南",
+    metaTitle: "稅務與股權獎酬觀點",
     metaDescription: "以白話文解析 RSU、股票選擇權、稅務規劃、529 計畫與財務規劃，專為科技業員工與台裔美國人家庭撰寫。",
     eyebrow: "理財觀點",
-    h1: "科技業員工的稅務與股權獎酬指南",
+    h1: "稅務與股權獎酬觀點",
     heroSub: "針對伴隨歸屬時程而來的各種決定，提供簡短實用的文章。提供英文與繁體中文版本。",
     empty: "新文章即將推出。",
   },

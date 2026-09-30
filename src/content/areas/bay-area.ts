@@ -20,10 +20,10 @@ export const bayArea: ServiceArea = {
   },
   content: {
     en: {
-      metaTitle: "Bay Area Tax & Wealth Advisor for Tech Employees",
+      metaTitle: "Bay Area Tax & Wealth Advisor",
       metaDescription:
-        "Bilingual tax strategy and wealth advisory for tech employees in San Jose, Cupertino, Santa Clara, Milpitas and San Francisco. RSU and stock option planning.",
-      h1: "Tax & Wealth Advisory for Tech Employees in the Bay Area",
+        "Bilingual tax strategy and wealth advisory in San Jose, Cupertino, Santa Clara, Milpitas and San Francisco. RSU and stock option planning.",
+      h1: "Tax & Wealth Advisory in the Bay Area",
       heroSub:
         "Bilingual, fee-transparent planning for engineers, product managers and their families across Silicon Valley and San Francisco, in English or Mandarin.",
       intro: [
@@ -70,10 +70,10 @@ export const bayArea: ServiceArea = {
       ],
     },
     "zh-hant": {
-      metaTitle: "灣區科技業員工稅務與財富顧問",
+      metaTitle: "灣區稅務與財富顧問",
       metaDescription:
-        "為聖荷西、庫比蒂諾、聖塔克拉拉、苗必達與舊金山的科技業員工提供雙語稅務策略與財富顧問服務，專精 RSU 與股票選擇權規劃，以視訊諮詢為主。",
-      h1: "灣區科技業員工的稅務與財富顧問",
+        "為聖荷西、庫比蒂諾、聖塔克拉拉、苗必達與舊金山的專業人士與家庭提供雙語稅務策略與財富顧問服務，專精 RSU 與股票選擇權規劃，以視訊諮詢為主。",
+      h1: "灣區的稅務與財富顧問",
       heroSub:
         "為矽谷與舊金山的工程師、產品經理及其家庭提供雙語、收費透明的財務規劃，中英文皆可。",
       intro: [

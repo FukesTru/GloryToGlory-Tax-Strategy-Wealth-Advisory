@@ -5,8 +5,7 @@ import { Icon } from "./Icon";
 import { LLink } from "./LLink";
 import { Reveal } from "./Reveal";
 
-/** `title` overrides the service name — the home page bills three of these as its signature specialties. */
-export function ServiceCard({ service, locale, index = 0, tone = "light", title }: { service: Service; locale: Locale; index?: number; tone?: "light" | "dark"; title?: string }) {
+export function ServiceCard({ service, locale, index = 0, tone = "light" }: { service: Service; locale: Locale; index?: number; tone?: "light" | "dark" }) {
   const dark = tone === "dark";
   return (
     <Reveal as="li" delay={Math.min(index * 0.08, 0.4)} className="h-full">
@@ -25,7 +24,7 @@ export function ServiceCard({ service, locale, index = 0, tone = "light", title 
         >
           <Icon name={service.icon} className="h-5.5 w-5.5" />
         </span>
-        <h3 className={`mt-5 text-xl ${dark ? "text-cream-50" : "text-navy-900"}`}>{title ?? service.name[locale]}</h3>
+        <h3 className={`mt-5 text-xl ${dark ? "text-cream-50" : "text-navy-900"}`}>{service.name[locale]}</h3>
         <p className={`mt-3 flex-1 text-[0.95rem] leading-relaxed ${dark ? "text-cream-100/70" : "text-ink-700"}`}>
           {service.cardBlurb[locale]}
         </p>

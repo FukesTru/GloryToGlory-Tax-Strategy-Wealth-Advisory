@@ -22,8 +22,8 @@ export const southernCalifornia: ServiceArea = {
     en: {
       metaTitle: "Tax & Wealth Advisor in Southern California",
       metaDescription:
-        "Bilingual tax and wealth advisory for tech employees in Los Angeles, Irvine and San Diego. RSU, stock option and retirement planning by video or in person.",
-      h1: "Tax & Wealth Advisory for Tech Employees in Southern California",
+        "Bilingual tax and wealth advisory in Los Angeles, Irvine and San Diego. RSU, stock option and retirement planning by video or in person.",
+      h1: "Tax & Wealth Advisory in Southern California",
       heroSub:
         "Independent, bilingual planning for tech professionals from Los Angeles to San Diego, with Grace based in Orange County for in-person meetings by appointment.",
       intro: [
@@ -70,10 +70,10 @@ export const southernCalifornia: ServiceArea = {
       ],
     },
     "zh-hant": {
-      metaTitle: "南加州科技業員工稅務與財富顧問",
+      metaTitle: "南加州稅務與財富顧問",
       metaDescription:
-        "為洛杉磯、爾灣與聖地牙哥的科技業員工提供雙語稅務策略與財富顧問服務，涵蓋 RSU、股票選擇權與退休規劃，可視訊或預約面談。",
-      h1: "南加州科技業員工的稅務與財富顧問",
+        "為洛杉磯、爾灣與聖地牙哥的專業人士與家庭提供雙語稅務策略與財富顧問服務，涵蓋 RSU、股票選擇權與退休規劃，可視訊或預約面談。",
+      h1: "南加州的稅務與財富顧問",
       heroSub:
         "為從洛杉磯到聖地牙哥的科技業專業人士提供獨立、雙語的財務規劃；Grace 常駐橙縣，可預約面談。",
       intro: [

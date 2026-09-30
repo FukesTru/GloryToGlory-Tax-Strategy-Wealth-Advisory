@@ -19,7 +19,8 @@ export interface HomeContent {
     eyebrow: string;
     title: string;
     sub: string;
-    items: { title: string; path: string }[];
+    /** Paths only — the names come from the service pages themselves. */
+    paths: string[];
     alsoAvailable: string;
     allLink: string;
   };
@@ -100,11 +101,7 @@ export const homePage: L<HomeContent> = {
       eyebrow: "What we do",
       title: "Three Signature Specialties",
       sub: "Every piece of your financial life affects the others. We plan them together so a decision about your stock never creates a surprise on your tax return or a gap in your retirement.",
-      items: [
-        { title: "Equity Compensation Strategy", path: "/services/equity-compensation" },
-        { title: "Proactive Tax Strategy", path: "/services/tax-strategy-planning" },
-        { title: "Worry-free Retirement & Lifetime-Income Planning", path: "/services/retirement-planning" },
-      ],
+      paths: ["/services/equity-compensation", "/services/tax-strategy-planning", "/services/retirement-planning"],
       alsoAvailable:
         "Also available as part of a coordinated plan: holistic financial planning, asset allocation, education funding, cross-border tax coordination (FBAR, FATCA, PFIC), and estate-planning coordination.",
       allLink: "See all services",
@@ -191,11 +188,7 @@ export const homePage: L<HomeContent> = {
       eyebrow: "服務範疇",
       title: "三大核心專長",
       sub: "財務生活的每一環節都會相互影響。我們將它們一起規劃，讓您關於股票的決定不會在報稅時帶來意外，也不會在退休準備上留下缺口。",
-      items: [
-        { title: "股權獎酬策略", path: "/services/equity-compensation" },
-        { title: "主動式稅務策略", path: "/services/tax-strategy-planning" },
-        { title: "無後顧之憂的退休與終身收入規劃", path: "/services/retirement-planning" },
-      ],
+      paths: ["/services/equity-compensation", "/services/tax-strategy-planning", "/services/retirement-planning"],
       alsoAvailable:
         "同時可納入整體規劃的服務還包括：全方位財務規劃、資產配置、教育基金、跨境稅務協調（FBAR、FATCA、PFIC），以及財富傳承規劃的協調。",
       allLink: "查看所有服務",

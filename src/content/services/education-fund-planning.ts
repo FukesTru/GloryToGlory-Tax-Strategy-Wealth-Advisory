@@ -26,7 +26,7 @@ export const educationFundPlanning: Service = {
     en: {
       metaTitle: "College Education Fund Planning and 529 Plans",
       metaDescription:
-        "College education fund planning for tech families: 529 plans, funding with vested RSUs, grandparent accounts, FAFSA and balancing college with retirement goals.",
+        "College education fund planning for families: 529 plans, funding with vested RSUs, grandparent accounts, FAFSA and balancing college with retirement goals.",
       h1: "College Education Fund Planning",
       heroSub:
         "Education is the investment most Taiwanese-American families make without hesitation. The plan is about making it without regret: funded early, taxed lightly, and balanced against everything else.",
@@ -91,7 +91,7 @@ export const educationFundPlanning: Service = {
     "zh-hant": {
       metaTitle: "大學教育基金規劃與 529 計畫",
       metaDescription:
-        "為科技業家庭提供大學教育基金規劃：529 教育儲蓄計畫、以已歸屬的 RSU 挹注、祖父母帳戶、FAFSA，以及在大學與退休目標之間取得平衡。",
+        "為家庭提供大學教育基金規劃：529 教育儲蓄計畫、以已歸屬的 RSU 挹注、祖父母帳戶、FAFSA，以及在大學與退休目標之間取得平衡。",
       h1: "大學教育基金規劃",
       heroSub:
         "教育，是台裔美國家庭最不猶豫的投資。規劃的目的，是讓這筆投資不留遺憾：及早準備、稅負輕盈，並與其他目標取得平衡。",

@@ -24,9 +24,9 @@ export const financialPlanning: Service = {
   ],
   content: {
     en: {
-      metaTitle: "Holistic Financial Planning for Tech Professionals",
+      metaTitle: "Holistic Financial Planning",
       metaDescription:
-        "Holistic financial planning for tech professionals and immigrant families: cash flow, equity compensation, taxes, insurance and goals in one bilingual plan.",
+        "Holistic financial planning for professionals and immigrant families: cash flow, equity compensation, taxes, insurance and goals in one bilingual plan.",
       h1: "Holistic Financial Planning",
       heroSub:
         "Your RSUs, your taxes, your mortgage, your parents in Taiwan and your kids' school are not separate problems. They are one plan, and it should read that way.",
@@ -93,9 +93,9 @@ export const financialPlanning: Service = {
       ],
     },
     "zh-hant": {
-      metaTitle: "科技業專業人士全方位財務規劃",
+      metaTitle: "全方位財務規劃",
       metaDescription:
-        "為科技業專業人士與第一代移民家庭提供全方位財務規劃：現金流、股權獎酬、稅務、保險、退休與教育目標，整合成一份雙語計畫。服務灣區、南加州與全美。",
+        "為專業人士與第一代移民家庭提供全方位財務規劃：現金流、股權獎酬、稅務、保險、退休與教育目標，整合成一份雙語計畫。服務灣區、南加州與全美。",
       h1: "全方位財務規劃",
       heroSub:
         "您的 RSU、稅務、房貸、在台灣的父母與孩子的教育，從來不是各自獨立的問題。它們是同一份計畫，也應該被一起看待。",

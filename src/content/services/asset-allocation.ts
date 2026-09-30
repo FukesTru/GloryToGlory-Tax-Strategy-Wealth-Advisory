@@ -26,7 +26,7 @@ export const assetAllocation: Service = {
     en: {
       metaTitle: "Asset Allocation and Concentrated Stock Planning",
       metaDescription:
-        "Asset allocation for tech employees: reduce employer stock concentration, tax-aware selling schedules, asset location across accounts, disciplined rebalancing.",
+        "Asset allocation for households with concentrated employer stock: reduce single-stock risk, tax-aware selling schedules, asset location across accounts, disciplined rebalancing.",
       h1: "Asset Allocation",
       heroSub:
         "Your portfolio probably has one line item that matters more than all the others combined. Let us build the plan for what comes after it.",
@@ -95,7 +95,7 @@ export const assetAllocation: Service = {
     "zh-hant": {
       metaTitle: "資產配置與集中持股規劃",
       metaDescription:
-        "為科技業專業人士提供資產配置：降低雇主股票集中度、具稅務意識的出售時程、跨帳戶的資產位置安排，以及有紀律的再平衡。雙語顧問。",
+        "為持股集中的家庭提供資產配置：降低雇主股票集中度、具稅務意識的出售時程、跨帳戶的資產位置安排，以及有紀律的再平衡。雙語顧問。",
       h1: "資產配置",
       heroSub:
         "您的投資組合裡，很可能有一個項目比其他所有項目加起來都重要。讓我們為它之後的路做好規劃。",

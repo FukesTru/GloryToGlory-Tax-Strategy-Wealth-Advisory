@@ -90,7 +90,7 @@ export const stockOptionsIsoNso: Service = {
       ],
     },
     "zh-hant": {
-      metaTitle: "科技業員工 ISO 與 NSO 股票選擇權稅務規劃",
+      metaTitle: "ISO 與 NSO 股票選擇權稅務規劃",
       metaDescription:
         "ISO 與 NSO 股票選擇權規劃：AMT 試算、合格處分、提早行權與 83(b) 選擇、行權資金、離職後行權期限與要約收購。雙語顧問，服務灣區與洛杉磯。",
       h1: "ISO 與 NSO 股票選擇權規劃",

@@ -10,8 +10,8 @@ export const retirementPlanning: Service = {
   path: "/services/retirement-planning",
   icon: "sunrise",
   name: {
-    en: "Retirement Planning",
-    "zh-hant": "退休規劃",
+    en: "Worry-free Retirement & Lifetime-Income Planning",
+    "zh-hant": "無後顧之憂的退休與終身收入規劃",
   },
   cardBlurb: {
     en: "From 401(k) and Roth decisions to early-retirement math and cross-border questions, a plan for the life after the vesting schedule ends.",
@@ -24,10 +24,10 @@ export const retirementPlanning: Service = {
   ],
   content: {
     en: {
-      metaTitle: "Retirement Planning for Tech Professionals",
+      metaTitle: "Retirement & Lifetime-Income Planning",
       metaDescription:
-        "Retirement planning for tech employees: 401(k), backdoor and mega-backdoor Roth, employer stock, early retirement and cross-border questions. Bilingual advisor.",
-      h1: "Retirement Planning",
+        "Retirement planning for professionals and families: 401(k), backdoor and mega-backdoor Roth, employer stock, early retirement and cross-border questions. Bilingual advisor.",
+      h1: "Worry-free Retirement & Lifetime-Income Planning",
       heroSub:
         "Tech careers are front-loaded. The income arrives early and unevenly, and retirement may come sooner than you expect, or in a different country. Plan for that version of the future.",
       intro: [
@@ -93,10 +93,10 @@ export const retirementPlanning: Service = {
       ],
     },
     "zh-hant": {
-      metaTitle: "科技業專業人士退休規劃",
+      metaTitle: "退休與終身收入規劃",
       metaDescription:
-        "為科技業員工提供退休規劃：401(k)、backdoor 與 mega backdoor Roth、雇主股票、提早退休與跨境考量。雙語顧問，服務全美。",
-      h1: "退休規劃",
+        "為專業人士與家庭提供退休規劃：401(k)、backdoor 與 mega backdoor Roth、雇主股票、提早退休與跨境考量。雙語顧問，服務全美。",
+      h1: "無後顧之憂的退休與終身收入規劃",
       heroSub:
         "科技業的職涯是前重後輕的：收入來得早、來得不均勻，退休也可能比您預期的更早到來，甚至在另一個國家。為那個版本的未來做規劃。",
       intro: [

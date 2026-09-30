@@ -136,10 +136,10 @@ export default async function HomePage({ params }: { params: LocaleParams }) {
           </Reveal>
         </div>
         <ul className="mt-12 grid gap-5 lg:grid-cols-3">
-          {c.specialties.items.map((item, i) => {
-            const service = getService(item.path);
+          {c.specialties.paths.map((path, i) => {
+            const service = getService(path);
             if (!service) return null;
-            return <ServiceCard key={item.path} service={service} locale={locale} index={i} title={item.title} />;
+            return <ServiceCard key={path} service={service} locale={locale} index={i} />;
           })}
         </ul>
         <Reveal delay={0.15}>

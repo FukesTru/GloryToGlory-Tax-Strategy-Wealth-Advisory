@@ -10,8 +10,8 @@ export const taxStrategyPlanning: Service = {
   path: "/services/tax-strategy-planning",
   icon: "shield",
   name: {
-    en: "Tax Strategy Planning",
-    "zh-hant": "稅務策略規劃",
+    en: "Proactive Tax Strategy",
+    "zh-hant": "主動式稅務策略",
   },
   cardBlurb: {
     en: "Proactive, year-round tax planning so vesting, exercises and bonuses never surprise you in April.",
@@ -24,10 +24,10 @@ export const taxStrategyPlanning: Service = {
   ],
   content: {
     en: {
-      metaTitle: "Tax Strategy Planning for Tech Employees",
+      metaTitle: "Proactive Tax Strategy Planning",
       metaDescription:
-        "Year-round tax strategy planning for tech professionals with RSUs, stock options and high W-2 income. Bilingual advisor serving the Bay Area, LA and nationwide.",
-      h1: "Tax Strategy Planning",
+        "Year-round tax strategy planning for professionals and families with RSUs, stock options and high W-2 income. Bilingual advisor serving the Bay Area, LA and nationwide.",
+      h1: "Proactive Tax Strategy",
       heroSub:
         "Most tech employees do not have a tax problem in April. They have a planning problem in the eleven months before it. We fix the planning problem.",
       intro: [
@@ -93,10 +93,10 @@ export const taxStrategyPlanning: Service = {
       ],
     },
     "zh-hant": {
-      metaTitle: "科技業員工稅務策略規劃",
+      metaTitle: "主動式稅務策略規劃",
       metaDescription:
-        "為持有 RSU、股票選擇權與高薪資收入的科技業專業人士提供全年稅務策略規劃。雙語顧問，服務灣區、洛杉磯與全美各地。",
-      h1: "稅務策略規劃",
+        "為持有 RSU、股票選擇權與高薪資收入的專業人士與家庭提供全年稅務策略規劃。雙語顧問，服務灣區、洛杉磯與全美各地。",
+      h1: "主動式稅務策略",
       heroSub:
         "多數科技業員工的問題不在四月的報稅季，而在前面十一個月缺乏規劃。我們解決的正是規劃的問題。",
       intro: [

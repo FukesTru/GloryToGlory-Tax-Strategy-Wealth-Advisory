@@ -21,8 +21,8 @@ export const remoteAdvisory: ServiceArea = {
     en: {
       metaTitle: "Virtual Tax & Wealth Advisor, US Nationwide",
       metaDescription:
-        "Virtual tax strategy and wealth advisory for tech employees in Austin, Seattle and across the US. Bilingual RSU, stock option and relocation planning by video.",
-      h1: "Virtual Tax & Wealth Advisory for Tech Employees Nationwide",
+        "Virtual tax strategy and wealth advisory nationwide, including Georgia, New York, New Jersey, Austin and Seattle. Bilingual equity, tax and relocation planning.",
+      h1: "Virtual Tax & Wealth Advisory, Nationwide",
       heroSub:
         "Secure video meetings, encrypted document sharing and e-signature, so your advisor is wherever you are, from Austin to Seattle and every time zone in between.",
       intro: [
@@ -69,10 +69,10 @@ export const remoteAdvisory: ServiceArea = {
       ],
     },
     "zh-hant": {
-      metaTitle: "全美科技業員工線上稅務與財富顧問",
+      metaTitle: "全美線上稅務與財富顧問",
       metaDescription:
-        "為奧斯汀、西雅圖及全美各地的科技業員工提供線上稅務策略與財富顧問服務，涵蓋 RSU、股票選擇權與跨州搬遷規劃，透過安全視訊進行，中英雙語。",
-      h1: "全美科技業員工線上稅務與財富顧問",
+        "為喬治亞州、紐約州、紐澤西州、奧斯汀、西雅圖及全美各地提供線上稅務策略與財富顧問服務，涵蓋 RSU、股票選擇權與跨州搬遷規劃，透過安全視訊進行，中英雙語。",
+      h1: "全美線上稅務與財富顧問",
       heroSub:
         "安全視訊會議、加密文件分享與電子簽章，讓您的顧問就在您身邊，從奧斯汀到西雅圖，橫跨每一個時區。",
       intro: [

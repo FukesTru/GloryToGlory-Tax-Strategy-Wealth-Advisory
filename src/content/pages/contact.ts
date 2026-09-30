@@ -27,7 +27,7 @@ export const contactPage: L<ContactContent> = {
   en: {
     metaTitle: "Free Consultation – Tax & Wealth Advisory",
     metaDescription:
-      "Book a free consultation with GloryToGlory Tax Strategy & Wealth Advisory. Bilingual virtual meetings for tech professionals nationwide. Call (949) 742-1604.",
+      "Book a free consultation with GloryToGlory Tax Strategy & Wealth Advisory. Bilingual virtual meetings nationwide. Call (949) 742-1604.",
     eyebrow: "Contact",
     h1: "Book a Free Consultation",
     heroSub: "Book a complimentary 15-minute strategy session straight from the calendar, or send a note first. Either way we speak in English or Mandarin.",
@@ -62,7 +62,7 @@ export const contactPage: L<ContactContent> = {
   "zh-hant": {
     metaTitle: "免費諮詢 – 稅務與財富顧問",
     metaDescription:
-      "預約 GloryToGlory 稅務策略與財富顧問的免費諮詢。為全美科技業專業人士提供雙語視訊會議。電話 (949) 742-1604。",
+      "預約 GloryToGlory 稅務策略與財富顧問的免費諮詢。為全美客戶提供雙語視訊會議。電話 (949) 742-1604。",
     eyebrow: "聯絡我們",
     h1: "預約免費諮詢",
     heroSub: "您可以直接在行事曆上預約 15 分鐘的免費策略諮詢，或先留言給我們。中文或英文皆可。",

@@ -10,7 +10,7 @@ export const equityCompensation: Service = {
   path: "/services/equity-compensation",
   icon: "layers",
   name: {
-    en: "Equity Compensation Strategies",
+    en: "Equity Compensation Strategy",
     "zh-hant": "股權獎酬策略",
   },
   cardBlurb: {
@@ -27,7 +27,7 @@ export const equityCompensation: Service = {
       metaTitle: "Equity Compensation Planning: RSU, RSA, ISO & NSO",
       metaDescription:
         "Equity compensation planning for RSUs, RSAs, ISOs and NSOs: vesting, 83(b) elections, AMT, sell-to-cover and concentration. Bilingual advisor, Bay Area and LA.",
-      h1: "Equity Compensation Strategies",
+      h1: "Equity Compensation Strategy",
       heroSub:
         "Four grant types, one paycheck, and a tax bill that depends on decisions you make months before it arrives. We help you make them on purpose.",
       intro: [

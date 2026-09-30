@@ -16,7 +16,7 @@ export const servicesHubPage: L<ServicesHubContent> = {
   en: {
     metaTitle: "Financial Planning & Tax Strategy Services",
     metaDescription:
-      "Eight coordinated services for tech professionals: financial planning, tax strategy, equity compensation, cross-border filings and estate planning.",
+      "Eight coordinated services for professionals and families: financial planning, tax strategy, equity compensation, cross-border filings and estate planning.",
     eyebrow: "Services",
     h1: "Financial Planning & Tax Strategy Services",
     heroSub: "Eight services that work as one system, so every decision about your equity, taxes and savings supports the others.",
@@ -37,7 +37,7 @@ export const servicesHubPage: L<ServicesHubContent> = {
   "zh-hant": {
     metaTitle: "財務規劃與稅務策略服務",
     metaDescription:
-      "為科技業專業人士提供八項協調一致的服務：財務規劃、稅務策略、跨境申報、股權獎酬、退休規劃、教育基金、資產配置與財富傳承。",
+      "為專業人士與家庭提供八項協調一致的服務：財務規劃、稅務策略、跨境申報、股權獎酬、退休規劃、教育基金、資產配置與財富傳承。",
     eyebrow: "服務項目",
     h1: "財務規劃與稅務策略服務",
     heroSub: "八項服務如同一個系統運作，讓您在股權、稅務與儲蓄上的每個決定都能相互支持。",

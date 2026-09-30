@@ -25,9 +25,9 @@ export const rsuRsaPlanning: Service = {
   ],
   content: {
     en: {
-      metaTitle: "RSU & RSA Tax Planning for Tech Employees",
+      metaTitle: "RSU & RSA Tax Planning",
       metaDescription:
-        "RSU and RSA tax planning for tech employees: vesting, withholding gaps, sell-to-cover, cost basis, 83(b) elections and double-trigger RSUs. Bilingual advisor.",
+        "RSU and RSA tax planning: vesting, withholding gaps, sell-to-cover, cost basis, 83(b) elections and double-trigger RSUs. Bilingual advisor.",
       h1: "RSU & RSA Tax Planning",
       heroSub:
         "RSUs are the simplest form of equity to receive and one of the easiest to get wrong at tax time. We make the vesting calendar work for you.",
@@ -90,9 +90,9 @@ export const rsuRsaPlanning: Service = {
       ],
     },
     "zh-hant": {
-      metaTitle: "科技業員工 RSU 與 RSA 稅務規劃",
+      metaTitle: "RSU 與 RSA 稅務規劃",
       metaDescription:
-        "為科技業員工提供 RSU 與 RSA 稅務規劃：歸屬時程、預扣缺口、賣股抵稅決策、成本基礎、83(b) 選擇與 IPO 時的雙重觸發 RSU。雙語顧問。",
+        "RSU 與 RSA 稅務規劃：歸屬時程、預扣缺口、賣股抵稅決策、成本基礎、83(b) 選擇與 IPO 時的雙重觸發 RSU。雙語顧問。",
       h1: "RSU 與 RSA 稅務規劃",
       heroSub:
         "RSU 是最容易拿到、也最容易在報稅時出錯的股權形式。我們讓歸屬時程為您所用。",
