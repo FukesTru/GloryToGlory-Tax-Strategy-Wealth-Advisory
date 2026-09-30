@@ -1,7 +1,7 @@
 import type { ServiceArea } from "../types";
 
 /**
- * Service-area page: Remote Advisory (Austin, Seattle and nationwide by video).
+ * Service-area page: Remote Advisory (nationwide by video).
  * EN copy is final-draft quality; ZH copy is a working draft for review.
  */
 export const remoteAdvisory: ServiceArea = {
@@ -12,10 +12,10 @@ export const remoteAdvisory: ServiceArea = {
     en: "Remote Advisory",
     "zh-hant": "遠距顧問服務",
   },
-  cities: ["Austin", "Seattle"],
+  cities: ["Austin", "Seattle", "Georgia", "New York", "New Jersey"],
   citiesLocalized: {
-    en: ["Austin", "Seattle"],
-    "zh-hant": ["奧斯汀", "西雅圖"],
+    en: ["Austin", "Seattle", "Georgia", "New York", "New Jersey"],
+    "zh-hant": ["奧斯汀", "西雅圖", "喬治亞州", "紐約州", "紐澤西州"],
   },
   content: {
     en: {
@@ -27,7 +27,7 @@ export const remoteAdvisory: ServiceArea = {
         "Secure video meetings, encrypted document sharing and e-signature, so your advisor is wherever you are, from Austin to Seattle and every time zone in between.",
       intro: [
         "Tech careers move. An engineer hired in San Jose may be working from Austin two years later, and a product manager in Seattle may hold RSUs that began vesting in California. Our practice was built virtual-first for exactly this reason. Wherever you live, you meet with Grace over secure video, share pay stubs, grant agreements and tax returns through an encrypted client portal, and sign engagement documents electronically. The planning is the same as it would be across a desk, and it is usually easier to schedule.",
-        "Austin and Seattle are two of our most common remote locations, and each has its own wrinkles. Texas and Washington do not tax wages at the state level, which makes both cities popular destinations for tech employees leaving California. Washington does, however, apply a capital gains excise tax to large long-term gains above an exemption amount, which can matter when a concentrated stock position is finally sold. And California does not let go easily: equity that vested while you worked there remains California-sourced income even after you move, so the order in which you relocate, exercise and sell deserves real planning. We serve clients in every US time zone, offer early-morning and evening slots, and advise in English or Mandarin.",
+        "We also work regularly with clients in Georgia, New York and New Jersey. Austin and Seattle are two of our most common remote locations, and each has its own wrinkles. Texas and Washington do not tax wages at the state level, which makes both cities popular destinations for tech employees leaving California. Washington does, however, apply a capital gains excise tax to large long-term gains above an exemption amount, which can matter when a concentrated stock position is finally sold. And California does not let go easily: equity that vested while you worked there remains California-sourced income even after you move, so the order in which you relocate, exercise and sell deserves real planning. We serve clients in every US time zone, offer early-morning and evening slots, and advise in English or Mandarin.",
       ],
       relevantServices: [
         {

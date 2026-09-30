@@ -10,7 +10,8 @@ import { Picture } from "./Picture";
 interface Props {
   locale: Locale;
   title: string;
-  sub?: string;
+  /** One paragraph, or several — the home page leads with three. */
+  sub?: string | string[];
   eyebrow?: string;
   /** Inner pages pass breadcrumbs (Home is added automatically). */
   crumbs?: Crumb[];
@@ -33,7 +34,7 @@ export function Hero({ locale, title, sub, eyebrow, crumbs, primary, secondary, 
   const h1Size = size === "large" ? "text-4xl sm:text-5xl lg:text-[3.6rem]" : "text-3xl sm:text-4xl lg:text-[3rem]";
 
   return (
-    <section className="relative isolate overflow-hidden bg-navy-900 pt-[4.5rem] text-cream-100">
+    <section className="relative isolate overflow-hidden bg-navy-900 pt-20 text-cream-100">
       {image && (
         <>
           <div aria-hidden="true" className="absolute inset-0 -z-30">
@@ -81,7 +82,13 @@ export function Hero({ locale, title, sub, eyebrow, crumbs, primary, secondary, 
           <div className="max-w-3xl">
             {eyebrow && <p className="eyebrow mb-4 text-gold-400">{eyebrow}</p>}
             <h1 className={`gold-underline ${h1Size} font-medium leading-[1.1] text-cream-50`}>{title}</h1>
-            {sub && <p className="mt-7 max-w-2xl text-lg leading-relaxed text-cream-100/80 sm:text-xl">{sub}</p>}
+            {sub && (
+              <div className="mt-7 max-w-2xl space-y-4 text-lg leading-relaxed text-cream-100/80 sm:text-xl">
+                {(Array.isArray(sub) ? sub : [sub]).map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
+            )}
             {children}
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <LLink

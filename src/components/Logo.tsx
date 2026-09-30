@@ -20,7 +20,7 @@ export function Logo({
   compact?: boolean;
   priority?: boolean;
 }) {
-  const height = compact ? 28 : 38;
+  const height = compact ? 28 : 42;
   return (
     <Image
       src={tone === "light" ? "/images/logo-on-dark.png" : "/images/logo-on-light.png"}
@@ -28,7 +28,7 @@ export function Logo({
       width={Math.round(height * RATIO)}
       height={height}
       priority={priority}
-      className={compact ? "h-7 w-auto" : "h-8 w-auto sm:h-9"}
+      className={compact ? "h-7 w-auto" : "h-9 w-auto sm:h-10"}
     />
   );
 }

@@ -36,17 +36,18 @@ export default async function AboutPage({ params }: { params: LocaleParams }) {
         crumbs={[{ name: STATIC_PAGE_NAMES["/about"][locale], path: "/about" }]}
         image={IMAGES.heroAbout}
         aside={
-          <Reveal delay={0.15} className="relative mx-auto w-full max-w-sm lg:max-w-md">
-            <div className="absolute -inset-3 -z-10 rounded-[2rem] border border-gold-500/30" aria-hidden="true" />
-            {/* Fixed portrait frame, so the design holds whatever crop the photo arrives in. */}
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] bg-navy-800 shadow-[var(--shadow-card-dark)]">
+          <Reveal delay={0.15} className="relative mx-auto w-full max-w-[19rem] lg:max-w-[22rem]">
+            <div className="absolute -inset-3 -z-10 rounded-full border border-gold-500/30" aria-hidden="true" />
+            {/* Circular portrait. A square frame keeps the circle a circle at every width, and
+                the source photo only has 607px of usable width, so smaller also renders sharper. */}
+            <div className="relative aspect-square w-full overflow-hidden rounded-full bg-navy-800 shadow-[var(--shadow-card-dark)]">
               <Image
                 src={portrait.src}
                 alt={c.photoAlt}
                 fill
-                sizes="(min-width: 1024px) 28rem, (min-width: 640px) 24rem, 80vw"
+                sizes="(min-width: 1024px) 22rem, 19rem"
                 priority
-                className="object-cover object-[50%_25%]"
+                className="object-cover object-[50%_20%]"
                 {...(portrait.blurDataURL ? { placeholder: "blur" as const, blurDataURL: portrait.blurDataURL } : {})}
               />
             </div>

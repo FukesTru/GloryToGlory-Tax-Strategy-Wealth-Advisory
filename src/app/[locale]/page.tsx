@@ -10,11 +10,11 @@ import { LanguageBanner } from "@/components/LanguageBanner";
 import { LLink } from "@/components/LLink";
 import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
-import { ServicesGrid } from "@/components/ServiceCard";
+import { ServiceCard } from "@/components/ServiceCard";
 import { TrustStrip } from "@/components/TrustStrip";
 import { homePage } from "@/content/pages/home";
 import type { IconName } from "@/content/types";
-import { HAS_POSTS, PARENT_SERVICES, POSTS } from "@/lib/content";
+import { getService, HAS_POSTS, PARENT_SERVICES, POSTS } from "@/lib/content";
 import { resolveLocale, type LocaleParams } from "@/lib/params";
 import { financialServiceSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
@@ -59,26 +59,39 @@ export default async function HomePage({ params }: { params: LocaleParams }) {
       />
 
       <Section tone="cream">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <Reveal>
-            <SectionHeading eyebrow={c.services.eyebrow} title={c.services.title} sub={c.services.sub} />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <LLink href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-navy-900">
-              {c.services.allLink} <span aria-hidden="true">→</span>
-            </LLink>
-          </Reveal>
-        </div>
-        <div className="mt-12">
-          <ServicesGrid services={PARENT_SERVICES} locale={locale} />
-        </div>
+        <Reveal>
+          <SectionHeading eyebrow={c.questions.eyebrow} title={c.questions.title} sub={c.questions.sub} />
+        </Reveal>
+        <ul className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {c.questions.items.map((q, i) => (
+            <Reveal
+              as="li"
+              key={i}
+              delay={Math.min(i * 0.05, 0.3)}
+              className="flex gap-3 rounded-2xl border border-cream-300 bg-cream-50 p-6 shadow-[var(--shadow-card)]"
+            >
+              <span aria-hidden="true" className="font-heading text-xl leading-none text-gold-600">
+                ?
+              </span>
+              <p className="text-[0.95rem] leading-relaxed text-ink-900">{q}</p>
+            </Reveal>
+          ))}
+        </ul>
+        <Reveal delay={0.15} className="mt-10">
+          <LLink
+            href="/contact"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-navy-900"
+          >
+            {c.hero.primary} <span aria-hidden="true">→</span>
+          </LLink>
+        </Reveal>
       </Section>
 
       <Section tone="navy">
         <Reveal>
           <SectionHeading eyebrow={c.whoWeServe.eyebrow} title={c.whoWeServe.title} sub={c.whoWeServe.intro} tone="dark" />
         </Reveal>
-        <ul className="mt-12 grid gap-5 md:grid-cols-2">
+        <ul className="mt-12 grid gap-5 lg:grid-cols-3">
           {c.whoWeServe.groups.map((g, i) => (
             <Reveal as="li" key={i} delay={i * 0.08} className="rounded-2xl border border-cream-100/10 bg-navy-800/50 p-7">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-700/30 text-emerald-100">
@@ -89,6 +102,49 @@ export default async function HomePage({ params }: { params: LocaleParams }) {
             </Reveal>
           ))}
         </ul>
+      </Section>
+
+      <Section tone="white">
+        <Reveal>
+          <SectionHeading eyebrow={c.whyUs.eyebrow} title={c.whyUs.title} />
+        </Reveal>
+        <ul className="mt-12 grid gap-x-10 gap-y-6 md:grid-cols-2">
+          {c.whyUs.items.map((item, i) => (
+            <Reveal as="li" key={i} delay={Math.min(i * 0.07, 0.35)} className="flex gap-4 border-b border-cream-300 pb-6">
+              <span aria-hidden="true" className="mt-1 text-gold-600">
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m5 12 5 5L20 7" />
+                </svg>
+              </span>
+              <p className="text-[0.95rem] leading-relaxed text-ink-700">
+                <span className="font-semibold text-navy-900">{item.title}:</span> {item.body}
+              </p>
+            </Reveal>
+          ))}
+        </ul>
+      </Section>
+
+      <Section tone="cream">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <Reveal>
+            <SectionHeading eyebrow={c.specialties.eyebrow} title={c.specialties.title} sub={c.specialties.sub} />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <LLink href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-navy-900">
+              {c.specialties.allLink} <span aria-hidden="true">→</span>
+            </LLink>
+          </Reveal>
+        </div>
+        <ul className="mt-12 grid gap-5 lg:grid-cols-3">
+          {c.specialties.items.map((item, i) => {
+            const service = getService(item.path);
+            if (!service) return null;
+            return <ServiceCard key={item.path} service={service} locale={locale} index={i} title={item.title} />;
+          })}
+        </ul>
+        <Reveal delay={0.15}>
+          <p className="mt-8 max-w-4xl text-[0.95rem] leading-relaxed text-ink-700">{c.specialties.alsoAvailable}</p>
+        </Reveal>
       </Section>
 
       <Section tone="cream">

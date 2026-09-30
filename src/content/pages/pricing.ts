@@ -75,7 +75,7 @@ export const pricingPage: L<PricingContent> = {
         id: "elite",
         name: "Elite",
         subtitle: "Managing complexity",
-        price: "$1,200",
+        price: "$1,950",
         who: "For individuals and families with equity compensation (RSU, RSA, ISO, NSO, ESPP), rental property or a side business.",
         hero: "Three strategy sessions across the year, six hours in total, with a structural review",
         includes: [
@@ -89,7 +89,7 @@ export const pricingPage: L<PricingContent> = {
         id: "platinum",
         name: "Platinum",
         subtitle: "Execution support",
-        price: "$1,500",
+        price: "$2,450",
         who: "For busy professionals and business owners who want the plan carried out, not just written.",
         hero: "Done-for-you tactical implementation",
         includes: [
@@ -102,7 +102,7 @@ export const pricingPage: L<PricingContent> = {
         id: "titanium",
         name: "Titanium",
         subtitle: "Two-year partnership",
-        price: "$2,500",
+        price: "$3,950",
         who: "For committed builders who want long-term strategy and someone alongside them for the whole arc.",
         hero: "Everything in Platinum, with two years of structural alignment",
         includes: [
@@ -185,7 +185,7 @@ export const pricingPage: L<PricingContent> = {
         id: "elite",
         name: "菁英方案 Elite",
         subtitle: "處理複雜度",
-        price: "$1,200",
+        price: "$1,950",
         who: "適合擁有股權獎酬（RSU、RSA、ISO、NSO、ESPP）、出租房產或副業的個人與家庭。",
         hero: "全年三次策略諮詢，合計六小時，並進行結構性檢視",
         includes: [
@@ -199,7 +199,7 @@ export const pricingPage: L<PricingContent> = {
         id: "platinum",
         name: "白金方案 Platinum",
         subtitle: "執行支援",
-        price: "$1,500",
+        price: "$2,450",
         who: "適合希望計畫被真正執行、而不只是被寫下來的忙碌專業人士與企業主。",
         hero: "全程代辦式的策略執行支援",
         includes: [
@@ -212,7 +212,7 @@ export const pricingPage: L<PricingContent> = {
         id: "titanium",
         name: "鈦金方案 Titanium",
         subtitle: "兩年夥伴關係",
-        price: "$2,500",
+        price: "$3,950",
         who: "適合長期投入、希望有人一路同行的穩健建構者。",
         hero: "包含白金方案的所有內容，並提供兩年的結構性同行支援",
         includes: [

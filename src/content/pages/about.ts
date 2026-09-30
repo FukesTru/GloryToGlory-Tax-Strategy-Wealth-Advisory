@@ -21,14 +21,13 @@ export const aboutPage: L<AboutContent> = {
       "Meet Grace Chen, bilingual financial advisor and founder of GloryToGlory. Tax strategy and equity compensation planning for tech professionals.",
     eyebrow: "About Grace",
     h1: "Meet Grace Chen",
-    heroSub: "An independent advisor who speaks your language, literally and financially, and who has spent her career helping tech families turn equity into security.",
+    heroSub: "The difference between overpaying taxes and keeping more of what you earn is your tax strategy.",
     photoAlt: "Grace Chen, financial advisor and founder of GloryToGlory Tax Strategy & Wealth Advisory",
     bio: {
-      title: "From spreadsheets at the kitchen table to a practice built for tech families",
+      title: "A framework built around your dreams and goals",
       paragraphs: [
-        "Grace founded GloryToGlory Tax Strategy & Wealth Advisory after years of watching smart, hard-working people make expensive mistakes with equity compensation, not because they lacked intelligence, but because nobody had explained the rules in a way that fit their lives. Engineers would exercise options without modeling AMT. Families would hold every vested share out of loyalty and end up with most of their net worth in one stock. Immigrant parents would delay retirement saving while helping children and relatives, then discover how much a decade of missed contributions had cost.",
-        "She built this practice to be the advisor those families deserved: independent, fee-transparent, patient with questions and fluent in both the tax code and the cultural context her clients bring to the table. Today she works with tech professionals across the Bay Area, Los Angeles, Orange County, San Diego, Austin and Seattle, almost entirely by video, with a planning process that treats taxes, equity, retirement and family goals as one connected system.",
-        "The name GloryToGlory reflects her belief that good planning is a journey, not a single transaction. Each stage of your career and family life builds on the last, and the job of an advisor is to make sure every step moves you forward.",
+        "The difference between overpaying taxes and keeping more of what you earn is your tax strategy. As a first-generation Asian professional who built her corporate experience in the tech industry, I understand how difficult it can be for busy working professionals to navigate the changing U.S. tax laws and the complex financial system while balancing career, family, and long-term goals.",
+        "At GloryToGlory Tax Strategy & Wealth Advisory, I help families build a solid financial and tax framework tailored to your dreams and goals, which includes asset allocation, equity compensation (RSU, RSA, ISO, and NSO) exercise planning, tax-reduction strategies, college funding, retirement planning, and Roth conversions — for Taiwanese and first-generation immigrant families and middle-class households across the U.S., with specialties in the tech industry.",
       ],
     },
     philosophy: {
@@ -74,14 +73,13 @@ export const aboutPage: L<AboutContent> = {
       "認識 GloryToGlory 創辦人、雙語財務顧問 Grace Chen。專為科技業專業人士提供稅務策略與股權獎酬規劃。",
     eyebrow: "認識 Grace",
     h1: "認識 Grace Chen",
-    heroSub: "一位真正懂您語言的獨立顧問——不只是中文與英文，更是財務的語言。她的職涯致力於協助科技業家庭把股權變成安穩的未來。",
+    heroSub: "多繳稅與把錢留在自己口袋之間的差別，就在於您的稅務策略。",
     photoAlt: "GloryToGlory 稅務策略與財富顧問創辦人、財務顧問 Grace Chen",
     bio: {
-      title: "從餐桌上的試算表，到專為科技業家庭打造的顧問事業",
+      title: "圍繞您的夢想與目標而建立的架構",
       paragraphs: [
-        "Grace 創立 GloryToGlory 稅務策略與財富顧問之前，多年來看著聰明又努力的人在股權獎酬上犯下代價高昂的錯誤。不是因為他們不夠聰明，而是從來沒有人用貼近他們生活的方式解釋規則。工程師在沒有試算 AMT 的情況下行權；家庭出於對公司的忠誠而持有每一股已歸屬的股票，最後大部分身家都押在同一支股票上；移民父母為了幫助子女與親人而延後退休儲蓄，多年後才發現錯過提撥的代價有多高。",
-        "她創立這個事業，是為了成為這些家庭值得擁有的顧問：獨立、收費透明、耐心回答每一個問題，並且同時精通稅法與客戶帶來的文化背景。如今她服務灣區、洛杉磯、橙縣、聖地牙哥、奧斯汀與西雅圖的科技業專業人士，幾乎全部透過視訊進行，規劃流程把稅務、股權、退休與家庭目標視為一個相互連結的系統。",
-        "GloryToGlory 這個名字，反映她的信念：好的規劃是一段旅程，而不是一次交易。職涯與家庭生活的每個階段都建立在前一階段之上，顧問的工作就是確保每一步都讓您往前走。",
+        "多繳稅與把錢留在自己口袋之間的差別，就在於您的稅務策略。身為在科技業累積企業經驗的第一代亞裔專業人士，我很清楚忙碌的上班族要一邊兼顧事業、家庭與長期目標，一邊面對不斷變動的美國稅法與複雜的財務制度，有多麼不容易。",
+        "在 GloryToGlory 稅務策略與財富顧問，我協助家庭建立一套貼近自身夢想與目標的財務與稅務架構，內容涵蓋資產配置、股權獎酬（RSU、RSA、ISO 與 NSO）的行權規劃、節稅策略、大學教育基金、退休規劃與 Roth 轉換。服務對象為全美的台裔與第一代移民家庭，以及一般中產家庭，並在科技產業有特別專精。",
       ],
     },
     philosophy: {

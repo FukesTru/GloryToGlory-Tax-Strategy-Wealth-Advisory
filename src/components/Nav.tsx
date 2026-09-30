@@ -98,7 +98,7 @@ function Dropdown({
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
-        className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-2 text-[0.875rem] font-medium transition-colors ${
+        className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-3 py-2 text-[1rem] font-medium transition-colors ${
           active ? "text-gold-400" : "text-cream-100/85 hover:text-cream-50"
         }`}
       >
@@ -117,7 +117,7 @@ function Dropdown({
           {hub && (
             <LLink
               href={hub.path}
-              className="mb-1 flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-[0.875rem] font-semibold text-gold-400 transition-colors hover:bg-cream-100/5"
+              className="mb-1 flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-[0.95rem] font-semibold text-gold-400 transition-colors hover:bg-cream-100/5"
             >
               {hub.label}
               <span aria-hidden="true">→</span>
@@ -128,7 +128,7 @@ function Dropdown({
               <li key={it.path}>
                 <LLink
                   href={it.path}
-                  className="block rounded-lg px-3 py-2.5 text-[0.875rem] leading-snug text-cream-100/85 transition-colors hover:bg-cream-100/5 hover:text-cream-50"
+                  className="block rounded-lg px-3 py-2.5 text-[0.95rem] leading-snug text-cream-100/85 transition-colors hover:bg-cream-100/5 hover:text-cream-50"
                 >
                   {it.label}
                 </LLink>
@@ -240,7 +240,7 @@ export function Nav({ links, menus }: { links: NavLink[]; menus: NavMenus }) {
           : "bg-transparent"
       }`}
     >
-      <div className="container-x flex h-[4.5rem] items-center justify-between gap-3 lg:gap-4">
+      <div className="container-x flex h-20 items-center justify-between gap-3 lg:gap-4">
         <LLink href="/" aria-label={t.home} className="shrink-0">
           <Logo tone="light" priority />
         </LLink>
@@ -261,7 +261,7 @@ export function Nav({ links, menus }: { links: NavLink[]; menus: NavMenus }) {
                 key={l.key}
                 href={l.path}
                 aria-current={isActive(l) ? "page" : undefined}
-                className={`whitespace-nowrap rounded-md px-2.5 py-2 text-[0.875rem] font-medium transition-colors ${
+                className={`whitespace-nowrap rounded-md px-3 py-2 text-[1rem] font-medium transition-colors ${
                   isActive(l) ? "text-gold-400" : "text-cream-100/85 hover:text-cream-50"
                 }`}
               >
@@ -275,7 +275,7 @@ export function Nav({ links, menus }: { links: NavLink[]; menus: NavMenus }) {
           <LanguageToggle tone="light" />
           <LLink
             href="/contact"
-            className="hidden whitespace-nowrap rounded-full border border-gold-500 px-4 py-2 text-[0.85rem] font-semibold text-gold-400 transition-colors hover:bg-gold-500 hover:text-navy-900 md:inline-flex lg:hidden xl:inline-flex"
+            className="hidden whitespace-nowrap rounded-full border border-gold-500 px-5 py-2.5 text-[0.9375rem] font-semibold text-gold-400 transition-colors hover:bg-gold-500 hover:text-navy-900 md:inline-flex lg:hidden xl:inline-flex"
           >
             {t.bookCta}
           </LLink>
@@ -303,7 +303,7 @@ export function Nav({ links, menus }: { links: NavLink[]; menus: NavMenus }) {
       </div>
 
       {/* Mobile drawer */}
-      <div id="mobile-nav" hidden={!open} className="max-h-[calc(100vh-4.5rem)] overflow-y-auto border-t border-cream-100/10 bg-navy-900 lg:hidden">
+      <div id="mobile-nav" hidden={!open} className="max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-cream-100/10 bg-navy-900 lg:hidden">
         <nav aria-label="Mobile" className="container-x flex flex-col py-4">
           {links.map((l) =>
             l.menu ? (
