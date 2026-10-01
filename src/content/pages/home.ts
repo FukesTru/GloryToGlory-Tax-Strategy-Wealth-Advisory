@@ -3,7 +3,15 @@ import type { L } from "../types";
 export interface HomeContent {
   metaTitle: string;
   metaDescription: string;
-  hero: { eyebrow: string; h1: string; sub: string[]; primary: string; secondary: string };
+  hero: {
+    eyebrow: string;
+    h1: string;
+    sub: string;
+    primary: string;
+    secondary: string;
+    /** Right-hand card in the hero. Specialty names come from the service pages. */
+    card: { eyebrow: string; title: string; body: string };
+  };
   trust: { label: string; value: string; placeholder?: boolean; path?: string }[];
   /** "Does this sound like you?" — the questions clients actually arrive with. */
   questions: { eyebrow: string; title: string; sub: string; items: string[] };
@@ -30,19 +38,20 @@ export interface HomeContent {
 
 export const homePage: L<HomeContent> = {
   en: {
-    metaTitle: "Bilingual Tax Strategy & Wealth Advisory",
+    metaTitle: "Equity, Tax & Retirement Planning in One Plan",
     metaDescription:
-      "Bilingual tax strategy and wealth advisory for tech professionals, Taiwanese-American families and middle-class households. Equity compensation, tax planning and retirement, nationwide by video.",
+      "Bilingual tax strategy, equity compensation and retirement planning coordinated in one plan. RSUs, stock options and Roth conversions, nationwide by video.",
     hero: {
       eyebrow: "Tax strategy · Equity compensation · Retirement planning",
-      h1: "Tax Strategy & Wealth Advisory for Tech Professionals and First-Generation Families",
-      sub: [
-        "We help high-achieving individuals and families navigate complex tax laws and build lasting wealth for generations. We coordinate your equity compensation, like RSUs and stock options, optimize tax-saving strategies, and structure worry-free retirement through one integrated plan.",
-        "GloryToGlory provides unbiased, bilingual guidance for busy tech professionals, Taiwanese-American families, and many middle-class Americans. Meet with us in your preferred language, virtually nationwide.",
-        "Book a complimentary, no-obligation appointment to start the introductory conversation, discuss your concerns, and find solutions.",
-      ],
+      h1: "One plan for your equity, taxes and retirement.",
+      sub: "Bilingual tax, equity and retirement planning for professionals and first-generation families, nationwide by video.",
       primary: "Book a Free Consultation",
       secondary: "Explore services",
+      card: {
+        eyebrow: "Complimentary · No obligation",
+        title: "Start with a conversation",
+        body: "Book a complimentary, no-obligation appointment to start the introductory conversation, discuss your concerns, and find solutions.",
+      },
     },
     trust: [
       { label: "Focus", value: "Equity compensation & tax strategy", path: "/services" },
@@ -70,7 +79,7 @@ export const homePage: L<HomeContent> = {
       eyebrow: "Who we serve",
       title: "Built for people with more than one thing to balance",
       intro:
-        "Most of our clients are managing a career, a family and a financial system that was never explained to them, often across two countries at once.",
+        "GloryToGlory provides unbiased, bilingual guidance for busy tech professionals, Taiwanese-American families, and many middle-class Americans. Meet with us in your preferred language, virtually nationwide.",
       groups: [
         {
           title: "Tech professionals with equity compensation",
@@ -100,7 +109,7 @@ export const homePage: L<HomeContent> = {
     specialties: {
       eyebrow: "What we do",
       title: "Three Signature Specialties",
-      sub: "Every piece of your financial life affects the others. We plan them together so a decision about your stock never creates a surprise on your tax return or a gap in your retirement.",
+      sub: "We help high-achieving individuals and families navigate complex tax laws and build lasting wealth for generations. We coordinate your equity compensation, like RSUs and stock options, optimize tax-saving strategies, and structure worry-free retirement through one integrated plan.",
       paths: ["/services/equity-compensation", "/services/tax-strategy-planning", "/services/retirement-planning"],
       alsoAvailable:
         "Also available as part of a coordinated plan: holistic financial planning, asset allocation, education funding, cross-border tax coordination (FBAR, FATCA, PFIC), and estate-planning coordination.",
@@ -118,19 +127,20 @@ export const homePage: L<HomeContent> = {
     },
   },
   "zh-hant": {
-    metaTitle: "雙語稅務策略與財富顧問",
+    metaTitle: "股權、稅務與退休，整合為一套計畫",
     metaDescription:
-      "為科技業專業人士、台裔美國家庭與一般中產家庭提供雙語稅務策略與財富顧問服務：股權獎酬、稅務規劃與退休準備，全美線上服務。",
+      "將稅務策略、股權獎酬與退休規劃整合為同一套計畫：RSU、股票選擇權與 Roth 轉換，全美雙語線上服務。",
     hero: {
       eyebrow: "稅務策略 · 股權獎酬 · 退休規劃",
-      h1: "為科技業專業人士與第一代移民家庭而設的稅務策略與財富顧問",
-      sub: [
-        "我們協助認真打拼的個人與家庭，在複雜的稅法中找到方向，累積能傳承世代的財富。我們整合您的股權獎酬（如 RSU 與股票選擇權）、優化節稅策略，並為您規劃無後顧之憂的退休生活——全部納入同一套計畫。",
-        "GloryToGlory 為忙碌的科技業專業人士、台裔美國家庭，以及許多中產家庭提供中立、雙語的專業建議。以您最自在的語言會談，全美線上服務。",
-        "歡迎預約免費、無任何義務的諮詢，從一場初步對話開始，聊聊您的顧慮，一起找出解方。",
-      ],
+      h1: "一套計畫，整合您的股權、稅務與退休。",
+      sub: "為全美的專業人士與第一代移民家庭，提供雙語的稅務、股權與退休規劃，線上會談。",
       primary: "預約免費諮詢",
       secondary: "瀏覽服務項目",
+      card: {
+        eyebrow: "免費諮詢 · 無任何義務",
+        title: "從一場對話開始",
+        body: "歡迎預約免費、無任何義務的諮詢，從一場初步對話開始，聊聊您的顧慮，一起找出解方。",
+      },
     },
     trust: [
       { label: "專長領域", value: "股權獎酬與稅務策略", path: "/services" },
@@ -157,7 +167,7 @@ export const homePage: L<HomeContent> = {
     whoWeServe: {
       eyebrow: "服務對象",
       title: "為同時要兼顧許多事情的人而設計",
-      intro: "我們的客戶多半同時要照顧事業、家庭，以及一套從來沒有人好好解釋過的財務制度——而且往往橫跨兩個國家。",
+      intro: "GloryToGlory 為忙碌的科技業專業人士、台裔美國家庭，以及許多中產家庭提供中立、雙語的專業建議。以您最自在的語言會談，全美線上服務。",
       groups: [
         {
           title: "持有股權獎酬的科技業專業人士",
@@ -187,7 +197,7 @@ export const homePage: L<HomeContent> = {
     specialties: {
       eyebrow: "服務範疇",
       title: "三大核心專長",
-      sub: "財務生活的每一環節都會相互影響。我們將它們一起規劃，讓您關於股票的決定不會在報稅時帶來意外，也不會在退休準備上留下缺口。",
+      sub: "我們協助認真打拼的個人與家庭，在複雜的稅法中找到方向，累積能傳承世代的財富。我們整合您的股權獎酬（如 RSU 與股票選擇權）、優化節稅策略，並為您規劃無後顧之憂的退休生活——全部納入同一套計畫。",
       paths: ["/services/equity-compensation", "/services/tax-strategy-planning", "/services/retirement-planning"],
       alsoAvailable:
         "同時可納入整體規劃的服務還包括：全方位財務規劃、資產配置、教育基金、跨境稅務協調（FBAR、FATCA、PFIC），以及財富傳承規劃的協調。",
